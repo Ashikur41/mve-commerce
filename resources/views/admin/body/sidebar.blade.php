@@ -90,8 +90,6 @@
                 </li>
                 <li> <a href="component-badges.html"><i class='bx bx-radio-circle'></i>Badges</a>
                 </li>
-                <li> <a href="component-buttons.html"><i class='bx bx-radio-circle'></i>Buttons</a>
-                </li>
                 <li> <a href="component-cards.html"><i class='bx bx-radio-circle'></i>Cards</a>
                 </li>
                 <li> <a href="component-carousels.html"><i class='bx bx-radio-circle'></i>Carousels</a>
