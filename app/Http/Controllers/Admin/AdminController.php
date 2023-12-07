@@ -22,7 +22,7 @@ class AdminController extends Controller
     }
 
 
-    //logout
+    //Admin logout
     public function AdminDestroy(Request $request)
     {
         Auth::guard('web')->logout();
@@ -31,7 +31,7 @@ class AdminController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect()->route('Admin.Login');
     }
 
     //Admin Profile
