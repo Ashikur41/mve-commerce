@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Vendor\VendorController;
+use App\Http\Controllers\FrontendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +16,9 @@ use App\Http\Controllers\Vendor\VendorController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 //Admin
 Route::middleware(['auth','role:admin'])->group(function () {
@@ -51,6 +52,7 @@ Route::middleware(['auth','role:vendor'])->group(function () {
 
 
 Route::get('/admin/login',[AdminController::class,'AdminLogin'])->name('Admin.Login');
+Route::get('/',[FrontendController::class,'index'])->name('frontend.index');
 Route::get('/vendor/login',[VendorController::class,'VendorLogin'])->name('Vendor.Login');
 
 
