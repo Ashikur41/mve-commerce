@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Vendor\VendorController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,8 +57,12 @@ Route::get('/',[FrontendController::class,'index'])->name('frontend.index');
 Route::get('/vendor/login',[VendorController::class,'VendorLogin'])->name('Vendor.Login');
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard',[UserController::class,'UserDashboard'])->name('dashboard');
+});
+
+// Route::get('/dashboard', function () {
+//     return view('index');
+// })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
