@@ -32,7 +32,12 @@ class VendorController extends Controller
 
     $request->session()->regenerateToken();
 
-    return redirect()->route('Vendor.Login');
+    $notification= array(
+        'message'=>'Vendor Logout Successfully !',
+        'alert-type' =>'success'
+    );
+
+    return redirect()->route('Vendor.Login')->with($notification);
     }
 
     //vendor Profile
@@ -67,7 +72,7 @@ class VendorController extends Controller
         $data->save();
 
         $notification= array(
-            'message'=>'Admin Profile Updated Successfully !',
+            'message'=>'Vendor Profile Updated Successfully !',
             'alert-type' =>'success'
         );
         return redirect()->back()->with($notification);
