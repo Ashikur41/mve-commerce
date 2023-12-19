@@ -25,13 +25,9 @@
                 <div class="menu-title">Brand</div>
             </a>
             <ul>
-                <li> <a href="index.html"><i class='bx bx-radio-circle'></i>Default</a>
+                <li> <a href="{{ route('all.brand') }}"><i class='bx bx-radio-circle'></i>All Brand</a>
                 </li>
-                <li> <a href="index2.html"><i class='bx bx-radio-circle'></i>Alternate</a>
-                </li>
-                <li> <a href="index3.html"><i class='bx bx-radio-circle'></i>Digital Marketing</a>
-                </li>
-                <li> <a href="index4.html"><i class='bx bx-radio-circle'></i>Human Resources</a>
+                <li> <a href="{{ route('add.brand') }}"><i class='bx bx-radio-circle'></i>Add Brand</a>
                 </li>
             </ul>
         </li>

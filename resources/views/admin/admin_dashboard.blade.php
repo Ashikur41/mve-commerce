@@ -28,6 +28,7 @@
 	<link rel="stylesheet" href="{{ asset('Admin') }}/assets/css/semi-dark.css"/>
 	<link rel="stylesheet" href="{{ asset('Admin') }}/assets/css/header-colors.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link href="{{ asset('Admin') }}/assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
 	<title>Admin Dashboard</title>
 </head>
@@ -122,6 +123,8 @@
 	<script src="{{ asset('Admin') }}/assets/plugins/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
 	<script src="{{ asset('Admin') }}/assets/plugins/jquery-knob/excanvas.js"></script>
 	<script src="{{ asset('Admin') }}/assets/plugins/jquery-knob/jquery.knob.js"></script>
+    <script src="{{ asset('Admin') }}/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+	<script src="{{ asset('Admin') }}/assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     <script>
@@ -158,6 +161,11 @@
 	<script>
 		new PerfectScrollbar(".app-container")
 	</script>
+    	<script>
+            $(document).ready(function() {
+                $('#example').DataTable();
+              } );
+        </script>
 </body>
 
 
