@@ -35,22 +35,26 @@
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bx bx-category"></i>
                 </div>
-                <div class="menu-title">Application</div>
+                <div class="menu-title">Category</div>
             </a>
             <ul>
-                <li> <a href="app-emailbox.html"><i class='bx bx-radio-circle'></i>Email</a>
+                <li> <a href="{{ route('add.category') }}"><i class='bx bx-radio-circle'></i>All Category</a>
                 </li>
-                <li> <a href="app-chat-box.html"><i class='bx bx-radio-circle'></i>Chat Box</a>
+                <li> <a href="{{ route('add.category') }}"><i class='bx bx-radio-circle'></i>Add Category</a>
                 </li>
-                <li> <a href="app-file-manager.html"><i class='bx bx-radio-circle'></i>File Manager</a>
+            </ul>
+        </li>
+
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-category"></i>
+                </div>
+                <div class="menu-title">Sub-Category</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('all.sub_category') }}"><i class='bx bx-radio-circle'></i>All Sub-Category</a>
                 </li>
-                <li> <a href="app-contact-list.html"><i class='bx bx-radio-circle'></i>Contatcs</a>
-                </li>
-                <li> <a href="app-to-do.html"><i class='bx bx-radio-circle'></i>Todo List</a>
-                </li>
-                <li> <a href="app-invoice.html"><i class='bx bx-radio-circle'></i>Invoice</a>
-                </li>
-                <li> <a href="app-fullcalender.html"><i class='bx bx-radio-circle'></i>Calendar</a>
+                <li> <a href="{{ route('add.sub_category') }}"><i class='bx bx-radio-circle'></i>Add Sub-Category</a>
                 </li>
             </ul>
         </li>

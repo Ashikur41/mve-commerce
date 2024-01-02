@@ -73,14 +73,7 @@ class BrandController extends Controller
         return redirect()->route('all.brand')->with($notification);
     }
 
-    public function DeleteBrand($id)
-    {
-        Brand::findOrFail($id)->delete();
-        $notification= array(
-            'message'=>'Brand Deleted Successfully !',
-            'alert-type' =>'success'
-        );
-        return redirect()->back()->with($notification);
-    }
+
+    
 
 }
