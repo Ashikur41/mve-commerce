@@ -108,7 +108,7 @@
 	<!--start switcher-->
 	<!--end switcher-->
 	<!-- Bootstrap JS -->
-	<script src="{{ asset('Admin') }}/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('Admin') }}/assets/js/bootstrap.bundle.min.js"></script>
 	<!--plugins-->
 	<script src="{{ asset('Admin') }}/assets/js/jquery.min.js"></script>
 	<script src="{{ asset('Admin') }}/assets/plugins/simplebar/js/simplebar.min.js"></script>
@@ -121,7 +121,8 @@
 	<script src="{{ asset('Admin') }}/assets/plugins/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
 	<script src="{{ asset('Admin') }}/assets/plugins/jquery-knob/excanvas.js"></script>
 	<script src="{{ asset('Admin') }}/assets/plugins/jquery-knob/jquery.knob.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="{{ asset('Admin') }}/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+	<script src="{{ asset('Admin') }}/assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     <script>
@@ -155,9 +156,18 @@
 	<script src="{{ asset('Admin') }}/assets/js/index.js"></script>
 	<!--app JS-->
 	<script src="{{ asset('Admin') }}/assets/js/app.js"></script>
+	<script src="{{ asset('Admin') }}/assets/js/validate.min.js"></script>
 	<script>
 		new PerfectScrollbar(".app-container")
 	</script>
+    	<script>
+            $(document).ready(function() {
+                $('#example').DataTable();
+              } );
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+        <script src="{{ asset('Admin/assets/js/code.js') }}"></script>
 </body>
 
 
