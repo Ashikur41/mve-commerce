@@ -3,71 +3,165 @@
 
 
 @section('main-content')
-
 		<!--start page wrapper -->
 		<div class="page-wrapper">
 			<div class="page-content">
 				<!--breadcrumb-->
-				<div class="page-breadcrumb d-none d-sm-flex align-items-center m b-3">
-					<div class="breadcrumb-title pe-3">Add Category</div>
+				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+					<div class="breadcrumb-title pe-3">eCommerce</div>
 					<div class="ps-3">
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb mb-0 p-0">
 								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
 								</li>
-								<li class="breadcrumb-item active" aria-current="page">Add Category</li>
+								<li class="breadcrumb-item active" aria-current="page">Orders</li>
 							</ol>
 						</nav>
 					</div>
 				</div>
 				<!--end breadcrumb-->
-				<div class="container">
-					<div class="main-body">
-						<div class="row">
-							<div class="col-lg-10">
-								<div class="card">
-									<div class="card-body">
-                                        <form id="myForm" method="post" action="{{ route('store.category') }}" enctype="multipart/form-data">
-                                            @csrf
 
-										<div class="row mb-3">
-											<div class="col-sm-3">
-												<h6 class="mb-0">Category Name</h6>
-											</div>
-											<div class="form-group col-sm-9 text-secondary">
-												<input type="text" class="form-control" name="category_name" />
-											</div>
-										</div>
+				<div class="card">
+				  <div class="card-body p-4">
+					  <h5 class="card-title">Add New Product</h5>
+					  <hr/>
+                       <div class="form-body mt-4">
+					    <div class="row">
+						   <div class="col-lg-8">
+                           <div class="border border-3 p-4 rounded">
+							<div class="mb-3">
+								<label for="product_name" class="form-label">Product Name</label>
+								<input type="text" name="product_name" class="form-control" id="product_name" placeholder="Enter product Name">
+							  </div>
+							<div class="mb-3">
+								<label for="product_tags" class="form-label">Product Tags</label>
+								<input type="text" class="form-control visually-hidden" name="product_tags" data-role="tagsinput" value="new product,top product">
+							  </div>
+							<div class="mb-3">
+								<label for="product_size" class="form-label">Product Size</label>
+								<input type="text" class="form-control visually-hidden" name="product_size" data-role="tagsinput" value="Smaill,Midium,Large">
+							  </div>
+							<div class="mb-3">
+								<label for="product_color" class="form-label">Product Color</label>
+								<input type="text" class="form-control visually-hidden" name="product_color" data-role="tagsinput" value="red,Blue,Black">
+							  </div>
+							  <div class="mb-3">
+								<label for="short_description" class="form-label">Short Description</label>
+								<textarea class="form-control" name="short_description" id="short_description" rows="3"></textarea>
+							  </div>
+							  <div class="mb-3">
+								<label for="long_description" class="form-label">Long Description</label>
+								<textarea class="form-control" name="long_description" id="long_description" rows="3"></textarea>
+							  </div>
+                              <div class="mb-3">
+								<label for="product_thumbnail" class="form-label">Main Thumbnail</label>
+								<input class="form-control" name="product_thumbnail" type="file" onchange="mainThumUrl(this)" id="formFile">
 
-										<div class="row mb-3">
-											<div class="col-sm-3">
-												<h6 class="mb-0">Category Image</h6>
-											</div>
-											<div class="col-sm-9 text-secondary">
-												<input type="file" class="form-control" name="category_image" id="image"/>
+								<img src="" id="mainThmb">
+							  </div>
+                              <div class="mb-3">
+								<label for="multi_img" class="form-label">Multiple Image</label>
+								<input class="form-control" name="multi_img" type="file" id="multi_img" multiple="">
+							  </div>
+                            </div>
+						   </div>
+						   <div class="col-lg-4">
+							<div class="border border-3 p-4 rounded">
+                              <div class="row g-3">
+								<div class="col-md-6">
+									<label for="selling_price" class="form-label">Product Price</label>
+									<input type="text" class="form-control" name="selling_price" id="selling_price" placeholder="00.00">
+								  </div>
+								  <div class="col-md-6">
+									<label for="discount_price" class="form-label">Discount Price</label>
+									<input type="text" class="form-control" name="discount_price" id="discount_price" placeholder="00.00">
+								  </div>
+								  <div class="col-md-6">
+									<label for="product_code" class="form-label">Product Code</label>
+									<input type="text" class="form-control" name="product_code" id="product_code" placeholder="00.00">
+								  </div>
+								  <div class="col-md-6">
+									<label for="product_qty" class="form-label">Product Qty</label>
+									<input type="text" class="form-control" name="product_qty" id="product_qty" placeholder="00.00">
+								  </div>
+								  <div class="col-12">
+									<label for="brand_id" class="form-label">Product Brand</label>
+									<select class="form-select" id="brand_id" name="brand_id">
+										<option></option>
+                                        @foreach ($brand as $brands)
+										<option value="{{ $brands->id }}">{{ $brands->brand_name }}</option>
+                                        @endforeach
+									  </select>
+								  </div>
+								  <div class="col-12">
+									<label for="category_id" class="form-label">Product Category</label>
+									<select class="form-select" id="inputVendor" name="category_id">
+										<option></option>
+                                        @foreach ($category as $categorys)
+										<option value="{{ $categorys->id }}">{{ $categorys->category_name }}</option>
+                                        @endforeach
+									  </select>
+								  </div>
+								  <div class="col-12">
+									<label for="subcategory_id" class="form-label">Product SubCategory</label>
+									<select class="form-select" name="subcategory_id" id="subcategory_id">
+										<option></option>
+										<option value="1">One</option>
+										<option value="2">Two</option>
+										<option value="3">Three</option>
+									  </select>
+								  </div>
+								  <div class="col-12">
+									<label for="vendor_id" class="form-label">Select Vendor</label>
+									<select class="form-select" name="vendor_id" id="vendor_id">
+										<option></option>
+                                        @foreach ($activeVendor as $activeVendors)
+										<option value="{{ $activeVendors->id }}">{{ $activeVendors->name }}</option>
+                                        @endforeach
+									  </select>
+								  </div>
+								  <div class="col-12">
+									<div class="row g-3">
+										<div class="col-md-6">
+											<div class="form-check">
+												<input class="form-check-input" type="checkbox" name="hot_deals" value="1" id="hot_deals">
+												<label class="form-check-label" for="hot_deals">Hot Deals</label>
 											</div>
 										</div>
-										<div class="row mb-3">
-											<div class="col-sm-3">
-												<h6 class="mb-0"></h6>
-											</div>
-											<div class="col-sm-9 text-secondary">
-												<img id="showImage" src="{{ url('upload/no_image.jpg') }}" alt="Admin" style="width: 100px; hight:100px;">
+										<div class="col-md-6">
+											<div class="form-check">
+												<input class="form-check-input" type="checkbox" name="featured" value="1" id="hot_deals">
+												<label class="form-check-label" for="featured">Featured</label>
 											</div>
 										</div>
-										<div class="row">
-											<div class="col-sm-3"></div>
-											<div class="col-sm-9 text-secondary">
-												<input type="submit" class="btn btn-primary px-4" value="Save Changes"/>
+										<div class="col-md-6">
+											<div class="form-check">
+												<input class="form-check-input" type="checkbox" name="special_offer" value="1" id="special_offer">
+												<label class="form-check-label" for="special_offer">Special Offer</label>
 											</div>
 										</div>
-                                    </form>
+										<div class="col-md-6">
+											<div class="form-check">
+												<input class="form-check-input" type="checkbox" name="special_deals" value="1" id="special_deals">
+												<label class="form-check-label" for="special_deals">Special Deals</label>
+											</div>
+										</div>
 									</div>
-								</div>
-							</div>
-						</div>
+								  </div>
+								  <div class="col-12">
+									  <div class="d-grid">
+                                         <button type="button" class="btn btn-primary">Save Product</button>
+									  </div>
+								  </div>
+							  </div>
+						  </div>
+						  </div>
+					   </div><!--end row-->
 					</div>
-				</div>
+				  </div>
+			  </div>
+
+
 			</div>
 		</div>
 		<!--end page wrapper -->
@@ -86,6 +180,19 @@
         </script>
         {{-- form valiedtion  --}}
         <script type="text/javascript">
+            function mainThumUrl(input)
+			{
+				if(input.files && input.files[0])
+				{
+					ver reader=new FileReader();
+					reader.onload=function(e){
+						$('#mainThmb').attr('src',e.target.result).width(80).height(80);
+					};
+					reader.readAsDataURL(input.files[0]);
+				}
+			}
+
+
             $(document).ready(function(){
                 $('#myForm').validate({
                     rules:{

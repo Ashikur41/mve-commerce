@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\MulitImg;
 use App\Models\Product;
 use App\Models\SubCategory;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -20,7 +21,10 @@ class ProductController extends Controller
 
     public function AddProduct()
     {
-
+        $brand=Brand::latest()->get();
+        $category=Category::latest()->get();
+        $activeVendor=User::where('status','active')->where('role','vendor')->latest()->get();
+        return view('Backend.product.product_add',compact('brand','category','activeVendor'));
     }
 
     public function StoreProduct(Request $request)

@@ -8,27 +8,28 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--favicon-->
-	<link rel="icon" href="{{ asset('Admin') }}assets/images/favicon-32x32.png" type="image/png"/>
+	<link rel="icon" href="{{ asset('Admin/assets/images/favicon-32x32.png') }}" type="image/png"/>
+    <link href="{{ asset('Admin/assets/plugins/input-tags/css/tagsinput.css') }}" rel="stylesheet" />
 	<!--plugins-->
-	<link href="{{ asset('Admin') }}/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet"/>
-	<link href="{{ asset('Admin') }}/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
-	<link href="{{ asset('Admin') }}/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
-	<link href="{{ asset('Admin') }}/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet"/>
+	<link href="{{ asset('Admin/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet"/>
+	<link href="{{ asset('Admin/assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
+	<link href="{{ asset('Admin/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
+	<link href="{{ asset('Admin/assets/plugins/metismenu/css/metisMenu.min.css') }}" rel="stylesheet"/>
 	<!-- loader-->
-	<link href="{{ asset('Admin') }}/assets/css/pace.min.css" rel="stylesheet"/>
-	<script src="{{ asset('Admin') }}/assets/js/pace.min.js"></script>
+	<link href="{{ asset('Admin/assets/css/pace.min.css') }}" rel="stylesheet"/>
+	<script src="{{ asset('Admin/assets/js/pace.min.js') }}"></script>
 	<!-- Bootstrap CSS -->
-	<link href="{{ asset('Admin') }}/assets/css/bootstrap.min.css" rel="stylesheet">
-	<link href="{{ asset('Admin') }}/assets/css/bootstrap-extended.css" rel="stylesheet">
+	<link href="{{ asset('Admin/assets/css/bootstrap.min.css') }}" rel="stylesheet">
+	<link href="{{ asset('Admin/assets/css/bootstrap-extended.css') }}" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
-	<link href="{{ asset('Admin') }}/assets/css/app.css" rel="stylesheet">
-	<link href="{{ asset('Admin') }}/assets/css/icons.css" rel="stylesheet">
+	<link href="{{ asset('Admin/assets/css/app.css') }}" rel="stylesheet">
+	<link href="{{ asset('Admin/assets/css/icons.css') }}" rel="stylesheet">
 	<!-- Theme Style CSS -->
-	<link rel="stylesheet" href="{{ asset('Admin') }}/assets/css/dark-theme.css"/>
-	<link rel="stylesheet" href="{{ asset('Admin') }}/assets/css/semi-dark.css"/>
-	<link rel="stylesheet" href="{{ asset('Admin') }}/assets/css/header-colors.css"/>
+	<link rel="stylesheet" href="{{ asset('Admin/assets/css/dark-theme.css') }}"/>
+	<link rel="stylesheet" href="{{ asset('Admin/assets/css/semi-dark.css') }}"/>
+	<link rel="stylesheet" href="{{ asset('Admin/assets/css/header-colors.css') }}"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <link href="{{ asset('Admin') }}/assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    <link href="{{ asset('Admin/assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
 	<title>Admin Dashboard</title>
 </head>
@@ -110,21 +111,22 @@
 	<!--start switcher-->
 	<!--end switcher-->
 	<!-- Bootstrap JS -->
-	<script src="{{ asset('Admin') }}/assets/js/bootstrap.bundle.min.js"></script>
+	<script src="{{ asset('Admin/assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('Admin/assets/plugins/input-tags/js/tagsinput.js') }}"></script>
 	<!--plugins-->
-	<script src="{{ asset('Admin') }}/assets/js/jquery.min.js"></script>
-	<script src="{{ asset('Admin') }}/assets/plugins/simplebar/js/simplebar.min.js"></script>
-	<script src="{{ asset('Admin') }}/assets/plugins/metismenu/js/metisMenu.min.js"></script>
-	<script src="{{ asset('Admin') }}/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
-	<script src="{{ asset('Admin') }}/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
-    <script src="{{ asset('Admin') }}/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
-	<script src="{{ asset('Admin') }}/assets/plugins/chartjs/js/chart.js"></script>
-	<script src="{{ asset('Admin') }}/assets/plugins/sparkline-charts/jquery.sparkline.min.js"></script>
-	<script src="{{ asset('Admin') }}/assets/plugins/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
-	<script src="{{ asset('Admin') }}/assets/plugins/jquery-knob/excanvas.js"></script>
-	<script src="{{ asset('Admin') }}/assets/plugins/jquery-knob/jquery.knob.js"></script>
-    <script src="{{ asset('Admin') }}/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
-	<script src="{{ asset('Admin') }}/assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
+	<script src="{{ asset('Admin/assets/js/jquery.min.js') }}"></script>
+	<script src="{{ asset('Admin/assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
+	<script src="{{ asset('Admin/assets/plugins/metismenu/js/metisMenu.min.js') }}"></script>
+	<script src="{{ asset('Admin/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
+	<script src="{{ asset('Admin/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
+    <script src="{{ asset('Admin/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
+	<script src="{{ asset('Admin/assets/plugins/chartjs/js/chart.js') }}"></script>
+	<script src="{{ asset('Admin/assets/plugins/sparkline-charts/jquery.sparkline.min.js') }}"></script>
+	<script src="{{ asset('Admin/assets/plugins/jquery.easy-pie-chart/jquery.easypiechart.min.js') }}"></script>
+	<script src="{{ asset('Admin/assets/plugins/jquery-knob/excanvas.js') }}"></script>
+	<script src="{{ asset('Admin/assets/plugins/jquery-knob/jquery.knob.js') }}"></script>
+    <script src="{{ asset('Admin/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+	<script src="{{ asset('Admin/assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     <script>
