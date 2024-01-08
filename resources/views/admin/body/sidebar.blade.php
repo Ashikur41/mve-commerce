@@ -77,40 +77,12 @@
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>
                 </div>
-                <div class="menu-title">Components</div>
+                <div class="menu-title">Product Manage</div>
             </a>
             <ul>
-                <li> <a href="component-alerts.html"><i class='bx bx-radio-circle'></i>Alerts</a>
+                <li> <a href="component-alerts.html"><i class='bx bx-radio-circle'></i>All Product</a>
                 </li>
-                <li> <a href="component-accordions.html"><i class='bx bx-radio-circle'></i>Accordions</a>
-                </li>
-                <li> <a href="component-badges.html"><i class='bx bx-radio-circle'></i>Badges</a>
-                </li>
-                <li> <a href="component-cards.html"><i class='bx bx-radio-circle'></i>Cards</a>
-                </li>
-                <li> <a href="component-carousels.html"><i class='bx bx-radio-circle'></i>Carousels</a>
-                </li>
-                <li> <a href="component-list-groups.html"><i class='bx bx-radio-circle'></i>List Groups</a>
-                </li>
-                <li> <a href="component-media-object.html"><i class='bx bx-radio-circle'></i>Media Objects</a>
-                </li>
-                <li> <a href="component-modals.html"><i class='bx bx-radio-circle'></i>Modals</a>
-                </li>
-                <li> <a href="component-navs-tabs.html"><i class='bx bx-radio-circle'></i>Navs & Tabs</a>
-                </li>
-                <li> <a href="component-navbar.html"><i class='bx bx-radio-circle'></i>Navbar</a>
-                </li>
-                <li> <a href="component-paginations.html"><i class='bx bx-radio-circle'></i>Pagination</a>
-                </li>
-                <li> <a href="component-popovers-tooltips.html"><i class='bx bx-radio-circle'></i>Popovers & Tooltips</a>
-                </li>
-                <li> <a href="component-progress-bars.html"><i class='bx bx-radio-circle'></i>Progress</a>
-                </li>
-                <li> <a href="component-spinners.html"><i class='bx bx-radio-circle'></i>Spinners</a>
-                </li>
-                <li> <a href="component-notifications.html"><i class='bx bx-radio-circle'></i>Notifications</a>
-                </li>
-                <li> <a href="component-avtars-chips.html"><i class='bx bx-radio-circle'></i>Avatrs & Chips</a>
+                <li> <a href="component-accordions.html"><i class='bx bx-radio-circle'></i>Add Product</a>
                 </li>
             </ul>
         </li>
