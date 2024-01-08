@@ -80,9 +80,9 @@
                 <div class="menu-title">Product Manage</div>
             </a>
             <ul>
-                <li> <a href="component-alerts.html"><i class='bx bx-radio-circle'></i>All Product</a>
+                <li> <a href="{{ route('all.product') }}"><i class='bx bx-radio-circle'></i>All Product</a>
                 </li>
-                <li> <a href="component-accordions.html"><i class='bx bx-radio-circle'></i>Add Product</a>
+                <li> <a href="{{ route('add.product') }}"><i class='bx bx-radio-circle'></i>Add Product</a>
                 </li>
             </ul>
         </li>
