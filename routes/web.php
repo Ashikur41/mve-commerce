@@ -64,6 +64,7 @@ Route::controller(SubCategoryController::class)->group(function(){
     Route::get('edit/sub-category/{id}','EditSub_category')->name('edit.sub_category');
     Route::post('update/sub-category','UpdateSub_category')->name('update.sub_category');
     Route::get('delete/sub-category/{id}','DeleteSub_category')->name('delete.sub_category');
+    Route::get('subcategory/ajax/{category_id}','GetSubcategory');
     });
 
 //vendor active and inActive

@@ -68,4 +68,11 @@ class SubCategoryController extends Controller
         );
         return redirect()->back()->with($notification);
     }
+
+    // Category and SubCategory related
+    public function GetSubcategory($category_id)
+    {
+        $subCat=SubCategory::where('category_id',$category_id)->orderBy('sub_category_name','ASC')->get();
+        return json_encode($subCat);
+    }
 }
