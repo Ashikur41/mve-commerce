@@ -25,11 +25,14 @@
 				  <div class="card-body p-4">
 					  <h5 class="card-title">Add New Product</h5>
 					  <hr/>
+
+                      <form id="myForm" method="post" action="{{ route('store.product') }}" enctype="multipart/form-data">
+                        @csrf
                        <div class="form-body mt-4">
 					    <div class="row">
 						   <div class="col-lg-8">
                            <div class="border border-3 p-4 rounded">
-							<div class="mb-3">
+							<div class="form-group mb-3">
 								<label for="product_name" class="form-label">Product Name</label>
 								<input type="text" name="product_name" class="form-control" id="product_name" placeholder="Enter product Name">
 							  </div>
@@ -45,7 +48,7 @@
 								<label for="product_color" class="form-label">Product Color</label>
 								<input type="text" class="form-control visually-hidden" name="product_color" data-role="tagsinput" value="red,Blue,Black">
 							  </div>
-							  <div class="mb-3">
+							  <div class="form-group mb-3">
 								<label for="short_description" class="form-label">Short Description</label>
 								<textarea class="form-control" name="short_description" id="short_description" rows="3"></textarea>
 							  </div>
@@ -53,13 +56,13 @@
 								<label for="long_description" class="form-label">Long Description</label>
 								<textarea class="form-control" name="long_description" id="long_description" rows="3"></textarea>
 							  </div>
-                              <div class="mb-3">
+                              <div class="form-group mb-3">
 								<label for="product_thumbnail" class="form-label">Main Thumbnail</label>
 								<input class="form-control" name="product_thumbnail" type="file" onchange="mainThumUrl(this)" id="formFile">
 
 								<img src="" id="mainThmb">
 							  </div>
-                              <div class="mb-3">
+                              <div class="form-group mb-3">
 								<label for="multi_img" class="form-label">Multiple Image</label>
 								<input class="form-control" name="multi_img" type="file" id="multi_img" multiple="">
 							  </div>
@@ -68,23 +71,23 @@
 						   <div class="col-lg-4">
 							<div class="border border-3 p-4 rounded">
                               <div class="row g-3">
-								<div class="col-md-6">
+								<div class="form-group col-md-6">
 									<label for="selling_price" class="form-label">Product Price</label>
 									<input type="text" class="form-control" name="selling_price" id="selling_price" placeholder="00.00">
 								  </div>
-								  <div class="col-md-6">
+								  <div class="form-group col-md-6">
 									<label for="discount_price" class="form-label">Discount Price</label>
 									<input type="text" class="form-control" name="discount_price" id="discount_price" placeholder="00.00">
 								  </div>
-								  <div class="col-md-6">
+								  <div class="form-group col-md-6">
 									<label for="product_code" class="form-label">Product Code</label>
 									<input type="text" class="form-control" name="product_code" id="product_code" placeholder="00.00">
 								  </div>
-								  <div class="col-md-6">
+								  <div class="form-group col-md-6">
 									<label for="product_qty" class="form-label">Product Qty</label>
 									<input type="text" class="form-control" name="product_qty" id="product_qty" placeholder="00.00">
 								  </div>
-								  <div class="col-12">
+								  <div class="form-group col-12">
 									<label for="brand_id" class="form-label">Product Brand</label>
 									<select class="form-select" id="brand_id" name="brand_id">
 										<option></option>
@@ -93,7 +96,7 @@
                                         @endforeach
 									  </select>
 								  </div>
-								  <div class="col-12">
+								  <div class="form-group col-12">
 									<label for="category_id" class="form-label">Product Category</label>
 									<select class="form-select" id="category_id" name="category_id">
 										<option></option>
@@ -102,14 +105,14 @@
                                         @endforeach
 									  </select>
 								  </div>
-								  <div class="col-12">
+								  <div class="form-group col-12">
 									<label for="subcategory_id" class="form-label">Product SubCategory</label>
 									<select class="form-select" name="subcategory_id" id="subcategory_id">
 										<option></option>
 
 									  </select>
 								  </div>
-								  <div class="col-12">
+								  <div class="form-group col-12">
 									<label for="vendor_id" class="form-label">Select Vendor</label>
 									<select class="form-select" name="vendor_id" id="vendor_id">
 										<option></option>
@@ -148,7 +151,7 @@
 								  </div>
 								  <div class="col-12">
 									  <div class="d-grid">
-                                         <button type="button" class="btn btn-primary">Save Product</button>
+                                         <button type="submit" class="btn btn-primary">Save Product</button>
 									  </div>
 								  </div>
 							  </div>
@@ -156,6 +159,7 @@
 						  </div>
 					   </div><!--end row-->
 					</div>
+                      </form>
 				  </div>
 			  </div>
 
@@ -164,6 +168,86 @@
 		</div>
 		<!--end page wrapper -->
 
+                {{-- form valiedtion  --}}
+                <script type="text/javascript">
+                    $(document).ready(function(){
+                        $('#myForm').validate({
+                            rules:{
+                                product_name:{
+                                    required:true,
+                                },
+                                short_description:{
+                                    required:true,
+                                },
+                                product_thumbnail:{
+                                    required:true,
+                                },
+                                multi_img:{
+                                    required:true,
+                                },
+                                selling_price:{
+                                    required:true,
+                                },
+                                discount_price:{
+                                    required:true,
+                                },
+                                product_code:{
+                                    required:true,
+                                },
+                                product_qty:{
+                                    required:true,
+                                },
+                                brand_id:{
+                                    required:true,
+                                },
+                                category_id:{
+                                    required:true,
+                                },
+                                subcategory_id:{
+                                    required:true,
+                                },
+                            },
+                            messages:{
+                                product_name:{
+                                    required:'Please Enter Product Name',
+                                },
+                                short_description:{
+                                    required:'Please Enter Short Description',
+                                },
+                                product_thumbnail:{
+                                    required:'Please Enter Product Thumbnail',
+                                },
+                                multi_img:{
+                                    required:'Please Enter Multi Img',
+                                },
+                                selling_price:{
+                                    required:'Please Enter Product Price',
+                                },
+                                discount_price:{
+                                    required:'Please Enter Discount Price',
+                                },
+                                product_code:{
+                                    required:'Please Enter Product Code',
+                                },
+                                product_qty:{
+                                    required:'Please Enter Product Qty',
+                                },
+                            },
+                            errorElement:'span',
+                            errorPlacement:function(error,element){
+                                error.addClass('invalid-feedback');
+                                element.closest('.form-group').append(error);
+                            },
+                            highlight:function(element,errorClass,validClass){
+                                $(element).addClass('is-invalid');
+                            },
+                            unhighlight:function(element,errorClass,validClass){
+                                $(element).removeClass('is-invalid');
+                            },
+                        });
+                    });
+
+                </script>
         {{-- image show --}}
         <script>
             $(document).ready(function(){
