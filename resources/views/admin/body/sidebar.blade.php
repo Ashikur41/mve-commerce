@@ -90,14 +90,12 @@
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class="bx bx-repeat"></i>
                 </div>
-                <div class="menu-title">Content</div>
+                <div class="menu-title">Slider Manage</div>
             </a>
             <ul>
-                <li> <a href="content-grid-system.html"><i class='bx bx-radio-circle'></i>Grid System</a>
+                <li> <a href="{{ route('all.slider') }}"><i class='bx bx-radio-circle'></i>All Slider</a>
                 </li>
-                <li> <a href="content-typography.html"><i class='bx bx-radio-circle'></i>Typography</a>
-                </li>
-                <li> <a href="content-text-utilities.html"><i class='bx bx-radio-circle'></i>Text Utilities</a>
+                <li> <a href="{{ route('add.slider') }}"><i class='bx bx-radio-circle'></i>Add Slider</a>
                 </li>
             </ul>
         </li>
@@ -105,14 +103,12 @@
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"> <i class="bx bx-donate-blood"></i>
                 </div>
-                <div class="menu-title">Icons</div>
+                <div class="menu-title">Banner Manage</div>
             </a>
             <ul>
-                <li> <a href="icons-line-icons.html"><i class='bx bx-radio-circle'></i>Line Icons</a>
+                <li> <a href="{{ route('all.banner') }}"><i class='bx bx-radio-circle'></i>All Banner</a>
                 </li>
-                <li> <a href="icons-boxicons.html"><i class='bx bx-radio-circle'></i>Boxicons</a>
-                </li>
-                <li> <a href="icons-feather-icons.html"><i class='bx bx-radio-circle'></i>Feather Icons</a>
+                <li> <a href="{{ route('add.banner') }}"><i class='bx bx-radio-circle'></i>Add Banner</a>
                 </li>
             </ul>
         </li>
