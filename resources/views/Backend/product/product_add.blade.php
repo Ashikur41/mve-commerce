@@ -64,7 +64,7 @@
 							  </div>
                               <div class="form-group mb-3">
 								<label for="multi_img" class="form-label">Multiple Image</label>
-								<input class="form-control" name="multi_img" type="file" id="multi_img" multiple="">
+								<input class="form-control" name="multi_img[]" type="file" id="multi_img" multiple="">
 							  </div>
                             </div>
 						   </div>
