@@ -162,6 +162,35 @@
 		</div>
 		<!--end page wrapper -->
 
+        {{-- main image thumbnail update --}}
+        <div class="page-wrapper">
+			<div class="page-content">
+                <h6 class="mb-0 text-uppercase">update main image thumbnail</h6>
+                <hr>
+                <div class="card">
+                    <form id="myForm" method="post" action="{{ route('update.product.thumbnail') }}" enctype="multipart/form-data">
+                        @csrf
+
+                        <input type="hidden" name="id" value="{{ $products->id }}">
+                        <input type="hidden" name="old_image" value="{{ $products->product_thumbnail }}">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Chose Thumbnail Image</label>
+                            <input class="form-control" type="file" id="formFile"name="product_thumbnail">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label"></label>
+                            <img src="{{ asset($products->product_thumbnail) }}" alt="" srcset="" style="width: 100px;height: 100px;">
+                        </div>
+                    </div>
+                    <input type="submit" class="btn btn-primary px-4" value="Save Change">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
                 {{-- form valiedtion  --}}
                 <script type="text/javascript">
                     $(document).ready(function(){
