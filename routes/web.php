@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\BannerController;
+use App\Http\Middleware\RedirectIfAuthenticated;
 
 /*
 |--------------------------------------------------------------------------
@@ -90,6 +91,11 @@ Route::controller(ProductController::class)->group(function(){
     Route::get('delete/product/{id}','DeleteProduct')->name('delete.product');
 
     Route::post('update/thumbnail/product','thumbnailProduct')->name('update.product.thumbnail');
+    Route::post('update/multiImage/product','multiImageProduct')->name('update.product.multiImage');
+    Route::get('delete/multiImage/product/{id}','multiImageDeleteProduct')->name('multiImage.delete');
+
+    Route::get('product/inactive/{id}','InActiveProduct')->name('product.InActive');
+    Route::get('product/active/{id}','ActiveProduct')->name('product.Active');
     });
 
 
@@ -135,9 +141,9 @@ Route::middleware(['auth','role:vendor'])->group(function () {
 
 
 
-Route::get('/admin/login',[AdminController::class,'AdminLogin'])->name('Admin.Login');
+Route::get('/admin/login',[AdminController::class,'AdminLogin'])->name('Admin.Login')->middleware(RedirectIfAuthenticated::class);
 Route::get('/',[FrontendController::class,'index'])->name('frontend.index');
-Route::get('/vendor/login',[VendorController::class,'VendorLogin'])->name('Vendor.Login');
+Route::get('/vendor/login',[VendorController::class,'VendorLogin'])->name('Vendor.Login')->middleware(RedirectIfAuthenticated::class);
 Route::get('/become/vendor',[VendorController::class,'BecomeVendor'])->name('become.vendor');
 Route::post('/vendor/register',[VendorController::class,'VendorRegister'])->name('vendor.register');
 

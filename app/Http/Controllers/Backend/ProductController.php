@@ -92,7 +92,8 @@ class ProductController extends Controller
         $subcategory=SubCategory::latest()->get();
         $activeVendor=User::where('status','active')->where('role','vendor')->latest()->get();
         $products=Product::findOrFail($id);
-        return view('Backend.product.product_edit',compact('brand','category','activeVendor','subcategory','products'));
+        $multiImg=MulitImg::where('product_id',$id)->get();
+        return view('Backend.product.product_edit',compact('brand','category','activeVendor','subcategory','products','multiImg'));
     }
     public function UpdateProduct(Request $request)
     {
@@ -129,11 +130,111 @@ class ProductController extends Controller
     }
     public function DeleteProduct($id)
     {
+        $product=Product::findOrFail($id);
+        unlink($product->product_thumbnail);
+        Product::findOrFail($id)->delete();
 
+        $images=MulitImg::where('product_id',$id)->get();
+        foreach($images as $img)
+        {
+            unlink($img->photo_name);
+            MulitImg::where('product_id',$id)->delete();
+        }
+
+        $notification= array(
+            'message'=>'Product Deleted Successfully !',
+            'alert-type' =>'success'
+        );
+        return redirect()->back()->with($notification);
     }
 
-    public function thumbnailProduct()
+    public function thumbnailProduct(Request $request)
     {
-        
+        $pro_id=$request->id;
+        $old_image=$request->old_image;
+
+        $image=$request->file('product_thumbnail');
+        $name_gen=hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+        $image->move(public_path('upload/products/thumbnail/'),$name_gen);
+        // Image::make($image)->resize(800,800)->save('upload/products/thumbnail/'.$name_gen);
+        $save_url='upload/products/thumbnail/'.$name_gen;
+
+        if(file_exists($old_image)){
+            unlink($old_image);
+        }
+
+        Product::findOrFail($pro_id)->update([
+            'product_thumbnail'=>$save_url,
+            'updated_at'=>Carbon::now()
+        ]);
+
+        $notification= array(
+            'message'=>'Product Image Thumbnail Updated Successfully !',
+            'alert-type' =>'success'
+        );
+        return redirect()->back()->with($notification);
+    }
+
+    public function multiImageProduct(Request $request)
+    {
+        $imgs=$request->multi_img;
+
+        foreach($imgs as $id =>$img)
+        {
+            $imgDelete=MulitImg::findOrFail($id);
+            unlink($imgDelete->photo_name);
+
+            $make_name=hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
+            $img->move(public_path('upload/products/multi-image/'),$make_name);
+            // Image::make($img)->resize(800,800)->save('upload/products/multi-image/'.$make_name);
+            $uploadPath='upload/products/multi-image/'.$make_name;
+
+            MulitImg::where('id',$id)->update([
+                'photo_name'=>$uploadPath,
+                'updated_at'=>Carbon::now(),
+            ]);
+        }
+
+        $notification= array(
+            'message'=>'Product Multi Image Updated Successfully !',
+            'alert-type' =>'success'
+        );
+        return redirect()->back()->with($notification);
+    }
+
+    public function multiImageDeleteProduct($id)
+    {
+        $oldImage=MulitImg::findOrFail($id);
+        unlink($oldImage->photo_name);
+
+        MulitImg::findOrFail($id)->delete();
+
+        $notification= array(
+            'message'=>'Product Multi Image Deleted Successfully !',
+            'alert-type' =>'success'
+        );
+        return redirect()->back()->with($notification);
+    }
+
+    public function InActiveProduct($id)
+    {
+        Product::findOrFail($id)->update(['status'=>0]);
+
+        $notification= array(
+            'message'=>'Product InActive Successfully !',
+            'alert-type' =>'success'
+        );
+        return redirect()->back()->with($notification);
+    }
+
+    public function ActiveProduct($id)
+    {
+        Product::findOrFail($id)->update(['status'=>1]);
+
+        $notification= array(
+            'message'=>'Product Active Successfully !',
+            'alert-type' =>'success'
+        );
+        return redirect()->back()->with($notification);
     }
 }

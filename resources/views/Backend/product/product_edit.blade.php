@@ -190,9 +190,45 @@
         </div>
 
 
-
+        {{-- Multi Image Update --}}
+        <div class="page-wrapper">
+			<div class="page-content">
+                <h6 class="mb-0 text-uppercase">update multi image</h6>
+                <hr>
+        <div class="card">
+            <div class="card-body">
+                <table class="table mb-0 table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">SL</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Change Image</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <form method="post" action="{{ route('update.product.multiImage') }}" enctype="multipart/form-data">
+                            @csrf
+                        @foreach ($multiImg as $key=>$img)
+                        <tr>
+                            <th scope="row">{{ $key + 1 }}</th>
+                            <td><img src="{{ asset($img->photo_name) }}" style="width: 70px;height:40px;"></td>
+                            <td><input type="file" class="form-control" name="multi_img[{{ $img->id }}]"></td>
+                            <td>
+                                <input type="submit" class="btn btn-primary px-4" value="Update Image">
+                                <a href="{{ route('multiImage.delete',$img->id) }}" class="btn btn-danger" id="delete">Delete</a>
+                            </td>
+                        </tr>
+                        @endforeach
+                        </form>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+            </div>
+        </div>
                 {{-- form valiedtion  --}}
-                <script type="text/javascript">
+                {{-- <script type="text/javascript">
                     $(document).ready(function(){
                         $('#myForm').validate({
                             rules:{
@@ -270,7 +306,7 @@
                         });
                     });
 
-                </script>
+                </script> --}}
         {{-- image show --}}
         <script>
             $(document).ready(function(){
