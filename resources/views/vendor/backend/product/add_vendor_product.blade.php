@@ -1,6 +1,4 @@
-@extends('admin.admin_dashboard')
-
-
+@extends('vendor.vendor_dashboard')
 
 @section('main-content')
 		<!--start page wrapper -->
@@ -26,7 +24,7 @@
 					  <h5 class="card-title">Add New Product</h5>
 					  <hr/>
 
-                      <form id="myForm" method="post" action="{{ route('store.product') }}" enctype="multipart/form-data">
+                      <form id="myForm" method="post" action="{{ route('store.VendorProduct') }}" enctype="multipart/form-data">
                         @csrf
                        <div class="form-body mt-4">
 					    <div class="row">
@@ -112,7 +110,7 @@
 
 									  </select>
 								  </div>
-								  <div class="form-group col-12">
+								  {{-- <div class="form-group col-12">
 									<label for="vendor_id" class="form-label">Select Vendor</label>
 									<select class="form-select" name="vendor_id" id="vendor_id">
 										<option></option>
@@ -120,7 +118,7 @@
 										<option value="{{ $activeVendors->id }}">{{ $activeVendors->name }}</option>
                                         @endforeach
 									  </select>
-								  </div>
+								  </div> --}}
 								  <div class="col-12">
 									<div class="row g-3">
 										<div class="col-md-6">
@@ -310,7 +308,7 @@
                     var category_id=$(this).val();
                     if(category_id){
                         $.ajax({
-                            url:"{{ url('/subcategory/ajax') }}/"+category_id,
+                            url:"{{ url('/vendor/subcategory/ajax') }}/"+category_id,
                             type:"GET",
                             dataType:"json",
                             success:function(data){

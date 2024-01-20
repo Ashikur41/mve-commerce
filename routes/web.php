@@ -13,6 +13,8 @@ use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 
+use App\Http\Controllers\Backend\VendorProductController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -137,6 +139,27 @@ Route::middleware(['auth','role:vendor'])->group(function () {
     Route::post('/vendor/profile/store',[VendorController::class,'vendorProfileStore'])->name('vendor.profile.store');
     Route::get('/vendor/change/password',[VendorController::class,'vendorChangePassword'])->name('vendor.change.password');
     Route::post('/vendor/update/password',[VendorController::class,'vendorUpdatePassword'])->name('vendor.update.password');
+
+
+//vendor product Controller
+Route::controller(VendorProductController::class)->group(function(){
+    Route::get('all/vendor/product','AllVendorProduct')->name('vendor.product.all');
+    Route::get('add/vendor/product','AddVendorProduct')->name('vendor.add.product');
+    Route::post('store/vendor/product','StoreVendorProduct')->name('store.VendorProduct');
+    Route::get('edit/vendor/product/{id}','EditVendorProduct')->name('edit.vendor.product');
+    Route::post('update/vendor/product','UpdateVendorProduct')->name('update.vendor.product');
+    Route::get('delete/vendor/product/{id}','DeleteVendorProduct')->name('delete.vendor.product');
+
+    Route::post('vendor/update/thumbnail/product','vendorThumbnailProduct')->name('vendor.update.product.thumbnail');
+    Route::post('vendor/update/multiImage/product','vendorMultiImageProduct')->name('vendor.update.product.multiImage');
+    Route::get('delete/vendor/multiImage/product/{id}','vendorMultiImageDeleteProduct')->name('vendor.multiImage.delete');
+
+    Route::get('vendor/product/inactive/{id}','vendorInActiveProduct')->name('vendor.product.InActive');
+    Route::get('vendor/product/active/{id}','vendorActiveProduct')->name('vendor.product.Active');
+
+
+    Route::get('/vendor/subcategory/ajax/{category_id}','vendorGetSubcategory');
+    });
 });
 
 
