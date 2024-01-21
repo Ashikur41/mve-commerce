@@ -236,7 +236,7 @@ class VendorProductController extends Controller
         foreach($images as $img)
         {
             unlink($img->photo_name);
-            MulitImg::where('product_id',$id)->delete();
+            MulitImg::where('product_id',$id)->delete();                           
         }
 
         $notification= array(
