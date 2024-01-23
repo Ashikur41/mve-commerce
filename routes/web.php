@@ -14,6 +14,7 @@ use App\Http\Controllers\Backend\BannerController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 
 use App\Http\Controllers\Backend\VendorProductController;
+use App\Http\Controllers\Frontend\IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -121,7 +122,10 @@ Route::controller(BannerController::class)->group(function(){
     Route::get('delete/banner/{id}','DeleteBanner')->name('delete.banner');
     });
 
-
+    // product details page all route
+    Route::controller(IndexController::class)->group(function(){
+        Route::get('product/details/{id}/{slug}','ProductDetails')->name('product.details');
+        });
 });
 
 
