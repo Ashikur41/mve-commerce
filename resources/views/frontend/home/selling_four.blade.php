@@ -183,7 +183,7 @@
                                         <div class="product-category">
                                             <span class="text-muted">Since {{ $vendor->vendor_join }}</span>
                                         </div>
-                                        <h4 class="mb-5"><a href="vendor-details-1.html">{{ $vendor->name }}</a></h4>
+                                        <h4 class="mb-5"><a href="{{ route('vendor.details',$vendor->id) }}">{{ $vendor->name }}</a></h4>
                                         <div class="product-rate-cover">
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>
@@ -200,11 +200,11 @@
                                 </div>
                                 <div class="vendor-info mb-30">
                                     <ul class="contact-infor text-muted">
-                                        <li><img src="{{ asset('Frontend') }}/assets/imgs/theme/icons/icon-location.svg" alt=""><strong>Address: </strong> <span>{{ $vendor->address }}</span></li>
-                                        <li><img src="{{ asset('Frontend') }}/assets/imgs/theme/icons/icon-contact.svg" alt=""><strong>Call Us:</strong><span>{{ $vendor->phone }}</span></li>
+                                        <li><img src="{{ asset('Frontend/assets/imgs/theme/icons/icon-location.svg') }}" alt=""><strong>Address: </strong> <span>{{ $vendor->address }}</span></li>
+                                        <li><img src="{{ asset('Frontend/assets/imgs/theme/icons/icon-contact.svg') }}" alt=""><strong>Call Us:</strong><span>{{ $vendor->phone }}</span></li>
                                     </ul>
                                 </div>
-                                <a class="btn btn-xs" href="vendor-details-1.html">Visit Store <i class="fi-rs-arrow-small-right"></i></a>
+                                <a class="btn btn-xs" href="{{ route('vendor.details',$vendor->id) }}">Visit Store <i class="fi-rs-arrow-small-right"></i></a>
                             </div>
                         </div>
                     </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\MulitImg;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -24,5 +25,14 @@ class IndexController extends Controller
 
         $multiImage=MulitImg::where('product_id',$id)->get();
         return view('frontend.product.product_details',compact('product','product_color','product_size','multiImage','relatedProduct'));
+    }
+
+
+    public function VendorDetails($id)
+    {
+        $vendor=User::findOrFail($id);
+        $v_product=Product::where('vendor_id',$id)->get();
+
+        return view('frontend.vendor.vendor_details',compact('vendor','v_product'));
     }
 }

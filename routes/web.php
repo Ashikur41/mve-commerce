@@ -125,6 +125,7 @@ Route::controller(BannerController::class)->group(function(){
     // product details page all route
     Route::controller(IndexController::class)->group(function(){
         Route::get('product/details/{id}/{slug}','ProductDetails')->name('product.details');
+        Route::get('vendor/details/{id}','VendorDetails')->name('vendor.details');
         });
 });
 
