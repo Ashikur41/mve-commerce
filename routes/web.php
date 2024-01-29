@@ -126,6 +126,9 @@ Route::controller(BannerController::class)->group(function(){
     Route::controller(IndexController::class)->group(function(){
         Route::get('product/details/{id}/{slug}','ProductDetails')->name('product.details');
         Route::get('vendor/details/{id}','VendorDetails')->name('vendor.details');
+        Route::get('product/category/{id}/{slug}','CateWiseProduct')->name('cate.wise.product');
+        Route::get('product/subcategory/{id}/{slug}','SubCateWiseProduct')->name('sub.cate.wise.product');
+
         });
 });
 

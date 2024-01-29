@@ -271,20 +271,20 @@
                         <nav>
                             <ul>
                                 <li>
-                                    <a class='active' href='index.html'>Home</a>
+                                    <a class='active' href='{{ url('/') }}'>Home</a>
                                 </li>
                                 @php
                                 $category=App\Models\Category::orderBy('category_name','ASC')->limit(4)->get();
                             @endphp
                             @foreach ($category as $cate)
                             <li>
-                                <a href="#">{{ $cate->category_name }} <i class="fi-rs-angle-down"></i></a>
+                                <a href="{{ url('product/category'.'/'.$cate->id.'/'.$cate->category_slug) }}">{{ $cate->category_name }} <i class="fi-rs-angle-down"></i></a>
                                 @php
                                 $subcategory=App\Models\SubCategory::where('category_id',$cate->id)->orderBy('sub_category_name','ASC')->get();
                             @endphp
                             @foreach ($subcategory as $subCate)
                             <ul class="sub-menu">
-                                <li><a href='vendors-grid.html'>{{ $subCate->sub_category_name }}</a></li>
+                                <li><a href='{{ url('product/subcategory'.'/'.$subCate->id.'/'.$subCate->sub_category_slug) }}'>{{ $subCate->sub_category_name }}</a></li>
                             </ul>
                             @endforeach
                             </li>
