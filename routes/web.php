@@ -129,6 +129,9 @@ Route::controller(BannerController::class)->group(function(){
         Route::get('product/category/{id}/{slug}','CateWiseProduct')->name('cate.wise.product');
         Route::get('product/subcategory/{id}/{slug}','SubCateWiseProduct')->name('sub.cate.wise.product');
 
+        //
+        Route::get('product/view/modal/{id}','ProductViewAjax');
+
         });
 });
 

@@ -81,7 +81,7 @@
                                 <div class="attr-detail attr-size mb-30">
                                     <strong class="mr-10" style="width: 50px;">Size : </strong>
                                     <select class="form-control uppercase-form-control">
-                                        <option selected disabled>--Chose Size</option>
+                                        <option selected disabled>--Choose Size</option>
                                         @foreach ($product_size as $size)
                                         <option value="{{ $size }}">{{ ucwords($size) }}</option>
                                         @endforeach
