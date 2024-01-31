@@ -138,7 +138,9 @@ Route::controller(BannerController::class)->group(function(){
     // Add to Cart store data
     Route::controller(CartController::class)->group(function(){
         Route::post('cart/data/store/{id}','AddToCart');
+        Route::post('dCart/data/store/{id}','AddToCartDetails');
         Route::get('/product/mini/cart','AddMiniCart');
+        Route::get('/miniCart/product/remove/{rowId}','RemoveMiniCart');
 
 
         });

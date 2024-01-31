@@ -44,6 +44,41 @@ class CartController extends Controller
         }
     }
 
+    // add to Cart Details
+    public function AddToCartDetails(Request $request,$id){
+        $product = Product::findOrFail($id);
+
+        if($product->discount_price == Null){
+            Cart::add([
+                'id' => $id,
+                'name' => $request->product_name,
+                'qty' => $request->quantity,
+                'price' => $product->selling_price,
+                'weight' =>1,
+                'options' =>[
+                    'image' =>$product->product_thumbnail,
+                    'color' =>$request->color,
+                    'size' =>$request->size,
+                ],
+            ]);
+            return response()->json(['success' => 'Successfully Added on Your Cart']);
+        }else{
+            Cart::add([
+                'id' => $id,
+                'name' => $request->product_name,
+                'qty' => $request->quantity,
+                'price' => $product->discount_price,
+                'weight' =>1,
+                'options' =>[
+                    'image' =>$product->product_thumbnail,
+                    'color' =>$request->color,
+                    'size' =>$request->size,
+                ],
+            ]);
+            return response()->json(['success' => 'Successfully Added on Your Cart']);
+        }
+    }
+
     public function AddMiniCart(){
 
          $carts = Cart::content();
@@ -55,5 +90,12 @@ class CartController extends Controller
             'cartQty' =>$cartQty,
             'cartTotal' =>$cartTotal,
          ));
+    }
+
+    public function RemoveMiniCart($rowId)
+    {
+        Cart::remove($rowId);
+
+        return response()->json(['success'=>'Product Remove From Cart']);
     }
 }
