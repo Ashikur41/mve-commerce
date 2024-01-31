@@ -15,6 +15,7 @@ use App\Http\Middleware\RedirectIfAuthenticated;
 
 use App\Http\Controllers\Backend\VendorProductController;
 use App\Http\Controllers\Frontend\IndexController;
+use App\Http\Controllers\Frontend\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -131,6 +132,14 @@ Route::controller(BannerController::class)->group(function(){
 
         //
         Route::get('product/view/modal/{id}','ProductViewAjax');
+
+        });
+
+    // Add to Cart store data
+    Route::controller(CartController::class)->group(function(){
+        Route::post('cart/data/store/{id}','AddToCart');
+        Route::get('/product/mini/cart','AddMiniCart');
+
 
         });
 });
