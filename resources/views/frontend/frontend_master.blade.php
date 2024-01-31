@@ -34,28 +34,28 @@
     <!-- Preloader Start -->
     @include('frontend.body.preloader')
     <!-- Vendor JS-->
-    <script src="{{ url('Frontend') }}/assets/js/vendor/modernizr-3.6.0.min.js"></script>
-    <script src="{{ url('Frontend') }}/assets/js/vendor/jquery-3.6.0.min.js"></script>
-    <script src="{{ url('Frontend') }}/assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
-    <script src="{{ url('Frontend') }}/assets/js/vendor/bootstrap.bundle.min.js"></script>
-    <script src="{{ url('Frontend') }}/assets/js/plugins/slick.js"></script>
-    <script src="{{ url('Frontend') }}/assets/js/plugins/jquery.syotimer.min.js"></script>
-    <script src="{{ url('Frontend') }}/assets/js/plugins/waypoints.js"></script>
-    <script src="{{ url('Frontend') }}/assets/js/plugins/wow.js"></script>
-    <script src="{{ url('Frontend') }}/assets/js/plugins/perfect-scrollbar.js"></script>
-    <script src="{{ url('Frontend') }}/assets/js/plugins/magnific-popup.js"></script>
-    <script src="{{ url('Frontend') }}/assets/js/plugins/select2.min.js"></script>
-    <script src="{{ url('Frontend') }}/assets/js/plugins/counterup.js"></script>
-    <script src="{{ url('Frontend') }}/assets/js/plugins/jquery.countdown.min.js"></script>
-    <script src="{{ url('Frontend') }}/assets/js/plugins/images-loaded.js"></script>
-    <script src="{{ url('Frontend') }}/assets/js/plugins/isotope.js"></script>
-    <script src="{{ url('Frontend') }}/assets/js/plugins/scrollup.js"></script>
-    <script src="{{ url('Frontend') }}/assets/js/plugins/jquery.vticker-min.js"></script>
-    <script src="{{ url('Frontend') }}/assets/js/plugins/jquery.theia.sticky.js"></script>
-    <script src="{{ url('Frontend') }}/assets/js/plugins/jquery.elevatezoom.js"></script>
+    <script src="{{ url('Frontend/assets/js/vendor/modernizr-3.6.0.min.js') }}"></script>
+    <script src="{{ url('Frontend/assets/js/vendor/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ url('Frontend/assets/js/vendor/jquery-migrate-3.3.0.min.js') }}"></script>
+    <script src="{{ url('Frontend/assets/js/vendor/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url('Frontend/assets/js/plugins/slick.js') }}"></script>
+    <script src="{{ url('Frontend/assets/js/plugins/jquery.syotimer.min.js') }}"></script>
+    <script src="{{ url('Frontend/assets/js/plugins/waypoints.js') }}"></script>
+    <script src="{{ url('Frontend/assets/js/plugins/wow.js') }}"></script>
+    <script src="{{ url('Frontend/assets/js/plugins/perfect-scrollbar.js') }}"></script>
+    <script src="{{ url('Frontend/assets/js/plugins/magnific-popup.js') }}"></script>
+    <script src="{{ url('Frontend/assets/js/plugins/select2.min.js') }}"></script>
+    <script src="{{ url('Frontend/assets/js/plugins/counterup.js') }}"></script>
+    <script src="{{ url('Frontend/assets/js/plugins/jquery.countdown.min.js') }}"></script>
+    <script src="{{ url('Frontend/assets/js/plugins/images-loaded.js') }}"></script>
+    <script src="{{ url('Frontend/assets/js/plugins/isotope.js') }}"></script>
+    <script src="{{ url('Frontend/assets/js/plugins/scrollup.js') }}"></script>
+    <script src="{{ url('Frontend/assets/js/plugins/jquery.vticker-min.js') }}"></script>
+    <script src="{{ url('Frontend/assets/js/plugins/jquery.theia.sticky.js') }}"></script>
+    <script src="{{ url('Frontend/assets/js/plugins/jquery.elevatezoom.js') }}"></script>
     <!-- Template  JS -->
-    <script src="{{ url('Frontend') }}/assets/js/main2cc5.js?v=5.6"></script>
-    <script src="{{ url('Frontend') }}/assets/js/shop2cc5.js?v=5.6"></script>
+    <script src="{{ url('Frontend/assets/js/main2cc5.js?v=5.6') }}"></script>
+    <script src="{{ url('Frontend/assets/js/shop2cc5.js?v=5.6') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
@@ -292,6 +292,42 @@
         }
 
     </script>
+    {{-- start wishlist add --}}
+    <script>
+        function addToWishlist(product_id){
+            $.ajax({
+                type:'POST',
+                dataType:'json',
+                url:'/add-to-wishlist/'+product_id,
+                success:function(data){
+
+                        // Start Message
+
+                        const Toast = Swal.mixin({
+                        toast:true,
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                    if($.isEmptyObject(data.error)){
+                        Toast.fire({
+                            type:'success',
+                            icon: "success",
+                            title:data.success,
+                        })
+                    }else{
+                        Toast.fire({
+                            type:'error',
+                            icon: "error",
+                            title:data.error,
+                        })
+                    }
+                }
+            })
+        }
+    </script>
+    {{-- end wishlist add --}}
+
 
 </body>
 

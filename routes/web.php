@@ -17,6 +17,8 @@ use App\Http\Controllers\Backend\VendorProductController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\CartController;
 
+use App\Http\Controllers\User\WishlistController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -142,6 +144,12 @@ Route::controller(BannerController::class)->group(function(){
         Route::get('/product/mini/cart','AddMiniCart');
         Route::get('/miniCart/product/remove/{rowId}','RemoveMiniCart');
 
+
+        });
+
+    // Add to wishlist all route
+    Route::controller(WishlistController::class)->group(function(){
+        Route::post('/add-to-wishlist/{product_id}','AddToWishlist');
 
         });
 });
