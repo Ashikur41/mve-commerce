@@ -147,18 +147,33 @@ Route::controller(BannerController::class)->group(function(){
 
         });
 
+
+});
+
     // Add to wishlist all route
     Route::controller(WishlistController::class)->group(function(){
         Route::post('/add-to-wishlist/{product_id}','AddToWishlist');
 
         });
+
+//All user route
+Route::middleware(['auth','role:user'])->group(function () {
+
+    // Add to wishlist all route
+    Route::controller(WishlistController::class)->group(function(){
+        Route::get('/wishlist','AllWishlist')->name('wishlist');
+        Route::get('/get-wishlist-product ','GetWishlistProduct');
+        Route::get('/wishlist-remove/{id} ','WishlistRemove');
+
+        });
+
+    // Add to cart all route
+    Route::controller(CartController::class)->group(function(){
+        Route::get('/my/cart','MyCart')->name('my.cart');
+
+        });
+
 });
-
-
-
-
-
-
 
 
 //vendor

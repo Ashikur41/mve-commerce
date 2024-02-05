@@ -30,4 +30,23 @@ class WishlistController extends Controller
         }
 
     }
+
+    public function AllWishlist()
+    {
+        return view('frontend.wishlist.view_wishlist');
+    }
+
+    public function GetWishlistProduct()
+    {
+        $wishlist = Wishlist::with('product')->where('user_id',Auth::id())->latest()->get();
+         $wishQty = Wishlist::count();
+
+         return response()->json(['wishlist'=>$wishlist,'wishQty'=>$wishQty]);
+    }
+
+    public function WishlistRemove($id)
+    {
+         Wishlist::where('user_id',Auth::id())->where('id',$id)->delete();
+         return response()->json(['success'=>'Successfully Product Remove']);
+    }
 }
