@@ -125,17 +125,31 @@ Route::controller(BannerController::class)->group(function(){
     Route::get('delete/banner/{id}','DeleteBanner')->name('delete.banner');
     });
 
-    // product details page all route
-    Route::controller(IndexController::class)->group(function(){
-        Route::get('product/details/{id}/{slug}','ProductDetails')->name('product.details');
-        Route::get('vendor/details/{id}','VendorDetails')->name('vendor.details');
-        Route::get('product/category/{id}/{slug}','CateWiseProduct')->name('cate.wise.product');
-        Route::get('product/subcategory/{id}/{slug}','SubCateWiseProduct')->name('sub.cate.wise.product');
 
-        //
-        Route::get('product/view/modal/{id}','ProductViewAjax');
+});
+
+
+
+    // Add to wishlist all route
+    Route::controller(WishlistController::class)->group(function(){
+        Route::post('/add-to-wishlist/{product_id}','AddToWishlist');
 
         });
+
+//All user route
+Route::middleware(['auth','role:user'])->group(function () {
+
+// product details page all route
+Route::controller(IndexController::class)->group(function(){
+    Route::get('product/details/{id}/{slug}','ProductDetails')->name('product.details');
+    Route::get('vendor/details/{id}','VendorDetails')->name('vendor.details');
+    Route::get('product/category/{id}/{slug}','CateWiseProduct')->name('cate.wise.product');
+    Route::get('product/subcategory/{id}/{slug}','SubCateWiseProduct')->name('sub.cate.wise.product');
+
+    //
+    Route::get('product/view/modal/{id}','ProductViewAjax');
+
+    });
 
     // Add to Cart store data
     Route::controller(CartController::class)->group(function(){
@@ -146,18 +160,6 @@ Route::controller(BannerController::class)->group(function(){
 
 
         });
-
-
-});
-
-    // Add to wishlist all route
-    Route::controller(WishlistController::class)->group(function(){
-        Route::post('/add-to-wishlist/{product_id}','AddToWishlist');
-
-        });
-
-//All user route
-Route::middleware(['auth','role:user'])->group(function () {
 
     // Add to wishlist all route
     Route::controller(WishlistController::class)->group(function(){
@@ -170,6 +172,10 @@ Route::middleware(['auth','role:user'])->group(function () {
     // Add to cart all route
     Route::controller(CartController::class)->group(function(){
         Route::get('/my/cart','MyCart')->name('my.cart');
+        Route::get('/get-cart-product','GetCartProduct');
+        Route::get('/cart/remove/{rowId}','CartRemove');
+        Route::get('/cart/decrement/{rowId}','CartDecrement');
+        Route::get('/cart/increment/{rowId}','CartIncrement');
 
         });
 

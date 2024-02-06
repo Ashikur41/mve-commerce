@@ -100,6 +100,44 @@ class CartController extends Controller
     }
 
     public function MyCart(){
-        
+
+        return view('frontend.my_cart.view_my_cart');
     }
+
+    public function GetCartProduct(){
+
+        $carts = Cart::content();
+        $cartQty = Cart::count();
+        $cartTotal = Cart::total();
+
+        return response()->json(array(
+           'carts' =>$carts,
+           'cartQty' =>$cartQty,
+           'cartTotal' =>$cartTotal,
+        ));
+
+    }
+
+    public function CartRemove($rowId){
+
+        Cart::remove($rowId);
+
+        return response()->json(['success'=>'Successfully Remove From Cart']);
+    }
+
+    public function CartDecrement($rowId){
+         $row = Cart::get($rowId);
+         Cart::update($rowId,$row->qty -1);
+
+         return response()->json('Decrement');
+    }
+
+    public function CartIncrement($rowId){
+         $row = Cart::get($rowId);
+         Cart::update($rowId,$row->qty +1);
+
+         return response()->json('Increment');
+    }
+
+
 }

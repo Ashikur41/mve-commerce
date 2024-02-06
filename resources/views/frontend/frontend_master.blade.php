@@ -421,6 +421,129 @@
         // wishlist Remove end
     </script>
 
+    <script>
+        function Cart(){
+            $.ajax({
+                type:'GET',
+                url:'/get-cart-product',
+                dataType:'json',
+                success:function(response){
+                    // console.log(response)
+
+                    var rows = ""
+                    $.each(response.carts,function(key,value){
+                        rows +=`<tr class="pt-30">
+                                <td class="custome-checkbox pl-30">
+
+                                </td>
+                                <td class="image product-thumbnail pt-40"><img src="/${value.options.image}" alt="#"></td>
+                                <td class="product-des product-name">
+                                    <h6 class="mb-5"><a class='product-name mb-10 text-heading' href='#'>${value.name}</a></h6>
+                                </td>
+                                <td class="price" data-title="Price">
+                                    <h4 class="text-body">$${value.price}</h4>
+                                </td>
+
+                                <td class="price" data-title="Price">
+                                    ${value.options.color == null
+                                        ?`<span>....</span>`
+                                        :`<h6 class="text-body">${value.options.color} </h6>`
+                                    }
+
+                                </td>
+                                <td class="price" data-title="Price">
+                                    ${value.options.size == null
+                                        ?`<span>....</span>`
+                                        :`<h6 class="text-body">${value.options.size} </h6>`
+                                    }
+                                </td>
+
+                                <td class="text-center detail-info" data-title="Stock">
+                                    <div class="detail-extralink mr-15">
+                                        <div class="detail-qty border radius">
+                                            <a type="submit" class="qty-down" id="${value.rowId}" onclick="CartDecrement(this.id)"><i class="fi-rs-angle-small-down"></i></a>
+                                            <input type="text" name="quantity" id="dqty" class="qty-val" value="${value.qty}" min="1">
+                                            <a type="submit" class="qty-up" id="${value.rowId}" onclick="CartIncrement(this.id)"><i class="fi-rs-angle-small-up"></i></a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="price" data-title="Price">
+                                    <h4 class="text-brand">$${value.subtotal} </h4>
+                                </td>
+                                <td class="action text-center" data-title="Remove"><a type="submit" class="text-body" id="${value.rowId}" onclick="CartRemove(this.id)"><i class="fi-rs-trash"></i></a></td>
+                            </tr> `
+                    });
+                    $('#cartPage').html(rows);
+                }
+            })
+        }
+        Cart();
+
+        // Remove Cart Start
+        function CartRemove(id){
+            $.ajax({
+                type:'GET',
+                url:'/cart/remove/'+id,
+                dataType:'json',
+                success:function(data){
+
+                    miniCart();
+                    Cart();
+
+                     // Start Message
+
+                     const Toast = Swal.mixin({
+                        toast:true,
+                        position: "top-end",
+                        icon: "success",
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                    if($.isEmptyObject(data.error)){
+                        Toast.fire({
+                            type:'success',
+                            title:data.success,
+                        })
+                    }else{
+                        Toast.fire({
+                            type:'error',
+                            title:data.error,
+                        })
+                    }
+                }
+            })
+        }
+
+        // Remove Cart End
+
+        // Cart Decrement start
+        function CartDecrement(rowId){
+            $.ajax({
+                type:'GET',
+                url:'/cart/decrement/'+rowId,
+                dataType:'json',
+                success:function(data){
+                    miniCart();
+                    Cart();
+                }
+            })
+        }
+        // Cart Decrement end
+
+        // Cart Increment start
+        function CartIncrement(rowId){
+            $.ajax({
+                type:'GET',
+                url:'/cart/increment/'+rowId,
+                dataType:'json',
+                success:function(data){
+                    miniCart();
+                    Cart();
+                }
+            })
+        }
+        // Cart Increment end
+    </script>
 
 
 </body>
