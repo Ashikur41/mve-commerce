@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\BannerController;
+use App\Http\Controllers\Backend\CouponController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 
 use App\Http\Controllers\Backend\VendorProductController;
@@ -123,6 +124,16 @@ Route::controller(BannerController::class)->group(function(){
     Route::get('edit/banner/{id}','EditBanner')->name('edit.banner');
     Route::post('update/banner','UpdateBanner')->name('update.banner');
     Route::get('delete/banner/{id}','DeleteBanner')->name('delete.banner');
+    });
+
+//Coupon all route
+Route::controller(CouponController::class)->group(function(){
+    Route::get('all/coupon','AllCoupon')->name('all.coupon');
+    Route::get('add/coupon','AddCoupon')->name('add.coupon');
+    Route::post('store/coupon','StoreCoupon')->name('store.coupon');
+    Route::get('edit/coupon/{id}','EditCoupon')->name('edit.coupon');
+    Route::post('update/coupon','UpdateCoupon')->name('update.coupon');
+    Route::get('delete/coupon/{id}','DeleteCoupon')->name('delete.coupon');
     });
 
 
