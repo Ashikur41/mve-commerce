@@ -129,6 +129,22 @@
         </li>
 
         <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"> <i class="bx bx-donate-blood"></i>
+                </div>
+                <div class="menu-title">Shipping Area</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('all.division') }}"><i class='bx bx-radio-circle'></i>All Division</a>
+                </li>
+                <li> <a href="{{ route('all.district') }}"><i class='bx bx-radio-circle'></i>All District</a>
+                </li>
+                <li> <a href="{{ route('all.state') }}"><i class='bx bx-radio-circle'></i>All State</a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
             <a href="form-froala-editor.html">
                 <div class="parent-icon"><i class='bx bx-code-alt'></i>
                 </div>

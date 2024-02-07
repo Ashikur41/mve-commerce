@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\CouponController;
+use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 
 use App\Http\Controllers\Backend\VendorProductController;
@@ -134,6 +135,19 @@ Route::controller(CouponController::class)->group(function(){
     Route::get('edit/coupon/{id}','EditCoupon')->name('edit.coupon');
     Route::post('update/coupon','UpdateCoupon')->name('update.coupon');
     Route::get('delete/coupon/{id}','DeleteCoupon')->name('delete.coupon');
+    });
+
+//Shipping Area all route
+Route::controller(ShippingAreaController::class)->group(function(){
+    Route::get('all/division','AllDivision')->name('all.division');
+    Route::get('add/division','AddDivision')->name('add.division');
+    Route::post('store/division','StoreDivision')->name('store.division');
+    Route::get('edit/division/{id}','EditDivision')->name('edit.division');
+    Route::post('update/division','UpdateDivision')->name('update.division');
+    Route::get('delete/division/{id}','DeleteDivision')->name('delete.division');
+
+    Route::get('all/district','AllDistrict')->name('all.district');
+    Route::get('all/state','AllState')->name('all.state');
     });
 
 
