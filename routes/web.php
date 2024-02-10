@@ -222,6 +222,8 @@ Route::controller(IndexController::class)->group(function(){
 
 });
 
+Route::post('/coupon-apply',[CartController::class,'CouponApply']);
+
 
 //vendor
 Route::middleware(['auth','role:vendor'])->group(function () {

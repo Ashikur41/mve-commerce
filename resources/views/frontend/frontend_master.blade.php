@@ -543,6 +543,43 @@
         // Cart Increment end
     </script>
 
+    {{-- apply coupon start --}}
+    <script>
+        function applyCoupon(id){
+            var coupon_name = $('#coupon_name').val();
+            $.ajax({
+                type:'POST',
+                dataType:'json',
+                data:{coupon_name:coupon_name},
+                url:'/coupon-apply',
+
+                success:function(data){
+
+                     // Start Message
+
+                     const Toast = Swal.mixin({
+                        toast:true,
+                        position: "top-end",
+                        icon: "success",
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                    if($.isEmptyObject(data.error)){
+                        Toast.fire({
+                            type:'success',
+                            title:data.success,
+                        })
+                    }else{
+                        Toast.fire({
+                            type:'error',
+                            title:data.error,
+                        })
+                    }
+                }
+            })
+        }
+    </script>
+    {{-- apply coupon end --}}
 
 </body>
 
