@@ -48,10 +48,8 @@
 											</div>
 											<div class="form-group col-sm-9 text-secondary">
 												<select class="form-select mb-3" aria-label="Default select example" name="district_id">
-                                                    <option selected="" disabled>District Name</option>
-                                                    @foreach ($district as $districts)
-                                                        <option value="{{ $districts->id }}">{{ $districts->district_name }}</option>
-                                                    @endforeach
+                                                    <option> </option>
+
                                                 </select>
 											</div>
 										</div>
@@ -60,7 +58,7 @@
 											<div class="col-sm-3">
 												<h6 class="mb-0">State Name</h6>
 											</div>
-											<div class="col-sm-9 text-secondary">
+											<div class="form-group col-sm-9 text-secondary">
 												<input type="text" class="form-control" name="state_name"/>
 											</div>
 										</div>
@@ -86,13 +84,19 @@
             $(document).ready(function(){
                 $('#myForm').validate({
                     rules:{
-                        sub_category_name:{
+                        division_id:{
+                            required:true,
+                        },
+                        state_name:{
                             required:true,
                         },
                     },
                     messages:{
-                        sub_category_name:{
-                            required:'Please Enter SubCategory Name',
+                        division_id:{
+                            required:'Please Enter Division Name',
+                        },
+                        state_name:{
+                            required:'Please Enter State Name',
                         },
                     },
                     errorElement:'span',
@@ -110,4 +114,29 @@
             });
 
         </script>
+
+                {{-- Division and District related --}}
+                <script>
+                    $(document).ready(function(){
+                        $('select[name="division_id"]').on('change',function(){
+                            var division_id=$(this).val();
+                            if(division_id){
+                                $.ajax({
+                                    url:"{{ url('/district/ajax') }}/"+division_id,
+                                    type:"GET",
+                                    dataType:"json",
+                                    success:function(data){
+                                        $('select[name="district_id"]').html('');
+                                        var d =$('select[name="district_id"]').empty();
+                                        $.each(data,function(key, value){
+                                            $('select[name="district_id"]').append('<option value="'+ value.id +'">' + value.district_name + '</option>');
+                                        });
+                                    },
+                                });
+                            }else{
+                                alert('danger');
+                            }
+                        });
+                    });
+                </script>
 @endsection

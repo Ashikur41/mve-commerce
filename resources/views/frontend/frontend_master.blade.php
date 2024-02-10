@@ -23,8 +23,6 @@
 </head>
 
 <body>
-    <!-- Modal -->
-    @include('frontend.body.modal')
     <!-- Quick view -->
     @include('frontend.body.quick_view')
     @include('frontend.body.header')

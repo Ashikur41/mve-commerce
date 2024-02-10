@@ -151,4 +151,46 @@ class ShippingAreaController extends Controller
         return redirect()->route('all.state')->with($notification);
     }
 
+    public function GetDistrict($division_id){
+
+        $district = ShipDistricts::where('division_id',$division_id)->orderBy('district_name','ASC')->get();
+
+                return json_encode($district);
+    }
+
+    public function EditState($id){
+
+        $state= ShipState::findOrFail($id);
+        $division = ShipDivision::latest()->get();
+        $district = ShipDistricts::latest()->get();
+
+        return view('Backend.ship.state.state_edit',compact('state','division','district'));
+
+    }
+
+    public function UpdateState(Request $request){
+        $state_id=$request->id;
+        $data=ShipState::findOrFail($state_id);
+        $data->division_id=$request->division_id;
+        $data->district_id=$request->district_id;
+        $data->state_name=$request->state_name;
+        $data->update();
+
+        $notification= array(
+            'message'=>'ShipState Updated Successfully !',
+            'alert-type' =>'success'
+        );
+        return redirect()->route('all.state')->with($notification);
+    }
+
+    public function DeleteState($id)
+    {
+        ShipState::findOrFail($id)->delete();
+        $notification= array(
+            'message'=>'ShipState Deleted Successfully !',
+            'alert-type' =>'success'
+        );
+        return redirect()->back()->with($notification);
+    }
+
 }
