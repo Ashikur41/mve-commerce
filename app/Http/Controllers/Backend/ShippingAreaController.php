@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\ShipDistricts;
 use App\Models\ShipDivision;
+use App\Models\ShipState;
 use Illuminate\Http\Request;
 
 class ShippingAreaController extends Controller
@@ -119,4 +120,35 @@ class ShippingAreaController extends Controller
         );
         return redirect()->back()->with($notification);
     }
+
+
+    // state All function
+
+    public function AllState(){
+
+        $state = ShipState::latest()->get();
+        return view('Backend.ship.state.state_all',compact('state'));
+    }
+
+    public function AddState(){
+
+        $division = ShipDivision::latest()->get();
+        $district = ShipDistricts::latest()->get();
+        return view('Backend.ship.state.state_add',compact('division','district'));
+    }
+
+    public function StoreState(Request $request){
+        $data=new ShipState();
+        $data->division_id=$request->division_id;
+        $data->district_id=$request->district_id;
+        $data->state_name=$request->state_name;
+        $data->save();
+
+        $notification= array(
+            'message'=>'ShipState Inserted Successfully !',
+            'alert-type' =>'success'
+        );
+        return redirect()->route('all.state')->with($notification);
+    }
+
 }
