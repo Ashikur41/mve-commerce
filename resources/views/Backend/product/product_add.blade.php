@@ -1,7 +1,5 @@
 @extends('admin.admin_dashboard')
 
-
-
 @section('main-content')
 		<!--start page wrapper -->
 		<div class="page-wrapper">

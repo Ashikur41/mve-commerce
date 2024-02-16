@@ -20,6 +20,7 @@ use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\CartController;
 
 use App\Http\Controllers\User\WishlistController;
+use App\Http\Controllers\User\CheckoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -177,10 +178,8 @@ Route::controller(ShippingAreaController::class)->group(function(){
 
         });
 
-//All user route
-Route::middleware(['auth','role:user'])->group(function () {
 
-// product details page all route
+        // product details page all route
 Route::controller(IndexController::class)->group(function(){
     Route::get('product/details/{id}/{slug}','ProductDetails')->name('product.details');
     Route::get('vendor/details/{id}','VendorDetails')->name('vendor.details');
@@ -192,25 +191,17 @@ Route::controller(IndexController::class)->group(function(){
 
     });
 
-    // Add to Cart store data
-    Route::controller(CartController::class)->group(function(){
-        Route::post('cart/data/store/{id}','AddToCart');
-        Route::post('dCart/data/store/{id}','AddToCartDetails');
-        Route::get('/product/mini/cart','AddMiniCart');
-        Route::get('/miniCart/product/remove/{rowId}','RemoveMiniCart');
+        // Add to Cart store data
+        Route::controller(CartController::class)->group(function(){
+            Route::post('cart/data/store/{id}','AddToCart');
+            Route::post('dCart/data/store/{id}','AddToCartDetails');
+            Route::get('/product/mini/cart','AddMiniCart');
+            Route::get('/miniCart/product/remove/{rowId}','RemoveMiniCart');
 
 
-        });
+            });
 
-    // Add to wishlist all route
-    Route::controller(WishlistController::class)->group(function(){
-        Route::get('/wishlist','AllWishlist')->name('wishlist');
-        Route::get('/get-wishlist-product ','GetWishlistProduct');
-        Route::get('/wishlist-remove/{id} ','WishlistRemove');
-
-        });
-
-    // Add to cart all route
+                // Add to cart all route
     Route::controller(CartController::class)->group(function(){
         Route::get('/my/cart','MyCart')->name('my.cart');
         Route::get('/get-cart-product','GetCartProduct');
@@ -220,11 +211,34 @@ Route::controller(IndexController::class)->group(function(){
 
         });
 
+//All user route
+Route::middleware(['auth','role:user'])->group(function () {
+
+
+    // Add to wishlist all route
+    Route::controller(WishlistController::class)->group(function(){
+        Route::get('/wishlist','AllWishlist')->name('wishlist');
+        Route::get('/get-wishlist-product ','GetWishlistProduct');
+        Route::get('/wishlist-remove/{id} ','WishlistRemove');
+
+        });
+
+    // Checkout all route
+    Route::controller(CheckoutController::class)->group(function(){
+        Route::get('/district-get/ajax/{division_id}','DistrictGetAjax');
+
+        });
+
+
+
 });
 
 Route::post('/coupon-apply',[CartController::class,'CouponApply']);
 Route::get('/coupon-calculation',[CartController::class,'couponCalculation']);
 Route::get('/coupon/remove',[CartController::class,'couponRemove']);
+
+// check out page all route
+Route::get('/checkout',[CartController::class,'CheckoutCreate'])->name('checkout');
 
 
 //vendor
