@@ -26,18 +26,20 @@
                 <div class="row mb-50">
                     <div class="border p-40 cart-totals ml-30 mb-50">
                         <div class="d-flex align-items-end justify-content-between mb-30">
-                            <h4>Your Order</h4>
+                            <h4>Your Order Details</h4>
                         </div>
                         <div class="divider-2 mb-30"></div>
                         <div class="table-responsive order_table checkout">
                             <table class="table no-border">
                                 <tbody>
+
+                                    @if (Session::has('coupon'))
                                     <tr>
                                         <td class="cart_total_label">
                                             <h6 class="text-muted">Subtotal</h6>
                                         </td>
                                         <td class="cart_total_amount">
-                                            <h4 class="text-brand text-end">$12.31</h4>
+                                            <h4 class="text-brand text-end">${{ $cartTotal }}</h4>
                                         </td>
                                     </tr>
                                     <tr>
@@ -45,7 +47,8 @@
                                             <h6 class="text-muted">Coupon Name</h6>
                                         </td>
                                         <td class="cart_total_amount">
-                                            <h6  class="text-brand text-end">Easy Laerning</h6>
+                                            <h6  class="text-brand text-end">{{ session()->get('coupon')['coupon_name'] }}
+                                                ({{ session()->get('coupon')['coupon_discount'] }}%)</h6>
                                         </td>
                                     </tr>
                                     <tr>
@@ -53,7 +56,7 @@
                                             <h6 class="text-muted">Coupon Discount</h6>
                                         </td>
                                         <td class="cart_total_amount">
-                                            <h4 class="text-brand text-end">$12.31</h4>
+                                            <h4 class="text-brand text-end">${{ session()->get('coupon')['discount_amount'] }}</h4>
                                         </td>
                                     </tr>
                                     <tr>
@@ -61,9 +64,19 @@
                                             <h6 class="text-muted">Grand Total</h6>
                                         </td>
                                         <td class="cart_total_amount">
-                                            <h4 class="text-brand text-end">$12.31</h4>
+                                            <h4 class="text-brand text-end">${{ session()->get('coupon')['total_amount'] }}</h4>
                                         </td>
                                     </tr>
+                                    @else
+                                    <tr>
+                                        <td class="cart_total_label">
+                                            <h6 class="text-muted">Grand Total</h6>
+                                        </td>
+                                        <td class="cart_total_amount">
+                                            <h4 class="text-brand text-end">${{ $cartTotal }}</h4>
+                                        </td>
+                                    </tr>
+                                    @endif
 
                                 </tbody>
                             </table>
