@@ -1,6 +1,7 @@
 @extends('frontend.frontend_master')
 
 @section('content')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <main class="main">
     <div class="page-header breadcrumb-wrap">
@@ -24,46 +25,11 @@
         <div class="row">
             <div class="col-lg-7">
                 <div class="row mb-50">
-                    {{-- <div class="col-lg-6 mb-sm-15 mb-lg-0 mb-md-3">
-                        <div class="toggle_info">
-                            <span><i class="fi-rs-user mr-10"></i><span class="text-muted font-lg">Already have an account?</span> <a href="#loginform" data-bs-toggle="collapse" class="collapsed font-lg" aria-expanded="false">Click here to login</a></span>
-                        </div>
-                        <div class="panel-collapse collapse login_form" id="loginform">
-                            <div class="panel-body">
-                                <p class="mb-30 font-sm">If you have shopped with us before, please enter your details below. If you are a new customer, please proceed to the Billing &amp; Shipping section.</p>
-                                <form method="post">
-                                    <div class="form-group">
-                                        <input type="text" name="email" placeholder="Username Or Email">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" name="password" placeholder="Password">
-                                    </div>
-                                    <div class="login_footer form-group">
-                                        <div class="chek-form">
-                                            <div class="custome-checkbox">
-                                                <input class="form-check-input" type="checkbox" name="checkbox" id="remember" value="">
-                                                <label class="form-check-label" for="remember"><span>Remember me</span></label>
-                                            </div>
-                                        </div>
-                                        <a href="#">Forgot password?</a>
-                                    </div>
-                                    <div class="form-group">
-                                        <button class="btn btn-md" name="login">Log in</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <form method="post" class="apply-coupon">
-                            <input type="text" placeholder="Enter Coupon Code...">
-                            <button class="btn  btn-md" name="login">Apply Coupon</button>
-                        </form>
-                    </div> --}}
                 </div>
                 <div class="row">
                     <h4 class="mb-30">Billing Details</h4>
-                    <form method="post">
+                    <form method="post" action="{{ route('checkout.store') }}">
+                        @csrf
                         <div class="row">
                             <div class="form-group col-lg-6">
                                 <input type="text" required="" name="shipping_name" value="{{ Auth::user()->name }}">
@@ -136,55 +102,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="collapseAddress" class="different_address collapse in">
-                                <div class="row">
-                                    <div class="form-group col-lg-6">
-                                        <input type="text" required="" name="fname" placeholder="First name *">
-                                    </div>
-                                    <div class="form-group col-lg-6">
-                                        <input type="text" required="" name="lname" placeholder="Last name *">
-                                    </div>
-                                </div>
-                                <div class="row shipping_calculator">
-                                    <div class="form-group col-lg-6">
-                                        <input required="" type="text" name="cname" placeholder="Company Name">
-                                    </div>
-                                    <div class="form-group col-lg-6">
-                                        <div class="custom_select w-100">
-                                            <select class="form-control select-active">
-                                                <option value="">Select an option...</option>
-                                                <option value="AX">Aland Islands</option>
-                                                <option value="AF">Afghanistan</option>
-                                                <option value="AL">Albania</option>
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col-lg-6">
-                                        <input type="text" name="billing_address" required="" placeholder="Address *">
-                                    </div>
-                                    <div class="form-group col-lg-6">
-                                        <input type="text" name="billing_address2" required="" placeholder="Address line2">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col-lg-6">
-                                        <input required="" type="text" name="state" placeholder="State / County *">
-                                    </div>
-                                    <div class="form-group col-lg-6">
-                                        <input required="" type="text" name="city" placeholder="City / Town *">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col-lg-6">
-                                        <input required="" type="text" name="zipcode" placeholder="Postcode / ZIP *">
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-                    </form>
+
                 </div>
             </div>
             <div class="col-lg-5">
@@ -277,33 +196,35 @@
                     <h4 class="mb-30">Payment</h4>
                     <div class="payment_option">
                         <div class="custome-radio">
-                            <input class="form-check-input" required="" type="radio" name="payment_option" id="exampleRadios3" checked="">
-                            <label class="form-check-label" for="exampleRadios3" data-bs-toggle="collapse" data-target="#bankTranfer" aria-controls="bankTranfer">Direct Bank Transfer</label>
+                            <input class="form-check-input" required="" type="radio" name="payment_option" value="stripe" id="exampleRadios3" checked="">
+                            <label class="form-check-label" for="exampleRadios3" data-bs-toggle="collapse" data-target="#bankTranfer" aria-controls="bankTranfer">Stripe</label>
                         </div>
                         <div class="custome-radio">
-                            <input class="form-check-input" required="" type="radio" name="payment_option" id="exampleRadios4" checked="">
+                            <input class="form-check-input" required="" type="radio" name="payment_option" value="cash" id="exampleRadios4" checked="">
                             <label class="form-check-label" for="exampleRadios4" data-bs-toggle="collapse" data-target="#checkPayment" aria-controls="checkPayment">Cash on delivery</label>
                         </div>
                         <div class="custome-radio">
-                            <input class="form-check-input" required="" type="radio" name="payment_option" id="exampleRadios5" checked="">
+                            <input class="form-check-input" required="" type="radio" name="payment_option" value="card" id="exampleRadios5" checked="">
                             <label class="form-check-label" for="exampleRadios5" data-bs-toggle="collapse" data-target="#paypal" aria-controls="paypal">Online Getway</label>
                         </div>
                     </div>
                     <div class="payment-logo d-flex">
-                        <img class="mr-15" src="{{ asset('Frontend') }}/assets/imgs/theme/icons/payment-paypal.svg" alt="">
-                        <img class="mr-15" src="{{ asset('Frontend') }}/assets/imgs/theme/icons/payment-visa.svg" alt="">
-                        <img class="mr-15" src="{{ asset('Frontend') }}/assets/imgs/theme/icons/payment-master.svg" alt="">
-                        <img src="{{ asset('Frontend') }}/assets/imgs/theme/icons/payment-zapper.svg" alt="">
+                        <img class="mr-15" src="{{ asset('Frontend/assets/imgs/theme/icons/payment-paypal.svg') }}" alt="">
+                        <img class="mr-15" src="{{ asset('Frontend/assets/imgs/theme/icons/payment-visa.svg') }}" alt="">
+                        <img class="mr-15" src="{{ asset('Frontend/assets/imgs/theme/icons/payment-master.svg') }}" alt="">
+                        <img src="{{ asset('Frontend/assets/imgs/theme/icons/payment-zapper.svg') }}" alt="">
                     </div>
-                    <a href="#" class="btn btn-fill-out btn-block mt-30">Place an Order<i class="fi-rs-sign-out ml-15"></i></a>
+                        <button type="submit" class="btn btn-fill-out btn-block mt-30">Place an Order<i class="fi-rs-sign-out ml-15"></i></button>
+
                 </div>
             </div>
+        </form>
         </div>
     </div>
 </main>
 
 
-        {{-- Category and SubCategory related --}}
+        {{-- division and district related --}}
         <script>
             $(document).ready(function(){
                 $('select[name="division_id"]').on('change',function(){
@@ -318,6 +239,30 @@
                                 var d =$('select[name="district_id"]').empty();
                                 $.each(data,function(key, value){
                                     $('select[name="district_id"]').append('<option value="'+ value.id +'">' + value.district_name + '</option>');
+                                });
+                            },
+                        });
+                    }else{
+                        alert('danger');
+                    }
+                });
+            });
+
+            // district and state related
+
+            $(document).ready(function(){
+                $('select[name="district_id"]').on('change',function(){
+                    var district_id=$(this).val();
+                    if(district_id){
+                        $.ajax({
+                            url:"{{ url('/state-get/ajax') }}/"+district_id,
+                            type:"GET",
+                            dataType:"json",
+                            success:function(data){
+                                $('select[name="state_id"]').html('');
+                                var d =$('select[name="state_id"]').empty();
+                                $.each(data,function(key, value){
+                                    $('select[name="state_id"]').append('<option value="'+ value.id +'">' + value.state_name + '</option>');
                                 });
                             },
                         });
