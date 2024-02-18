@@ -21,6 +21,7 @@ use App\Http\Controllers\Frontend\CartController;
 
 use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\User\CheckoutController;
+use App\Http\Controllers\User\CashController;
 
 /*
 |--------------------------------------------------------------------------
@@ -228,6 +229,12 @@ Route::middleware(['auth','role:user'])->group(function () {
         Route::get('/district-get/ajax/{division_id}','DistrictGetAjax');
         Route::get('/state-get/ajax/{district_id}','StateGetAjax');
         Route::post('/checkout/store','CheckoutStore')->name('checkout.store');
+
+        });
+
+    // Cash all route
+    Route::controller(CashController::class)->group(function(){
+        Route::post('/cash/order','CashOrder')->name('cash.order');
 
         });
 

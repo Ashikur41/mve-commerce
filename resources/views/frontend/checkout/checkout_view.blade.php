@@ -35,7 +35,7 @@
                                 <input type="text" required="" name="shipping_name" value="{{ Auth::user()->name }}">
                             </div>
                             <div class="form-group col-lg-6">
-                                <input type="email" required="" name="shipping_email " value="{{ Auth::user()->email }}">
+                                <input type="email" required="" name="shipping_email" value="{{ Auth::user()->email }}">
                             </div>
                         </div>
                         <div class="row shipping_calculator">
