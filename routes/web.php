@@ -13,6 +13,8 @@ use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\ShippingAreaController;
+use App\Http\Controllers\Backend\OrderController;
+use App\Http\Controllers\Backend\VendorOrderController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 
 use App\Http\Controllers\Backend\VendorProductController;
@@ -22,6 +24,7 @@ use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\CashController;
+use App\Http\Controllers\User\AllUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -139,6 +142,7 @@ Route::controller(CouponController::class)->group(function(){
     Route::get('delete/coupon/{id}','DeleteCoupon')->name('delete.coupon');
     });
 
+
 //Shipping Area all route
 Route::controller(ShippingAreaController::class)->group(function(){
     Route::get('all/division','AllDivision')->name('all.division');
@@ -166,6 +170,12 @@ Route::controller(ShippingAreaController::class)->group(function(){
 
 
     Route::get('/district/ajax/{division_id}','GetDistrict');
+    });
+
+    //Order all route
+Route::controller(OrderController::class)->group(function(){
+    Route::get('pending/order','PendingOrder')->name('pending.order');
+
     });
 
 
@@ -238,6 +248,14 @@ Route::middleware(['auth','role:user'])->group(function () {
 
         });
 
+    // All User all route
+    Route::controller(AllUserController::class)->group(function(){
+        Route::get('/user/account/details','UserAccountDetails')->name('user.account.detail');
+        Route::get('/user/change/password','UserChangePassword')->name('user.change.password');
+        Route::get('/user/orders/page','UserOrdersPage')->name('user.orders.page');
+
+        });
+
 
 
 });
@@ -278,6 +296,12 @@ Route::controller(VendorProductController::class)->group(function(){
 
 
     Route::get('/vendor/subcategory/ajax/{category_id}','vendorGetSubcategory');
+    });
+
+//vendor order Controller
+Route::controller(VendorOrderController::class)->group(function(){
+    Route::get('/vendor/order','VendorOrder')->name('vendor.order');
+
     });
 });
 

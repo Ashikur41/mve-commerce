@@ -1,4 +1,4 @@
-@extends('admin.admin_dashboard')
+@extends('vendor.vendor_dashboard')
 
 @section('main-content')
 
@@ -6,19 +6,19 @@
     <div class="page-content">
         <!--breadcrumb-->
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-            <div class="breadcrumb-title pe-3">Category Tables</div>
+            <div class="breadcrumb-title pe-3">All Vendor Pending Order</div>
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Category Data Table</li>
+                        <li class="breadcrumb-item active" aria-current="page">Vendor Pending Order</li>
                     </ol>
                 </nav>
             </div>
             <div class="ms-auto">
                 <div class="btn-group">
-                    <a href="{{ route('add.category') }}" class="btn btn-primary">Add Category</a>
+
                 </div>
             </div>
         </div>
@@ -30,20 +30,25 @@
                         <thead>
                             <tr>
                                 <th>SL</th>
-                                <th>Category Name</th>
-                                <th>Category Image</th>
+                                <th>Date</th>
+                                <th>Invoice</th>
+                                <th>Amount</th>
+                                <th>Payment</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($category as $key=>$item)
+                            @foreach ($orderItem as $key=>$item)
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
-                                    <td>{{ $item->category_name }}</td>
-                                    <td><img src="{{ (!empty($item->category_image)) ? url('upload/category/'.$item->category_image):url('upload/no_image.jpg') }}" alt="Category Image" srcset="" style="width: 70px; height:40px;"></td>
+                                    <td>{{ $item['order']['order_date'] }}</td>
+                                    <td>{{ $item['order']['invoice_no'] }}</td>
+                                    <td>${{ $item['order']['amount'] }}</td>
+                                    <td>{{ $item['order']['payment_method'] }}</td>
+                                    <td><span class="badge rounded-pill bg-success">{{ $item['order']['status'] }}</span></td>
                                     <td>
-                                        <a href="{{ route('edit.category',$item->id) }}" class="btn btn-info">Edit</a>
-                                        <a href="{{ route('delete.category',$item->id) }}" class="btn btn-danger" id="delete">Delete</a>
+                                        <a href="" class="btn btn-info" title="Details"><i class="fa fa-eye"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -51,8 +56,11 @@
                         <tfoot>
                             <tr>
                                 <th>SL</th>
-                                <th>Category Name</th>
-                                <th>Category Image</th>
+                                <th>Date</th>
+                                <th>Invoice</th>
+                                <th>Amount</th>
+                                <th>Payment</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </tfoot>

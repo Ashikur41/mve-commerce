@@ -47,7 +47,7 @@
                 <div class="menu-title">All Order</div>
             </a>
             <ul>
-                <li> <a href="app-emailbox.html"><i class='bx bx-radio-circle'></i>Email</a>
+                <li> <a href="{{ route('vendor.order') }}"><i class='bx bx-radio-circle'></i>Vendor Order</a>
                 </li>
                 <li> <a href="app-chat-box.html"><i class='bx bx-radio-circle'></i>Chat Box</a>
                 </li>
