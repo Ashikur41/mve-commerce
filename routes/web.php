@@ -253,6 +253,7 @@ Route::middleware(['auth','role:user'])->group(function () {
         Route::get('/user/account/details','UserAccountDetails')->name('user.account.detail');
         Route::get('/user/change/password','UserChangePassword')->name('user.change.password');
         Route::get('/user/orders/page','UserOrdersPage')->name('user.orders.page');
+        Route::get('/user/order_details/{order_id}','UserOrdersDetails');
 
         });
 

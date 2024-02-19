@@ -1,7 +1,7 @@
 @extends('dashboard')
 
 @section('user')
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <div class="page-header breadcrumb-wrap">
     <div class="container">
         <div class="breadcrumb">
@@ -16,33 +16,7 @@
             <div class="col-lg-12 m-auto">
                 <div class="row">
 
-                    <div class="col-md-3">
-                        <div class="dashboard-menu">
-                            <ul class="nav flex-column" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('dashboard') }}"><i class="fi-rs-settings-sliders mr-10"></i>Dashboard</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="{{ route('user.orders.page') }}"><i class="fi-rs-shopping-bag mr-10"></i>Orders</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#track-orders"><i class="fi-rs-shopping-cart-check mr-10"></i>Track Your Order</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#address"><i class="fi-rs-marker mr-10"></i>My Address</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link"  href="{{ route('user.account.detail') }}"><i class="fi-rs-user mr-10"></i>Account details</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('user.change.password') }}"><i class="fi-rs-user mr-10"></i>Change Password</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class='nav-link' href='{{ route('user.logout') }}'><i class="fi-rs-sign-out mr-10"></i>Logout</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    @include('frontend.body.dashboard_sidebar_manu')
 
                     <div class="col-md-9">
                         <div class="tab-content account dashboard-content pl-50">
@@ -53,38 +27,43 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
-                                            <table class="table">
+                                            <table class="table" style="background: #ddd;font-weight:600;">
                                                 <thead>
                                                     <tr>
-                                                        <th>Order</th>
+                                                        <th>Sl</th>
                                                         <th>Date</th>
+                                                        <th>Total Amount</th>
+                                                        <th>Payment</th>
+                                                        <th>Invoice No</th>
                                                         <th>Status</th>
-                                                        <th>Total</th>
                                                         <th>Actions</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    @foreach($orders as $key => $order)
                                                     <tr>
-                                                        <td>#1357</td>
-                                                        <td>March 45, 2020</td>
-                                                        <td>Processing</td>
-                                                        <td>$125.00 for 2 item</td>
-                                                        <td><a href="#" class="btn-small d-block">View</a></td>
+                                                        <td>{{ $key + 1 }}</td>
+                                                        <td>{{ $order->order_date }}</td>
+                                                        <td>${{ $order->amount }}</td>
+                                                        <td>{{ $order->payment_method}}</td>
+                                                        <td>{{ $order->invoice_no}}</td>
+                                                        <td>
+                                                          @if($order->status == 'pending')
+                                                            <span class="badge rounded-pill bg-warning">Pending</span>
+                                                            @elseif($order->status == 'confirm')
+                                                            <span class="badge rounded-pill bg-info">Confirm</span>
+                                                            @elseif($order->status == 'processing')
+                                                            <span class="badge rounded-pill bg-danger">Processing</span>
+                                                            @elseif($order->status == 'deliverd')
+                                                            <span class="badge rounded-pill bg-success">Deliverd</span>
+                                                          @endif
+                                                        </td>
+                                                        <td>
+                                                            <a href="{{ url('user/order_details/'.$order->id) }}" class="btn-sm btn-success"><i class="fa fa-eye"></i> View</a>
+                                                            <a href="#" class="btn-sm btn-danger"><i class="fa fa-download"></i> Invoice</a>
+                                                        </td>
                                                     </tr>
-                                                    <tr>
-                                                        <td>#2468</td>
-                                                        <td>June 29, 2020</td>
-                                                        <td>Completed</td>
-                                                        <td>$364.00 for 5 item</td>
-                                                        <td><a href="#" class="btn-small d-block">View</a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>#2366</td>
-                                                        <td>August 02, 2020</td>
-                                                        <td>Completed</td>
-                                                        <td>$280.00 for 3 item</td>
-                                                        <td><a href="#" class="btn-small d-block">View</a></td>
-                                                    </tr>
+                                                    @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
