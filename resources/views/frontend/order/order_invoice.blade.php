@@ -48,12 +48,12 @@
     <tr>
         <td valign="top">
           <!-- {{-- <img src="" alt="" width="150"/> --}} -->
-          <h2 style="color: green; font-size: 26px;"><strong>EasyShop</strong></h2>
+          <h2 style="color: green; font-size: 26px;"><strong>Triad Solution</strong></h2>
         </td>
         <td align="right">
             <pre class="font" >
-               EasyShop Head Office
-               Email:support@easylearningbd.com <br>
+               Triad Solution Head Office
+               Email:support@gmail.com <br>
                Mob: 1245454545 <br>
                Dhaka 1207,Dhanmondi:#4 <br>
 
@@ -113,21 +113,37 @@
     </thead>
     <tbody>
 
+        @foreach($orderItem as $item)
+        <tr class="font">
+            <td align="center">
+                <img src="{{ public_path($item->product->product_thumbnail) }}" height="60px;" width="60px;" alt="">
+            </td>
+            <td align="center">{{ $item->product->product_name }}</td>
 
-      <tr class="font">
-        <td align="center">
-            <img src=" " height="60px;" width="60px;" alt="">
-        </td>
-        <td align="center">product_name_en</td>
-        <td align="center">
+            @if($item->color == null)
+            <td align="center">....</td>
+            @else
+            <td align="center">{{ $item->color }}</td>
+            @endif
 
-        </td>
-        <td align="center">color</td>
-        <td align="center">product_code</td>
-        <td align="center">qty</td>
-        <td align="center">price Tk</td>
-        <td align="center">price Tk</td>
-      </tr>
+            @if($item->size == null)
+            <td align="center">....</td>
+            @else
+            <td align="center">{{ $item->size }}</td>
+            @endif
+
+            <td align="center">{{ $item->product->product_code }}</td>
+            <td align="center">{{ $item->qty }}</td>
+
+            @if($item->vendor_id == null)
+            <td align="center">Owner</td>
+            @else
+            <td align="center">{{ $item->product->vendor->name }}</td>
+            @endif
+
+            <td align="center">${{ $item->price }}</td>
+          </tr>
+        @endforeach
 
     </tbody>
   </table>
@@ -135,8 +151,8 @@
   <table width="100%" style=" padding:0 10px 0 10px;">
     <tr>
         <td align="right" >
-            <h2><span style="color: green;">Subtotal:</span> Subtotal tk</h2>
-            <h2><span style="color: green;">Total:</span> Total tk</h2>
+            <h2><span style="color: green;">Subtotal:</span>${{ $order->amount }}</h2>
+            <h2><span style="color: green;">Total:</span>${{ $order->amount }}</h2>
             {{-- <h2><span style="color: green;">Full Payment PAID</h2> --}}
         </td>
     </tr>
