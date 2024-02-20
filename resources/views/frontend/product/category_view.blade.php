@@ -11,7 +11,7 @@
                         <h5 class="mb-15">{{ $breadCat->category_name }}</h5>
                         <div class="breadcrumb">
                             <a href='index.html' rel='nofollow'><i class="fi-rs-home mr-5"></i>Home</a>
-                            <span></span> {{ $breadCat->category_name }} 
+                            <span></span> {{ $breadCat->category_name }}
                         </div>
                     </div>
                     <div class="col-xl-9 text-end d-none d-xl-block">
@@ -134,16 +134,16 @@
                                 <div class="product-card-bottom">
                                     @if ($product->discount_price == Null)
                                     <div class="product-price">
-                                        <span>${{ $product->selling_price }}</span>
+                                        <span>&#2547;{{ $product->selling_price }}</span>
                                     </div>
                                     @else
                                     <div class="product-price">
-                                        <span>${{ $product->discount_price }}</span>
-                                        <span class="old-price">${{ $product->selling_price }}</span>
+                                        <span>&#2547;{{ $product->discount_price }}</span>
+                                        <span class="old-price">&#2547;{{ $product->selling_price }}</span>
                                     </div>
                                     @endif
                                     <div class="add-cart">
-                                        <a class='add' href='shop-cart.html'><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
+                                        <a class='add' href='{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}'><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
                                     </div>
                                 </div>
                             </div>
@@ -201,9 +201,9 @@
                             <p><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}">{{ $product->product_name }}</a></p>
 
                             @if ($product->discount_price == Null)
-                            <p class="price mb-0 mt-5">${{ $product->selling_price }}</p>
+                            <p class="price mb-0 mt-5">&#2547;{{ $product->selling_price }}</p>
                             @else
-                            <p class="price mb-0 mt-5">${{ $product->discount_price }}</p>
+                            <p class="price mb-0 mt-5">&#2547;{{ $product->discount_price }}</p>
                             @endif
                             <div class="product-rate">
                                 <div class="product-rating" style="width: 90%"></div>

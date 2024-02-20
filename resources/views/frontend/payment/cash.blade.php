@@ -38,7 +38,7 @@
                                             <h6 class="text-muted">Subtotal</h6>
                                         </td>
                                         <td class="cart_total_amount">
-                                            <h4 class="text-brand text-end">${{ $cartTotal }}</h4>
+                                            <h4 class="text-brand text-end">&#2547;{{ $cartTotal }}</h4>
                                         </td>
                                     </tr>
                                     <tr>
@@ -55,7 +55,7 @@
                                             <h6 class="text-muted">Coupon Discount</h6>
                                         </td>
                                         <td class="cart_total_amount">
-                                            <h4 class="text-brand text-end">${{ session()->get('coupon')['discount_amount'] }}</h4>
+                                            <h4 class="text-brand text-end">&#2547;{{ session()->get('coupon')['discount_amount'] }}</h4>
                                         </td>
                                     </tr>
                                     <tr>
@@ -63,7 +63,7 @@
                                             <h6 class="text-muted">Grand Total</h6>
                                         </td>
                                         <td class="cart_total_amount">
-                                            <h4 class="text-brand text-end">${{ session()->get('coupon')['total_amount'] }}</h4>
+                                            <h4 class="text-brand text-end">&#2547;{{ session()->get('coupon')['total_amount'] }}</h4>
                                         </td>
                                     </tr>
                                     @else
@@ -72,7 +72,7 @@
                                             <h6 class="text-muted">Grand Total</h6>
                                         </td>
                                         <td class="cart_total_amount">
-                                            <h4 class="text-brand text-end">${{ $cartTotal }}</h4>
+                                            <h4 class="text-brand text-end">&#2547;{{ $cartTotal }}</h4>
                                         </td>
                                     </tr>
                                     @endif
@@ -98,18 +98,18 @@
                             <div class="form-row">
                                 <label for="card-element">
                                     <input type="hidden" name="name" value="{{ $data['shipping_name'] }}">
-                                    <input type="hidden" name="email" value="{{ $data['shipping_email'] }}">
+                                    {{-- <input type="hidden" name="email" value="{{ $data['shipping_email'] }}"> --}}
                                     <input type="hidden" name="phone" value="{{ $data['shipping_phone'] }}">
-                                    <input type="hidden" name="post_code" value="{{ $data['post_code'] }}">
-                                    <input type="hidden" name="division_id" value="{{ $data['division_id'] }}">
-                                    <input type="hidden" name="district_id" value="{{ $data['district_id'] }}">
-                                    <input type="hidden" name="state_id" value="{{ $data['state_id'] }}">
+                                    {{-- <input type="hidden" name="post_code" value="{{ $data['post_code'] }}"> --}}
+                                    {{-- <input type="hidden" name="division_id" value="{{ $data['division_id'] }}"> --}}
+                                    {{-- <input type="hidden" name="district_id" value="{{ $data['district_id'] }}"> --}}
+                                    {{-- <input type="hidden" name="state_id" value="{{ $data['state_id'] }}"> --}}
                                     <input type="hidden" name="address" value="{{ $data['shipping_address'] }}">
                                     <input type="hidden" name="notes" value="{{ $data['notes'] }}">
                                 </label>
                             </div>
                             <br>
-                            <button class="btn btn-primary">Submit Payment</button>
+                            <button class="btn btn-primary">Submit Order</button>
                         </form>
 
                     </div>

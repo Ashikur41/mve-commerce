@@ -60,14 +60,14 @@
 
                                 @if ($product->discount_price == Null)
                                 <div class="product-price primary-color float-left">
-                                    <span class="current-price text-brand">${{ $product->selling_price }}</span>
+                                    <span class="current-price text-brand">&#2547;{{ $product->selling_price }}</span>
                                 </div>
                                 @else
                                 <div class="product-price primary-color float-left">
-                                    <span class="current-price text-brand">${{ $product->discount_price }}</span>
+                                    <span class="current-price text-brand">&#2547;{{ $product->discount_price }}</span>
                                     <span>
                                         <span class="save-price font-md color3 ml-15">{{ round($discount) }}% Off</span>
-                                        <span class="old-price font-md ml-15">${{ $product->selling_price }}</span>
+                                        <span class="old-price font-md ml-15">&#2547;{{ $product->selling_price }}</span>
                                     </span>
                                 </div>
                                 @endif
@@ -115,8 +115,8 @@
                                         <input type="hidden" id="vproduct_id" value="{{ $product->vendor_id }}">
                                         <button type="submit" class="button button-add-to-cart" onclick="addToCartDetails()"><i class="fi-rs-shopping-cart"></i>Add to cart</button>
 
-                                        <a aria-label='Add To Wishlist' class='action-btn hover-up' href='shop-wishlist.html'><i class="fi-rs-heart"></i></a>
-                                        <a aria-label='Compare' class='action-btn hover-up' href='shop-compare.html'><i class="fi-rs-shuffle"></i></a>
+                                        <a aria-label='Add To Wishlist' class='action-btn hover-up' href=''><i class="fi-rs-heart"></i></a>
+                                        <a aria-label='Compare' class='action-btn hover-up' href=''><i class="fi-rs-shuffle"></i></a>
                                     </div>
                                 </div>
 
@@ -474,12 +474,12 @@
 
                                              @if ($product->discount_price == Null)
                                             <div class="product-price">
-                                                <span>${{ $product->selling_price }}</span>
+                                                <span>&#2547;{{ $product->selling_price }}</span>
                                             </div>
                                             @else
                                             <div class="product-price">
-                                                <span>${{ $product->discount_price }}</span>
-                                                <span class="old-price">${{ $product->selling_price }}</span>
+                                                <span>&#2547;{{ $product->discount_price }}</span>
+                                                <span class="old-price">&#2547;{{ $product->selling_price }}</span>
                                             </div>
                                             @endif
 

@@ -193,7 +193,7 @@
                                 <label for="">{{ $item->qty }}</label>
                             </td>
                             <td class="col-md-3">
-                                <label for="">${{ $item->price }} <br> Total =${{ $item->price * $item->qty }} </label>
+                                <label for="">&#2547;{{ $item->price }} <br> Total =&#2547;{{ $item->price * $item->qty }} </label>
                             </td>
                         </tr>
                         @endforeach
@@ -203,7 +203,7 @@
         </div>
         {{-- Start Return Order Option --}}
         @if($order->status !== 'deliverd')
-        
+
         @else
         <div class="form-group" style=" font-weight: 600; font-size: initial; color: #000000;">
             <label>Order Return Reason</label>

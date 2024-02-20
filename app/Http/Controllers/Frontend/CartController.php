@@ -244,17 +244,17 @@ class CartController extends Controller
     // check out page
 
     public function CheckoutCreate(){
-        if(Auth::check()){
+        
              if(Cart::total() > 0){
 
                 $carts = Cart::content();
                 $cartQty = Cart::count();
                 $cartTotal = Cart::total();
 
-                $divisions= ShipDivision::orderBy('division_name','ASC')->get();
+                // $divisions= ShipDivision::orderBy('division_name','ASC')->get();
+                // $district= ShipDistricts::orderBy('district_name','ASC')->get();
 
-                return view('frontend.checkout.checkout_view',compact('carts','cartQty','cartTotal',
-                'divisions'));
+                return view('frontend.checkout.checkout_view',compact('carts','cartQty','cartTotal'));
 
              }else{
                 $notification= array(
@@ -264,15 +264,6 @@ class CartController extends Controller
                 return redirect()->to('/')->with($notification);
              }
 
-
-
-        }else{
-            $notification= array(
-                'message'=>'You Need to Login First',
-                'alert-type' =>'error'
-            );
-            return redirect()->route('login')->with($notification);
-        }
     }
 
 }

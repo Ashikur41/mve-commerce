@@ -115,7 +115,7 @@
                             </div>
                             <div class="product-content-wrap">
                                 <div class="product-category">
-                                    <a href='shop-grid-right.html'>{{ $product['subcategory']['sub_category_name'] }}</a>
+                                    <a href='#'>{{ $product['subcategory']['sub_category_name'] }}</a>
                                 </div>
                                 <h2><a href='{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}'>{{ $product->product_name }}</a></h2>
                                 <div class="product-rate-cover">
@@ -134,16 +134,16 @@
                                 <div class="product-card-bottom">
                                     @if ($product->discount_price == Null)
                                     <div class="product-price">
-                                        <span>${{ $product->selling_price }}</span>
+                                        <span>&#2547;{{ $product->selling_price }}</span>
                                     </div>
                                     @else
                                     <div class="product-price">
-                                        <span>${{ $product->discount_price }}</span>
-                                        <span class="old-price">${{ $product->selling_price }}</span>
+                                        <span>&#2547;{{ $product->discount_price }}</span>
+                                        <span class="old-price">&#2547;{{ $product->selling_price }}</span>
                                     </div>
                                     @endif
                                     <div class="add-cart">
-                                        <a class='add' href='shop-cart.html'><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
+                                        <a class='add' href='{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}'><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
                                     </div>
                                 </div>
                             </div>
@@ -201,9 +201,9 @@
                             <p><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}">{{ $product->product_name }}</a></p>
 
                             @if ($product->discount_price == Null)
-                            <p class="price mb-0 mt-5">${{ $product->selling_price }}</p>
+                            <p class="price mb-0 mt-5">&#2547;{{ $product->selling_price }}</p>
                             @else
-                            <p class="price mb-0 mt-5">${{ $product->discount_price }}</p>
+                            <p class="price mb-0 mt-5">&#2547;{{ $product->discount_price }}</p>
                             @endif
                             <div class="product-rate">
                                 <div class="product-rating" style="width: 90%"></div>

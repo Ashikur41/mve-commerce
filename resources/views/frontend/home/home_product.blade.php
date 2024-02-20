@@ -70,16 +70,16 @@ $categories=App\Models\Category::orderBy('category_name','ASC')->get();
                                 <div class="product-card-bottom">
                                     @if ($product->discount_price == Null)
                                     <div class="product-price">
-                                        <span>${{ $product->selling_price }}</span>
+                                        <span>&#2547;{{ $product->selling_price }}</span>
                                     </div>
                                     @else
                                     <div class="product-price">
-                                        <span>${{ $product->discount_price }}</span>
-                                        <span class="old-price">${{ $product->selling_price }}</span>
+                                        <span>&#2547;{{ $product->discount_price }}</span>
+                                        <span class="old-price">&#2547;{{ $product->selling_price }}</span>
                                     </div>
                                     @endif
                                     <div class="add-cart">
-                                        <a class='add' href='#'><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
+                                        <a class='add' href='{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}'><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
                                     </div>
                                 </div>
                             </div>
@@ -148,16 +148,16 @@ $categories=App\Models\Category::orderBy('category_name','ASC')->get();
                                 <div class="product-card-bottom">
                                     @if ($product->discount_price == Null)
                                     <div class="product-price">
-                                        <span>${{ $product->selling_price }}</span>
+                                        <span>&#2547;{{ $product->selling_price }}</span>
                                     </div>
                                     @else
                                     <div class="product-price">
-                                        <span>${{ $product->discount_price }}</span>
-                                        <span class="old-price">${{ $product->selling_price }}</span>
+                                        <span>&#2547;{{ $product->discount_price }}</span>
+                                        <span class="old-price">&#2547;{{ $product->selling_price }}</span>
                                     </div>
                                     @endif
                                     <div class="add-cart">
-                                        <a class='add' href='shop-cart.html'><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
+                                        <a class='add' href='{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}'><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
                                     </div>
                                 </div>
                             </div>

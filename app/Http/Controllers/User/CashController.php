@@ -23,15 +23,15 @@ class CashController extends Controller
         }
 
         $order_id = Order::insertGetId([
-            'user_id'=>Auth::id(),
-            'division_id'=>$request->division_id,
-            'district_id'=>$request->district_id,
-            'state_id'=>$request->state_id,
+            'user_id'=>0,
+            'division_id'=>0,
+            'district_id'=>0,
+            'state_id'=>0,
             'name'=>$request->name,
-            'email'=>$request->email,
+            'email'=>'',
             'phone'=>$request->phone,
             'address'=>$request->address,
-            'post_code'=>$request->post_code,
+            'post_code'=>0,
             'notes'=>$request->notes,
 
             'payment_type'=>'Cash On Delivery',

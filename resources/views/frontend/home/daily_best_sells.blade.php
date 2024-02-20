@@ -12,12 +12,12 @@ $categories=App\Models\Category::orderBy('category_name','ASC')->get();
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="nav-tab-one-1" data-bs-toggle="tab" data-bs-target="#tab-one-1" type="button" role="tab" aria-controls="tab-one" aria-selected="true">Featured</button>
                 </li>
-                <li class="nav-item" role="presentation">
+                {{-- <li class="nav-item" role="presentation">
                     <button class="nav-link" id="nav-tab-two-1" data-bs-toggle="tab" data-bs-target="#tab-two-1" type="button" role="tab" aria-controls="tab-two" aria-selected="false">Popular</button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="nav-tab-three-1" data-bs-toggle="tab" data-bs-target="#tab-three-1" type="button" role="tab" aria-controls="tab-three" aria-selected="false">New added</button>
-                </li>
+                </li> --}}
             </ul>
         </div>
         <div class="row">
@@ -74,12 +74,12 @@ $categories=App\Models\Category::orderBy('category_name','ASC')->get();
 
                                         @if ($product->discount_price == Null)
                                         <div class="product-price mt-10">
-                                            <span>${{ $product->selling_price }}</span>
+                                            <span>&#2547;{{ $product->selling_price }}</span>
                                         </div>
                                         @else
                                         <div class="product-price mt-10">
-                                            <span>${{ $product->discount_price }}</span>
-                                            <span class="old-price">${{ $product->selling_price }}</span>
+                                            <span>&#2547;{{ $product->discount_price }}</span>
+                                            <span class="old-price">&#2547;{{ $product->selling_price }}</span>
                                         </div>
                                         @endif
                                         <div class="sold mt-15 mb-15">
@@ -87,7 +87,7 @@ $categories=App\Models\Category::orderBy('category_name','ASC')->get();
                                                 <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                         </div>
-                                        <a class='btn w-100 hover-up' href='shop-cart.html'><i class="fi-rs-shopping-cart mr-5"></i>Add To Cart</a>
+                                        <a class='btn w-100 hover-up' href='{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}'><i class="fi-rs-shopping-cart mr-5"></i>Add To Cart</a>
                                     </div>
                                 </div>
                                 <!--End product Wrap-->

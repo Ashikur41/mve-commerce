@@ -31,79 +31,34 @@
                     <form method="post" action="{{ route('checkout.store') }}">
                         @csrf
                         <div class="row">
-                            <div class="form-group col-lg-6">
-                                <input type="text" required="" name="shipping_name" value="{{ Auth::user()->name }}">
+                            <div class="form-group col-lg-12">
+                                <input type="text" required="" name="shipping_name" placeholder="Your Name">
                             </div>
-                            <div class="form-group col-lg-6">
-                                <input type="email" required="" name="shipping_email" value="{{ Auth::user()->email }}">
+
+                            <div class="form-group col-lg-12">
+                                <input required="" type="text" name="shipping_phone" placeholder="Your Phone Number">
                             </div>
+                            {{-- <div class="form-group col-lg-6">
+                                <input type="email" required="" name="shipping_email">
+                            </div> --}}
                         </div>
                         <div class="row shipping_calculator">
-                            <div class="form-group col-lg-6">
-                                <div class="custom_select">
-                                    <select name="division_id" class="form-control">
-                                        <option value="">Select an Division...</option>
-                                        @foreach ($divisions as $item)
-                                        <option value="{{ $item->id }}">{{ $item->division_name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                            <div class="form-group col-lg-12">
+                                <input required="" type="text" name="shipping_address" placeholder="Address *">
                             </div>
-                            <div class="form-group col-lg-6">
-                                <input required="" type="text" name="shipping_phone" value="{{ Auth::user()->phone }}">
+                            <div class="custome-radio col-lg-3">
+                                <input class="form-check-input" required="" type="radio" name="payment_option" value="stripe" id="exampleRadios3" checked="">
+                                <label class="form-check-label" for="exampleRadios3" data-bs-toggle="collapse" data-target="#bankTranfer" aria-controls="bankTranfer">Insite Dhaka</label>
                             </div>
-                            <div class="form-group col-lg-6">
-                                <div class="custom_select">
-                                    <select name="district_id" class="form-control">
-                                        <option value="">Select an District...</option>
-
-                                    </select>
-                                </div>
-                            </div>
-                                <div class="form-group col-lg-6">
-                                    <input required="" type="text" name="post_code" placeholder="Postcode *">
-                                </div>
-                            <div class="form-group col-lg-6">
-                                <div class="custom_select">
-                                    <select name="state_id" class="form-control">
-                                        <option value="">Select an State...</option>
-
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <input required="" type="text" name="shipping_address" placeholder="Address *" value="{{ Auth::user()->address }}">
+                            <div class="custome-radio col-lg-3">
+                                <input class="form-check-input" required="" type="radio" name="payment_option" id="exampleRadios5" checked="">
+                                <label class="form-check-label" for="exampleRadios4" data-bs-toggle="collapse" data-target="#checkPayment" aria-controls="checkPayment">Out Site Dhaka</label>
                             </div>
                         </div>
+                        <br>
                         <div class="form-group mb-30">
                             <textarea rows="5" placeholder="Additional information" name="notes"></textarea>
                         </div>
-                        <div class="form-group">
-                            <div class="checkbox">
-                                <div class="custome-checkbox">
-                                    <input class="form-check-input" type="checkbox" name="checkbox" id="createaccount">
-                                    <label class="form-check-label label_info" data-bs-toggle="collapse" href="#collapsePassword" data-target="#collapsePassword" aria-controls="collapsePassword" for="createaccount"><span>Create an account?</span></label>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="collapsePassword" class="form-group create-account collapse in">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <input required="" type="password" placeholder="Password" name="password">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ship_detail">
-                            <div class="form-group">
-                                <div class="chek-form">
-                                    <div class="custome-checkbox">
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="differentaddress">
-                                        <label class="form-check-label label_info" data-bs-toggle="collapse" data-target="#collapseAddress" href="#collapseAddress" aria-controls="collapseAddress" for="differentaddress"><span>Ship to a different address?</span></label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                 </div>
             </div>
             <div class="col-lg-5">
@@ -130,7 +85,7 @@
                                         <h6 class="text-muted pl-20 pr-20">x {{ $item->qty }}</h6>
                                     </td>
                                     <td>
-                                        <h4 class="text-brand">${{ $item->price }}</h4>
+                                        <h4 class="text-brand">&#2547;{{ $item->price }}</h4>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -147,7 +102,7 @@
                                         <h6 class="text-muted">Subtotal</h6>
                                     </td>
                                     <td class="cart_total_amount">
-                                        <h4 class="text-brand text-end">${{ $cartTotal }}</h4>
+                                        <h4 class="text-brand text-end">&#2547;{{ $cartTotal }}</h4>
                                     </td>
                                 </tr>
                                 <tr>
@@ -164,7 +119,7 @@
                                         <h6 class="text-muted">Coupon Discount</h6>
                                     </td>
                                     <td class="cart_total_amount">
-                                        <h4 class="text-brand text-end">${{ session()->get('coupon')['discount_amount'] }}</h4>
+                                        <h4 class="text-brand text-end">&#2547;{{ session()->get('coupon')['discount_amount'] }}</h4>
                                     </td>
                                 </tr>
                                 <tr>
@@ -172,7 +127,7 @@
                                         <h6 class="text-muted">Grand Total</h6>
                                     </td>
                                     <td class="cart_total_amount">
-                                        <h4 class="text-brand text-end">${{ session()->get('coupon')['total_amount'] }}</h4>
+                                        <h4 class="text-brand text-end">&#2547;{{ session()->get('coupon')['total_amount'] }}</h4>
                                     </td>
                                 </tr>
 
@@ -182,7 +137,7 @@
                                         <h6 class="text-muted">Grand Total</h6>
                                     </td>
                                     <td class="cart_total_amount">
-                                        <h4 class="text-brand text-end">${{ $cartTotal }}</h4>
+                                        <h4 class="text-brand text-end">&#2547;{{ $cartTotal }}</h4>
                                     </td>
                                 </tr>
                                 @endif
@@ -195,7 +150,7 @@
                 <div class="payment ml-30">
                     <h4 class="mb-30">Payment</h4>
                     <div class="payment_option">
-                        <div class="custome-radio">
+                        <div class="custome-radio" style="display: none;">
                             <input class="form-check-input" required="" type="radio" name="payment_option" value="stripe" id="exampleRadios3" checked="">
                             <label class="form-check-label" for="exampleRadios3" data-bs-toggle="collapse" data-target="#bankTranfer" aria-controls="bankTranfer">Stripe</label>
                         </div>
@@ -203,7 +158,7 @@
                             <input class="form-check-input" required="" type="radio" name="payment_option" value="cash" id="exampleRadios4" checked="">
                             <label class="form-check-label" for="exampleRadios4" data-bs-toggle="collapse" data-target="#checkPayment" aria-controls="checkPayment">Cash on delivery</label>
                         </div>
-                        <div class="custome-radio">
+                        <div class="custome-radio" style="display: none;">
                             <input class="form-check-input" required="" type="radio" name="payment_option" value="card" id="exampleRadios5" checked="">
                             <label class="form-check-label" for="exampleRadios5" data-bs-toggle="collapse" data-target="#paypal" aria-controls="paypal">Online Getway</label>
                         </div>

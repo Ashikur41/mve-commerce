@@ -38,7 +38,7 @@
                 <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
                     <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp" data-wow-delay=".1s">
                         <div class="banner-icon">
-                            <img src="{{ url('Frontend') }}/assets/imgs/theme/icons/icon-2.svg" alt="" />
+                            <img src="{{ url('Frontend/assets/imgs/theme/icons/icon-2.svg') }}" alt="" />
                         </div>
                         <div class="banner-text">
                             <h3 class="icon-box-title">Free delivery</h3>
@@ -49,7 +49,7 @@
                 <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
                     <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp" data-wow-delay=".2s">
                         <div class="banner-icon">
-                            <img src="{{ url('Frontend') }}/assets/imgs/theme/icons/icon-3.svg" alt="" />
+                            <img src="{{ url('Frontend/assets/imgs/theme/icons/icon-3.svg') }}" alt="" />
                         </div>
                         <div class="banner-text">
                             <h3 class="icon-box-title">Great daily deal</h3>
@@ -60,7 +60,7 @@
                 <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
                     <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp" data-wow-delay=".3s">
                         <div class="banner-icon">
-                            <img src="{{ url('Frontend') }}/assets/imgs/theme/icons/icon-4.svg" alt="" />
+                            <img src="{{ url('Frontend/assets/imgs/theme/icons/icon-4.svg') }}" alt="" />
                         </div>
                         <div class="banner-text">
                             <h3 class="icon-box-title">Wide assortment</h3>
@@ -71,7 +71,7 @@
                 <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
                     <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp" data-wow-delay=".4s">
                         <div class="banner-icon">
-                            <img src="{{ url('Frontend') }}/assets/imgs/theme/icons/icon-5.svg" alt="" />
+                            <img src="{{ url('Frontend/assets/imgs/theme/icons/icon-5.svg') }}" alt="" />
                         </div>
                         <div class="banner-text">
                             <h3 class="icon-box-title">Easy returns</h3>
@@ -82,7 +82,7 @@
                 <div class="col-lg-1-5 col-md-4 col-12 col-sm-6 d-xl-none">
                     <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp" data-wow-delay=".5s">
                         <div class="banner-icon">
-                            <img src="{{ url('Frontend') }}/{{ url('Frontend') }}/assets/imgs/theme/icons/icon-6.svg" alt="" />
+                            <img src="{{ url('Frontend/assets/imgs/theme/icons/icon-6.svg') }}" alt="" />
                         </div>
                         <div class="banner-text">
                             <h3 class="icon-box-title">Safe delivery</h3>
@@ -158,7 +158,7 @@
                         <li><a href="#">Cheese</a></li>
                     </ul>
                 </div>
-                <div class="footer-link-widget widget-install-app col wow animate__animated animate__fadeInUp" data-wow-delay=".5s">
+                {{-- <div class="footer-link-widget widget-install-app col wow animate__animated animate__fadeInUp" data-wow-delay=".5s">
                     <h4 class="widget-title">Install App</h4>
                     <p class="">From App Store or Google Play</p>
                     <div class="download-app">
@@ -167,10 +167,10 @@
                     </div>
                     <p class="mb-20">Secured Payment Gateways</p>
                     <img class="" src="{{ url('Frontend') }}/assets/imgs/theme/payment-method.png" alt="" />
-                </div>
+                </div> --}}
             </div>
     </section>
-    <div class="container pb-30 wow animate__animated animate__fadeInUp" data-wow-delay="0">
+    {{-- <div class="container pb-30 wow animate__animated animate__fadeInUp" data-wow-delay="0">
         <div class="row align-items-center">
             <div class="col-12 mb-30">
                 <div class="footer-bottom"></div>
@@ -200,5 +200,5 @@
                 <p class="font-sm">Up to 15% discount on your first subscribe</p>
             </div>
         </div>
-    </div>
+    </div> --}}
 </footer>

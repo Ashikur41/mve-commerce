@@ -13,7 +13,7 @@
                     <div class="product-img-action-wrap">
                         <div class="product-img">
                             <a href='shop-product-right.html'>
-                                <img src="{{ url('Frontend') }}/assets/imgs/banner/banner-5.png" alt="" />
+                                <img src="{{ url('Frontend/assets/imgs/banner/banner-5.png') }}" alt="" />
                             </a>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                     <div class="product-img-action-wrap">
                         <div class="product-img">
                             <a href='shop-product-right.html'>
-                                <img src="{{ url('Frontend') }}/assets/imgs/banner/banner-6.png" alt="" />
+                                <img src="{{ url('Frontend/assets/imgs/banner/banner-6.png') }}" alt="" />
                             </a>
                         </div>
                     </div>
@@ -67,7 +67,7 @@
                                 <span class="font-small ml-5 text-muted"> (4.0)</span>
                             </div>
                             <div>
-                                <span class="font-small text-muted">By <a href='vendor-details-1.html'>Old El Paso</a></span>
+                                <span class="font-small text-muted">By <a href='#'>Old El Paso</a></span>
                             </div>
                             <div class="product-card-bottom">
                                 <div class="product-price">
@@ -75,7 +75,7 @@
                                     <span class="old-price">$26.8</span>
                                 </div>
                                 <div class="add-cart">
-                                    <a class='add' href='shop-cart.html'><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
+                                    <a class='add' href='#'><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
                                 </div>
                             </div>
                         </div>
@@ -87,7 +87,7 @@
                     <div class="product-img-action-wrap">
                         <div class="product-img">
                             <a href='shop-product-right.html'>
-                                <img src="{{ url('Frontend') }}/assets/imgs/banner/banner-7.png" alt="" />
+                                <img src="{{ url('Frontend/assets/imgs/banner/banner-7.png') }}" alt="" />
                             </a>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
                             <div class="deals-countdown" data-countdown="2027/03/25 00:00:00"></div>
                         </div>
                         <div class="deals-content">
-                            <h2><a href='shop-product-right.html'>Signature Wood-Fired Mushroom and Caramelized</a></h2>
+                            <h2><a href='#'>Signature Wood-Fired Mushroom and Caramelized</a></h2>
                             <div class="product-rate-cover">
                                 <div class="product-rate d-inline-block">
                                     <div class="product-rating" style="width: 80%"></div>
@@ -104,7 +104,7 @@
                                 <span class="font-small ml-5 text-muted"> (3.0)</span>
                             </div>
                             <div>
-                                <span class="font-small text-muted">By <a href='vendor-details-1.html'>Progresso</a></span>
+                                <span class="font-small text-muted">By <a href='#'>Progresso</a></span>
                             </div>
                             <div class="product-card-bottom">
                                 <div class="product-price">
@@ -112,7 +112,7 @@
                                     <span class="old-price">$13.8</span>
                                 </div>
                                 <div class="add-cart">
-                                    <a class='add' href='shop-cart.html'><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
+                                    <a class='add' href='#'><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
                                 </div>
                             </div>
                         </div>
@@ -124,7 +124,7 @@
                     <div class="product-img-action-wrap">
                         <div class="product-img">
                             <a href='shop-product-right.html'>
-                                <img src="{{ url('Frontend') }}/assets/imgs/banner/banner-8.png" alt="" />
+                                <img src="{{ url('Frontend/assets/imgs/banner/banner-8.png') }}" alt="" />
                             </a>
                         </div>
                     </div>

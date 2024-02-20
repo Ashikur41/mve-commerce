@@ -176,10 +176,16 @@ Route::controller(ShippingAreaController::class)->group(function(){
 Route::controller(OrderController::class)->group(function(){
     Route::get('pending/order','PendingOrder')->name('pending.order');
     Route::get('/admin/order/details/{order_id}' , 'AdminOrderDetails')->name('admin.order.details');
-    
+
     Route::get('/admin/confirmed/order' , 'AdminConfirmedOrder')->name('admin.confirmed.order');
     Route::get('/admin/processing/order' , 'AdminProcessingOrder')->name('admin.processing.order');
     Route::get('/admin/delivered/order' , 'AdminDeliveredOrder')->name('admin.delivered.order');
+
+    Route::get('/pending/confirm/{order_id}' , 'PendingToConfirm')->name('pending-confirm');
+    Route::get('/confirm/processing/{order_id}' , 'ConfirmToProcess')->name('confirm-processing');
+    Route::get('/processing/delivered/{order_id}' , 'ProcessToDelivered')->name('processing-delivered');
+
+    Route::get('/admin/invoice/download/{order_id}' , 'AdminInvoiceDownload')->name('admin.invoice.download');
 
     });
 
@@ -228,7 +234,7 @@ Route::controller(IndexController::class)->group(function(){
         });
 
 //All user route
-Route::middleware(['auth','role:user'])->group(function () {
+// Route::middleware(['auth','role:user'])->group(function () {
 
 
     // Add to wishlist all route
@@ -265,7 +271,7 @@ Route::middleware(['auth','role:user'])->group(function () {
 
 
 
-});
+// }); 
 
 Route::post('/coupon-apply',[CartController::class,'CouponApply']);
 Route::get('/coupon-calculation',[CartController::class,'couponCalculation']);

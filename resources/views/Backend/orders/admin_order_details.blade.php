@@ -50,7 +50,7 @@
                          </tr>
 
 
-                         <tr>
+                         {{-- <tr>
                              <th>Division:</th>
                             <th>{{ $order->division->division_name }}</th>
                          </tr>
@@ -68,7 +68,7 @@
                           <tr>
                              <th>Post Code  :</th>
                               <th>{{ $order->post_code }}</th>
-                         </tr>
+                         </tr> --}}
 
                           <tr>
                              <th>Order Date   :</th>
@@ -92,7 +92,7 @@
                     <hr>
                     <div class="card-body">
                      <table class="table" style="background:#F4F6FA;font-weight: 600;">
-                         <tr>
+                         {{-- <tr>
                              <th> Name :</th>
                              <th>{{ $order->user->name }}</th>
                          </tr>
@@ -100,7 +100,7 @@
                          <tr>
                              <th>Phone :</th>
                            <th>{{ $order->user->phone }}</th>
-                         </tr>
+                         </tr> --}}
 
                          <tr>
                              <th>Payment Type:</th>
@@ -125,13 +125,27 @@
 
                           <tr>
                              <th>Order Status:</th>
-           <th><span class="badge rounded-pill bg-info">{{ $order->status }}</span></th>
+                             <th><span class="badge bg-danger" style="font-size: 15px;">{{ $order->status }}</span></th>
                          </tr>
 
 
           <tr>
                              <th> </th>
-           <th><a href="" class="btn btn-block btn-success" >Confirm Order</a> </th>
+
+                             <th>
+                                @if($order->status == 'pending')
+                                <a href="{{ route('pending-confirm',$order->id) }}" class="btn btn-block btn-success" id="confirm" >Confirm Order</a>
+
+                                @elseif($order->status == 'confirm')
+                              {{-- <a href="" class="btn btn-block btn-success" >Processing Order</a> --}}
+                              <a href="{{ route('confirm-processing',$order->id) }}" class="btn btn-block btn-success" id="processing" >Processing Order</a>
+
+                              @elseif($order->status == 'processing')
+                              {{-- <a href="" class="btn btn-block btn-success" >Delivered Order</a> --}}
+                              <a href="{{ route('processing-delivered',$order->id) }}" class="btn btn-block btn-success" id="delivered" >Delivered Order</a>
+                                @endif
+
+                                 </th>
             </tr>
 
                      </table>

@@ -23,12 +23,12 @@
 
                             @if ($item->discount_price == Null)
                             <div class="product-price">
-                                <span>${{ $item->selling_price }}</span>
+                                <span>&#2547;{{ $item->selling_price }}</span>
                             </div>
                             @else
                             <div class="product-price">
-                                <span>${{ $item->discount_price }}</span>
-                                <span class="old-price">${{ $item->selling_price }}</span>
+                                <span>&#2547;{{ $item->discount_price }}</span>
+                                <span class="old-price">&#2547;{{ $item->selling_price }}</span>
                             </div>
                             @endif
                         </div>
@@ -48,7 +48,7 @@
                         </figure>
                         <div class="col-md-8 mb-0">
                             <h6>
-                                <a href='shop-product-right.html'>{{ $item->product_name }}</a>
+                                <a href='{{ url('product/details/'.$item->id.'/'.$item->product_slug) }}'>{{ $item->product_name }}</a>
                             </h6>
                             <div class="product-rate-cover">
                                 <div class="product-rate d-inline-block">
@@ -59,12 +59,12 @@
 
                             @if ($item->discount_price == Null)
                             <div class="product-price">
-                                <span>${{ $item->selling_price }}</span>
+                                <span>&#2547;{{ $item->selling_price }}</span>
                             </div>
                             @else
                             <div class="product-price">
-                                <span>${{ $item->discount_price }}</span>
-                                <span class="old-price">${{ $item->selling_price }}</span>
+                                <span>&#2547;{{ $item->discount_price }}</span>
+                                <span class="old-price">&#2547;{{ $item->selling_price }}</span>
                             </div>
                             @endif
                         </div>
@@ -84,7 +84,7 @@
                         </figure>
                         <div class="col-md-8 mb-0">
                             <h6>
-                                <a href='shop-product-right.html'>{{ $item->product_name }}</a>
+                                <a href='{{ url('product/details/'.$item->id.'/'.$item->product_slug) }}'>{{ $item->product_name }}</a>
                             </h6>
                             <div class="product-rate-cover">
                                 <div class="product-rate d-inline-block">
@@ -95,12 +95,12 @@
 
                             @if ($item->discount_price == Null)
                             <div class="product-price">
-                                <span>${{ $item->selling_price }}</span>
+                                <span>&#2547;{{ $item->selling_price }}</span>
                             </div>
                             @else
                             <div class="product-price">
-                                <span>${{ $item->discount_price }}</span>
-                                <span class="old-price">${{ $item->selling_price }}</span>
+                                <span>&#2547;{{ $item->discount_price }}</span>
+                                <span class="old-price">&#2547;{{ $item->selling_price }}</span>
                             </div>
                             @endif
                         </div>
@@ -120,7 +120,7 @@
                         </figure>
                         <div class="col-md-8 mb-0">
                             <h6>
-                                <a href='shop-product-right.html'>{{ $item->product_name }}</a>
+                                <a href='{{ url('product/details/'.$item->id.'/'.$item->product_slug) }}'>{{ $item->product_name }}</a>
                             </h6>
                             <div class="product-rate-cover">
                                 <div class="product-rate d-inline-block">
@@ -131,12 +131,12 @@
 
                             @if ($item->discount_price == Null)
                             <div class="product-price">
-                                <span>${{ $item->selling_price }}</span>
+                                <span>&#2547;{{ $item->selling_price }}</span>
                             </div>
                             @else
                             <div class="product-price">
-                                <span>${{ $item->discount_price }}</span>
-                                <span class="old-price">${{ $item->selling_price }}</span>
+                                <span>&#2547;{{ $item->discount_price }}</span>
+                                <span class="old-price">&#2547;{{ $item->selling_price }}</span>
                             </div>
                             @endif
                         </div>
@@ -149,7 +149,7 @@
     </div>
 </section>
 
-@php
+{{-- @php
     $vendors = App\Models\User::where('status','active')->where('role','vendor')->orderBy('id','DESC')->limit(4)->get();
 @endphp
 
@@ -217,4 +217,4 @@
         </div>
         <!--End tab-content-->
     </div>
-</section>
+</section> --}}

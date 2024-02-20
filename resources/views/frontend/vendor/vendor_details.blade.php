@@ -115,9 +115,9 @@
                                 </div>
                                 <div>
                                     @if($product->vendor_id == Null)
-                                    <span class="font-small text-muted">By <a href='vendor-details-1.html'>Owner</a></span>
+                                    <span class="font-small text-muted">By <a href='#'>Owner</a></span>
                                     @else
-                                    <span class="font-small text-muted">By <a href='vendor-details-1.html'>{{ $product['vendor']['name'] }}</a></span>
+                                    <span class="font-small text-muted">By <a href='#'>{{ $product['vendor']['name'] }}</a></span>
                                     @endif
                                 </div>
                                 <div class="product-card-bottom">
@@ -132,7 +132,7 @@
                                     </div>
                                     @endif
                                     <div class="add-cart">
-                                        <a class='add' href='shop-cart.html'><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
+                                        <a class='add' href='{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}'><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
                                     </div>
                                 </div>
                             </div>
