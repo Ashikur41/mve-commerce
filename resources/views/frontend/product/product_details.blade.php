@@ -7,7 +7,7 @@
         <div class="container">
             <div class="breadcrumb">
                 <a href='index.html' rel='nofollow'><i class="fi-rs-home mr-5"></i>Home</a>
-                <span></span> <a href='shop-grid-right.html'>{{ $product['category']['category_name'] }}</a> <span></span>{{ $product['subcategory']['sub_category_name'] }}<span></span>{{ $product->product_name }}
+                <span></span> <a href='{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}'>{{ $product['category']['category_name'] }}</a> <span></span>{{ $product->product_name }}
             </div>
         </div>
     </div>
@@ -21,16 +21,19 @@
                                 <span class="zoom-icon"><i class="fi-rs-search"></i></span>
                                 <!-- MAIN SLIDES -->
                                 <div class="product-image-slider">
-                                    @foreach ($multiImage as $img)
                                     <figure class="border-radius-10">
-                                        <img src="{{ asset($img->photo_name) }}" alt="product image" />
+                                        <img src="{{ asset($product->product_thumbnail) }}" alt="product image" />
                                     </figure>
+                                    @foreach ($multiImage as $img)
+                                    {{-- @dd($multiImage); --}}
+                                    <div><img src="{{ asset($img->photo_name) }}" alt="product image"/></div>
                                     @endforeach
                                 </div>
                                 <!-- THUMBNAILS -->
                                 <div class="slider-nav-thumbnails">
                                     @foreach ($multiImage as $img)
-                                    <div><img src="{{ asset($img->photo_name) }}" alt="product image" /></div>
+                                    {{-- @dd($multiImage); --}}
+                                    <div><img src="{{ asset($img->photo_name) }}" alt="product image"/></div>
                                     @endforeach
                                 </div>
                             </div>
@@ -128,12 +131,12 @@
                                 <hr>
                                 <div class="font-xs">
                                     <ul class="mr-50 float-start">
-                                        <li class="mb-5">Brand: <span class="text-brand">{{ $product['brand']['brand_name'] }}</span></li>
+                                        {{-- <li class="mb-5">Brand: <span class="text-brand">{{ $product['brand']['brand_name'] }}</span></li> --}}
                                         <li class="mb-5">Category:<span class="text-brand">{{ $product['category']['category_name'] }}</span></li>
-                                        <li>SubCategory: <span class="text-brand">{{ $product['subcategory']['sub_category_name'] }}</span></li>
+                                        {{-- <li>SubCategory: <span class="text-brand">{{ $product['subcategory']['sub_category_name'] }}</span></li> --}}
                                     </ul>
                                     <ul class="float-start">
-                                        <li class="mb-5">Product Code: <a href="#">{{ $product->product_code }}</a></li>
+                                        <li class="mb-5">Product Code:<a href="#">{{ $product->product_code }}</a></li>
                                         <li class="mb-5">Tags: <a href="#" rel="tag">{{ $product->product_tags }}</a></li>
                                         <li>Stock:<span class="in-stock text-brand ml-5">({{ $product->product_qty }})Items In Stock</span></li>
                                     </ul>

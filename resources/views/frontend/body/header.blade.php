@@ -153,18 +153,11 @@
                             <i class="fi-rs-angle-down"></i>
                         </a>
                         <div class="categories-dropdown-wrap categories-dropdown-active-large font-heading">
-                            <div class="d-flex categori-dropdown-inner">
+                            <div class="d-flex">
                                 <ul>
                                     @foreach ($categories as $item)
                                     <li>
-                                        <a href='shop-grid-right.html'> <img src="{{ asset($item->category_image) }}" alt="" />{{ $item->category_name }}</a>
-                                    </li>
-                                    @endforeach
-                                </ul>
-                                <ul class="end">
-                                    @foreach ($categories as $item)
-                                    <li>
-                                        <a href='shop-grid-right.html'> <img src="{{ asset('upload/category/',$item->category_image) }}" alt="" />{{ $item->category_name }}</a>
+                                        <a href='{{ url('product/category'.'/'.$item->id.'/'.$item->category_slug) }}'> <img src="{{ asset('upload/category/'.$item->category_image) }}" alt="" />{{ $item->category_name }}</a>
                                     </li>
                                     @endforeach
                                 </ul>

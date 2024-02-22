@@ -46,13 +46,16 @@
                             <div class="form-group col-lg-12">
                                 <input required="" type="text" name="shipping_address" placeholder="Address *">
                             </div>
-                            <div class="custome-radio col-lg-3">
-                                <input class="form-check-input" required="" type="radio" name="payment_option" value="stripe" id="exampleRadios3" checked="">
-                                <label class="form-check-label" for="exampleRadios3" data-bs-toggle="collapse" data-target="#bankTranfer" aria-controls="bankTranfer">Insite Dhaka</label>
-                            </div>
-                            <div class="custome-radio col-lg-3">
-                                <input class="form-check-input" required="" type="radio" name="payment_option" id="exampleRadios5" checked="">
-                                <label class="form-check-label" for="exampleRadios4" data-bs-toggle="collapse" data-target="#checkPayment" aria-controls="checkPayment">Out Site Dhaka</label>
+
+                            <div class="payment_option">
+                                <div class="custome-radio">
+                                    <input class="form-check-input" required="" type="radio" name="payment_option" value="stripe" id="exampleRadios3" checked="">
+                                    <label class="form-check-label" for="exampleRadios3" data-bs-toggle="collapse" data-target="#bankTranfer" aria-controls="bankTranfer">Insite Dhaka</label>
+                                </div>
+                                <div class="custome-radio">
+                                    <input class="form-check-input" required="" type="radio" name="payment_option" value="card" id="exampleRadios5" checked="">
+                                    <label class="form-check-label" for="exampleRadios5" data-bs-toggle="collapse" data-target="#paypal" aria-controls="paypal">Out Site Dhaka</label>
+                                </div>
                             </div>
                         </div>
                         <br>

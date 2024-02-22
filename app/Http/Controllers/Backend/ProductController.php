@@ -65,17 +65,19 @@ class ProductController extends Controller
         //multi-image upload
 
         $images=$request->file('multi_img');
-        foreach($images as $img){
-            $make_name=hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
-            $img->move(public_path('upload/products/multi-image/'),$make_name);
-            // Image::make($img)->resize(800,800)->save('upload/products/multi-image/'.$make_name);
-            $uploadPath='upload/products/multi-image/'.$make_name;
+        if (is_array($images) || is_object($images)){
+            foreach($images as $img){
+                $make_name=hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
+                $img->move(public_path('upload/products/multi-image/'),$make_name);
+                // Image::make($img)->resize(800,800)->save('upload/products/multi-image/'.$make_name);
+                $uploadPath='upload/products/multi-image/'.$make_name;
 
-            MulitImg::insert([
-                'product_id'=>$product_id,
-                'photo_name'=>$uploadPath,
-                'created_at'=>Carbon::now(),
-            ]);
+                MulitImg::insert([
+                    'product_id'=>$product_id,
+                    'photo_name'=>$uploadPath,
+                    'created_at'=>Carbon::now(),
+                ]);
+            }
         }
 
         $notification= array(

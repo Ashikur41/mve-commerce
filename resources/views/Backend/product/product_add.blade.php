@@ -180,9 +180,6 @@
                                 product_thumbnail:{
                                     required:true,
                                 },
-                                multi_img:{
-                                    required:true,
-                                },
                                 selling_price:{
                                     required:true,
                                 },
