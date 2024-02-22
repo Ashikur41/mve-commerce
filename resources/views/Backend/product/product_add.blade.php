@@ -88,7 +88,7 @@
 								  <div class="form-group col-12">
 									<label for="brand_id" class="form-label">Product Brand</label>
 									<select class="form-select" id="brand_id" name="brand_id">
-										<option></option>
+										<option selected disabled>Brand</option>
                                         @foreach ($brand as $brands)
 										<option value="{{ $brands->id }}">{{ $brands->brand_name }}</option>
                                         @endforeach
@@ -97,7 +97,7 @@
 								  <div class="form-group col-12">
 									<label for="category_id" class="form-label">Product Category</label>
 									<select class="form-select" id="category_id" name="category_id">
-										<option></option>
+										<option selected disabled>Category</option>
                                         @foreach ($category as $categorys)
 										<option value="{{ $categorys->id }}">{{ $categorys->category_name }}</option>
                                         @endforeach
@@ -106,11 +106,11 @@
 								  <div class="form-group col-12">
 									<label for="subcategory_id" class="form-label">Product SubCategory</label>
 									<select class="form-select" name="subcategory_id" id="subcategory_id">
-										<option></option>
+										<option selected disabled>SubCategory</option>
 
 									  </select>
 								  </div>
-								  <div class="form-group col-12">
+								  <div class="form-group col-12" style="display: none;">
 									<label for="vendor_id" class="form-label">Select Vendor</label>
 									<select class="form-select" name="vendor_id" id="vendor_id">
 										<option></option>
@@ -195,13 +195,7 @@
                                 product_qty:{
                                     required:true,
                                 },
-                                brand_id:{
-                                    required:true,
-                                },
                                 category_id:{
-                                    required:true,
-                                },
-                                subcategory_id:{
                                     required:true,
                                 },
                             },

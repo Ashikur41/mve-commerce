@@ -87,6 +87,6 @@ class CashController extends Controller
             'message'=>'Your Order Place Successfully !',
             'alert-type' =>'success'
         );
-        return redirect()->route('dashboard')->with($notification);
+        return redirect()->route('frontend.index')->with($notification);
     }
 }

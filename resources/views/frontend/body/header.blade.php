@@ -1,3 +1,5 @@
+{{-- <script src="{{ url('Frontend/assets/js/script.js') }}"></script> --}}
+
 <header class="header-area header-style-1 header-height-2">
     <div class="mobile-promotion">
         <span>Grand opening, <strong>up to 15%</strong> off all items. Only <strong>3 days</strong> left</span>
@@ -7,12 +9,13 @@
         <div class="container">
             <div class="header-wrap">
                 <div class="logo logo-width-1">
-                    <a href='{{ route('frontend.index') }}'><img src="{{ url('Frontend') }}/assets/imgs/theme/logo.svg" alt="logo" /></a>
+                    <a href='{{ route('frontend.index') }}'><img src="{{ url('Frontend/assets/imgs/theme/logo.svg') }}" alt="logo" /></a>
                 </div>
                 <div class="header-right">
                     <div class="search-style-2">
-                        <form action="#">
-                            <select class="select-active">
+                        <form action="{{ route('product.search') }}" method="post">
+                            @csrf
+                            {{-- <select class="select-active">
                                 <option>All Categories</option>
                                 <option>Milks and Dairies</option>
                                 <option>Wines & Alcohol</option>
@@ -24,8 +27,9 @@
                                 <option>Fresh Seafood</option>
                                 <option>Noodles & Rice</option>
                                 <option>Ice cream</option>
-                            </select>
-                            <input type="text" placeholder="Search for items..." />
+                            </select> --}}
+                            <input name="search" onfocus="search_result_show()" onblur="search_result_hide()" id="search" placeholder="Search for items..." />
+                            <div id="searchProduct"></div>
                         </form>
                     </div>
                     <div class="header-action-right">
@@ -84,14 +88,14 @@
                                             <h4>Total <span id="cartSubTotal"></span></h4>
                                         </div>
                                         <div class="shopping-cart-button">
-                                            <a class='outline' href='shop-cart.html'>View cart</a>
-                                            <a href='shop-checkout.html'>Checkout</a>
+                                            <a class='outline' href='{{ route('my.cart') }}'>View cart</a>
+                                            <a href='{{ route('checkout') }}'>Checkout</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="header-action-icon-2">
-                                <a href='page-account.html'>
+                                <a href='#'>
                                     <img class="svgInject" alt="Nest" src="{{ url('Frontend') }}/assets/imgs/theme/icons/icon-user.svg" />
                                 </a>
 
@@ -135,7 +139,7 @@
         <div class="container">
             <div class="header-wrap header-space-between position-relative">
                 <div class="logo logo-width-1 d-block d-lg-none">
-                    <a href='index.html'><img src="{{ url('Frontend') }}/assets/imgs/theme/logo.svg" alt="logo" /></a>
+                    <a href='index.html'><img src="{{ url('Frontend/assets/imgs/theme/logo.svg') }}" alt="logo" /></a>
                 </div>
 
                 @php
@@ -285,6 +289,32 @@
         </div>
     </div>
 </header>
+
+
+<style>
+    #searchProduct{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        z-index: 999;
+        border-radius: 8px;
+        margin-top: 5px;
+    }
+</style>
+
+<script>
+    function search_result_show(){
+        $("#searchProduct").slideDown();
+    }
+    function search_result_hide(){
+        $("#searchProduct").slideUp();
+    }
+</script>
+
+
+
 <div class="mobile-header-active mobile-header-wrapper-style">
     <div class="mobile-header-wrapper-inner">
         <div class="mobile-header-top">

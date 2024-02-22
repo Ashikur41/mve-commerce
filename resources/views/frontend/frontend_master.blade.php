@@ -54,6 +54,7 @@
     <!-- Template  JS -->
     <script src="{{ url('Frontend/assets/js/main2cc5.js?v=5.6') }}"></script>
     <script src="{{ url('Frontend/assets/js/shop2cc5.js?v=5.6') }}"></script>
+    <script src="{{ url('Frontend/assets/js/script.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
@@ -357,8 +358,8 @@
                                 </td>
                                 <td class="price" data-title="Price">
                                     ${value.product.discount_price == null
-                                    ?`<h3 class="text-brand">$${value.product.selling_price}</h3>`
-                                    :`<h3 class="text-brand">$${value.product.discount_price}</h3>`
+                                    ?`<h3 class="text-brand">&#2547;${value.product.selling_price}</h3>`
+                                    :`<h3 class="text-brand">&#2547;${value.product.discount_price}</h3>`
                                     }
 
                                 </td>
@@ -468,7 +469,7 @@
                                     </div>
                                 </td>
                                 <td class="price" data-title="Price">
-                                    <h4 class="text-brand">$${value.subtotal} </h4>
+                                    <h4 class="text-brand">&#2547;${value.subtotal} </h4>
                                 </td>
                                 <td class="action text-center" data-title="Remove"><a type="submit" class="text-body" id="${value.rowId}" onclick="CartRemove(this.id)"><i class="fi-rs-trash"></i></a></td>
                             </tr> `
@@ -603,7 +604,7 @@
                                                 <h6 class="text-muted">Subtotal</h6>
                                             </td>
                                             <td class="cart_total_amount">
-                                                <h4 class="text-brand text-end">$${data.total}</h4>
+                                                <h4 class="text-brand text-end">&#2547;${data.total}</h4>
                                             </td>
                                         </tr>
                                         <tr>
@@ -611,7 +612,7 @@
                                                 <h6 class="text-muted">Grand Total</h6>
                                             </td>
                                             <td class="cart_total_amount">
-                                                <h4 class="text-brand text-end">$${data.total}</h4>
+                                                <h4 class="text-brand text-end">&#2547;${data.total}</h4>
                                             </td>
                                         </tr>
                             `
@@ -625,7 +626,7 @@
                                                 <h6 class="text-muted">Subtotal</h6>
                                             </td>
                                             <td class="cart_total_amount">
-                                                <h4 class="text-brand text-end">$${data.subtotal}</h4>
+                                                <h4 class="text-brand text-end">&#2547;${data.subtotal}</h4>
                                             </td>
                                         </tr>
                                         <tr>
@@ -642,7 +643,7 @@
                                                 <h6 class="text-muted">Discount Amount</h6>
                                             </td>
                                             <td class="cart_total_amount">
-                                                <h4 class="text-brand text-end">$${data.discount_amount}</h4>
+                                                <h4 class="text-brand text-end">&#2547;${data.discount_amount}</h4>
                                             </td>
                                         </tr>
                                         <tr>
@@ -650,7 +651,7 @@
                                                 <h6 class="text-muted">Grand Total</h6>
                                             </td>
                                             <td class="cart_total_amount">
-                                                <h4 class="text-brand text-end">$${data.total_amount}</h4>
+                                                <h4 class="text-brand text-end">&#2547;${data.total_amount}</h4>
                                             </td>
                                         </tr>
                             `

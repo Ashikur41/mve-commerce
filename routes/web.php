@@ -211,6 +211,10 @@ Route::controller(IndexController::class)->group(function(){
     //
     Route::get('product/view/modal/{id}','ProductViewAjax');
 
+    // search product all route
+    Route::post('/search' , 'ProductSearch')->name('product.search');
+    Route::post('search-product' , 'SearchProduct');
+
     });
 
         // Add to Cart store data
@@ -271,7 +275,7 @@ Route::controller(IndexController::class)->group(function(){
 
 
 
-// }); 
+// });
 
 Route::post('/coupon-apply',[CartController::class,'CouponApply']);
 Route::get('/coupon-calculation',[CartController::class,'couponCalculation']);

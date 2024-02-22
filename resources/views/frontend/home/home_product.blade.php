@@ -54,19 +54,19 @@ $categories=App\Models\Category::orderBy('category_name','ASC')->get();
                                     <a href='shop-grid-right.html'>{{ $product['category']['category_name'] }}</a>
                                 </div>
                                 <h2><a href='{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}'>{{ $product->product_name }}</a></h2>
-                                <div class="product-rate-cover">
+                                {{-- <div class="product-rate-cover">
                                     <div class="product-rate d-inline-block">
                                         <div class="product-rating" style="width: 90%"></div>
                                     </div>
                                     <span class="font-small ml-5 text-muted"> (4.0)</span>
-                                </div>
-                                <div>
+                                </div> --}}
+                                {{-- <div>
                                     @if($product->vendor_id == Null)
                                     <span class="font-small text-muted">By <a href='vendor-details-1.html'>Owner</a></span>
                                     @else
                                     <span class="font-small text-muted">By <a href='vendor-details-1.html'>{{ $product['vendor']['name'] }}</a></span>
                                     @endif
-                                </div>
+                                </div> --}}
                                 <div class="product-card-bottom">
                                     @if ($product->discount_price == Null)
                                     <div class="product-price">
@@ -79,7 +79,8 @@ $categories=App\Models\Category::orderBy('category_name','ASC')->get();
                                     </div>
                                     @endif
                                     <div class="add-cart">
-                                        <a class='add' href='{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}'><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
+                                        <a class='add' href='{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}'><i class="fi-rs-shopping-cart mr-5"></i>Add</a>
+                                        <a class='add' href='{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}'><i class="fi-rs-shopping-cart mr-5"></i>Oder Now</a>
                                     </div>
                                 </div>
                             </div>

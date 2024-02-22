@@ -13,10 +13,10 @@ $slider=App\Models\Slider::orderBy('slider_title','ASC')->get();
                             {{ $sliders->slider_title }}
                         </h1>
                         <p class="mb-65">{{ $sliders->short_title }}</p>
-                        <form class="form-subcriber d-flex">
+                        {{-- <form class="form-subcriber d-flex">
                             <input type="email" placeholder="Your emaill address" />
                             <button class="btn" type="submit">Subscribe</button>
-                        </form>
+                        </form> --}}
                     </div>
                 </div>
                 @endforeach
