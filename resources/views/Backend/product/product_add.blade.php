@@ -1,6 +1,7 @@
 @extends('admin.admin_dashboard')
 
 @section('main-content')
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 		<!--start page wrapper -->
 		<div class="page-wrapper">
 			<div class="page-content">
@@ -37,11 +38,20 @@
 							<div class="mb-3">
 								<label for="product_tags" class="form-label">Product Tags</label>
 								<input type="text" class="form-control visually-hidden" name="product_tags" data-role="tagsinput" value="new product,top product">
-							  </div>
-							<div class="mb-3">
+							</div>
+                            <br>
+                            <div class='item'>
+                                <input type="text" name="product_size[]" placeholder="Enter Size">
+                                <input type="text" name="selling_price[]" placeholder="Selling Price">
+                                <input type="text" name="discount_price[]" placeholder="Discount Price">
+                                <button id="add">Add +</button>
+                             </div>
+                             <div id="items"></div>
+                             <br>
+							{{-- <div class="mb-3" style="display: none">
 								<label for="product_size" class="form-label">Product Size</label>
 								<input type="text" class="form-control visually-hidden" name="product_size" data-role="tagsinput" value="Smaill,Midium,Large">
-							  </div>
+							</div> --}}
 							<div class="mb-3">
 								<label for="product_color" class="form-label">Product Color</label>
 								<input type="text" class="form-control visually-hidden" name="product_color" data-role="tagsinput" value="red,Blue,Black">
@@ -69,14 +79,14 @@
 						   <div class="col-lg-4">
 							<div class="border border-3 p-4 rounded">
                               <div class="row g-3">
-								<div class="form-group col-md-6">
+								{{-- <div class="form-group col-md-6">
 									<label for="selling_price" class="form-label">Product Price</label>
 									<input type="text" class="form-control" name="selling_price" id="selling_price" placeholder="00.00">
 								  </div>
 								  <div class="form-group col-md-6">
 									<label for="discount_price" class="form-label">Discount Price</label>
 									<input type="text" class="form-control" name="discount_price" id="discount_price" placeholder="00.00">
-								  </div>
+								  </div> --}}
 								  <div class="form-group col-md-6">
 									<label for="product_code" class="form-label">Product Code</label>
 									<input type="text" class="form-control" name="product_code" id="product_code" placeholder="00.00">
@@ -161,10 +171,31 @@
 				  </div>
 			  </div>
 
-
 			</div>
 		</div>
 		<!--end page wrapper -->
+
+
+
+
+
+        <script>
+            $(document).ready(()=>{
+            let template = `<div class='item'>
+                <input type="text" name="product_size[]" placeholder="Enter Size" />
+                <input type="text" name="selling_price[]" placeholder="Selling Price" />
+                <input type="text" name="discount_price[]" placeholder="Discount Price" />
+                <button class="remove">X</button>
+                </div>`;
+
+            $("#add").on("click", ()=>{
+                $("#items").append(template);
+            })
+            $("body").on("click", ".remove", (e)=>{
+                $(e.target).parent("div").remove();
+            })
+        });
+        </script>
 
                 {{-- form valiedtion  --}}
                 <script type="text/javascript">

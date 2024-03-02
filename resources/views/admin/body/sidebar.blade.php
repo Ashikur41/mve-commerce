@@ -165,6 +165,24 @@
         </li>
 
         <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"> <i class="bx bx-donate-blood"></i>
+                </div>
+                <div class="menu-title">Roles & Permission</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('all.permission') }}"><i class='bx bx-radio-circle'></i>All Permission</a>
+                </li>
+                <li> <a href="{{ route('all.role') }}"><i class='bx bx-radio-circle'></i>All Roles</a>
+                </li>
+                <li> <a href="{{ route('add.role.permission') }}"><i class='bx bx-radio-circle'></i>Roles in Permission</a>
+                </li>
+                <li> <a href="{{ route('all.role.permission') }}"><i class='bx bx-radio-circle'></i>All Roles in Permission</a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
             <a href="form-froala-editor.html">
                 <div class="parent-icon"><i class='bx bx-code-alt'></i>
                 </div>

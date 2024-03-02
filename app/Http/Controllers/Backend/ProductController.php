@@ -36,31 +36,37 @@ class ProductController extends Controller
         $image->move(public_path('upload/products/thumbnail/'),$name_gen);
         // Image::make($image)->resize(800,800)->save('upload/products/thumbnail/'.$name_gen);
         $save_url='upload/products/thumbnail/'.$name_gen;
+        if (is_array($request) || is_object($request))
+        {
+            foreach($request->product_size as $key=>$product)
+            {
+                $product_id=Product::insertGetId([
+                    'brand_id'=>$request->brand_id,
+                    'category_id'=>$request->category_id,
+                    'subcategory_id'=>$request->subcategory_id,
+                    'product_name'=>$request->product_name,
+                    'product_slug'=>strtolower(str_replace('','-',$request->product_name)),
+                    'product_code'=>$request->product_code,
+                    'product_qty'=>$request->product_qty,
+                    'product_tags'=>$request->product_tags,
+                    'product_size'=>$product,
+                    'product_color'=>$request->product_color,
+                    'selling_price'=>$request->selling_price[$key],
+                    'discount_price'=>$request->discount_price[$key],
+                    'short_description'=>$request->short_description,
+                    'long_description'=>$request->long_description,
+                    'vendor_id'=>$request->vendor_id,
+                    'hot_deals'=>$request->hot_deals,
+                    'featured'=>$request->featured,
+                    'special_offer'=>$request->special_offer,
+                    'special_deals'=>$request->special_deals,
+                    'product_thumbnail'=>$save_url,
+                    'status'=>1,
+                    'created_at'=>Carbon::now(),
+                ]);
+            }
+        }
 
-        $product_id=Product::insertGetId([
-            'brand_id'=>$request->brand_id,
-            'category_id'=>$request->category_id,
-            'subcategory_id'=>$request->subcategory_id,
-            'product_name'=>$request->product_name,
-            'product_slug'=>strtolower(str_replace('','-',$request->product_name)),
-            'product_code'=>$request->product_code,
-            'product_qty'=>$request->product_qty,
-            'product_tags'=>$request->product_tags,
-            'product_size'=>$request->product_size,
-            'product_color'=>$request->product_color,
-            'selling_price'=>$request->selling_price,
-            'discount_price'=>$request->discount_price,
-            'short_description'=>$request->short_description,
-            'long_description'=>$request->long_description,
-            'vendor_id'=>$request->vendor_id,
-            'hot_deals'=>$request->hot_deals,
-            'featured'=>$request->featured,
-            'special_offer'=>$request->special_offer,
-            'special_deals'=>$request->special_deals,
-            'product_thumbnail'=>$save_url,
-            'status'=>1,
-            'created_at'=>Carbon::now(),
-        ]);
 
         //multi-image upload
 
