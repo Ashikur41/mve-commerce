@@ -167,7 +167,7 @@ class RoleController extends Controller
         $role = Role::findOrFail($id);
 
         $permissions = $request->permission;
-
+        // dd($permissions);
         if (!empty($permissions)) {
            $role->syncPermissions($permissions);
         }

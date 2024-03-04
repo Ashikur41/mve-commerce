@@ -52,6 +52,7 @@ $categories=App\Models\Category::orderBy('category_name','ASC')->get();
 
                                         @php
                                         $amount= $product->selling_price - $product->discount_price;
+                                        if($amount > 0)
                                         $discount= ($amount/$product->selling_price) * 100;
                                         @endphp
 

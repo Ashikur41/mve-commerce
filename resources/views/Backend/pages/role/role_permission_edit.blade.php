@@ -1,7 +1,11 @@
 @extends('admin.admin_dashboard')
 
 @section('main-content')
-
+<style type="text/css">
+	.form-check-label {
+		text-transform: capitalize;
+	}
+</style>
 		<!--start page wrapper -->
 		<div class="page-wrapper">
 			<div class="page-content">
@@ -68,7 +72,7 @@
 
                                                 @foreach($permissions as $permission)
                                                 <div class="form-check">
-                                                             <input class="form-check-input" name="permission[]" {{ $role->hasPermissionTo($permission->name) ? 'checked' : '' }} type="checkbox" value="{{ $permission->id }}" id="flexCheckDefault{{ $permission->id }}">
+                                                             <input class="form-check-input" name="permission[]" {{ $role->hasPermissionTo($permission->name) ? 'checked' : '' }} type="checkbox" value="{{ $permission->name }}" id="flexCheckDefault{{ $permission->id }}">
                                                              <label class="form-check-label" for="flexCheckDefault{{ $permission->id }}">{{ $permission->name }}</label>
                                                          </div>
 

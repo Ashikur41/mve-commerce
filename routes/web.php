@@ -16,6 +16,7 @@ use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\VendorOrderController;
 use App\Http\Controllers\Backend\RoleController;
+use App\Http\Controllers\Backend\ReportController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 
 use App\Http\Controllers\Backend\VendorProductController;
@@ -220,6 +221,28 @@ Route::controller(RoleController::class)->group(function(){
 
     });
 
+    // Admin User All Route
+Route::controller(AdminController::class)->group(function(){
+    Route::get('/all/admin' , 'AllAdmin')->name('all.admin');
+    Route::get('/add/admin' , 'AddAdmin')->name('add.admin');
+    Route::post('/admin/user/store' , 'AdminUserStore')->name('admin.user.store');
+    Route::get('/edit/admin/role/{id}' , 'EditAdminRole')->name('edit.admin.role');
+    Route::post('/admin/user/update/{id}' , 'AdminUserUpdate')->name('admin.user.update');
+    Route::get('/delete/admin/role/{id}' , 'DeleteAdminRole')->name('delete.admin.role');
+
+   });
+
+    // Report All Route
+Route::controller(ReportController::class)->group(function(){
+    Route::get('/report/view' , 'ReportView')->name('report.view');
+    Route::post('/search/by/date' , 'SearchByDate')->name('search-by-date');
+    Route::post('/search/by/month' , 'SearchByMonth')->name('search-by-month');
+    Route::post('/search/by/year' , 'SearchByYear')->name('search-by-year');
+
+    Route::get('/order/by/user' , 'OrderByUser')->name('order.by.user');
+    Route::post('/search/by/user' , 'SearchByUser')->name('search-by-user');
+
+   });
 
 });
 

@@ -9,6 +9,7 @@ use App\Models\MulitImg;
 use App\Models\Product;
 use App\Models\SubCategory;
 use App\Models\User;
+use App\Models\ProductSize;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image as Image;
@@ -38,30 +39,34 @@ class ProductController extends Controller
         $save_url='upload/products/thumbnail/'.$name_gen;
         if (is_array($request) || is_object($request))
         {
-            foreach($request->product_size as $key=>$product)
+            $product=Product::insertGetId([
+                'brand_id'=>$request->brand_id,
+                'category_id'=>$request->category_id,
+                'subcategory_id'=>$request->subcategory_id,
+                'product_name'=>$request->product_name,
+                'product_slug'=>strtolower(str_replace('','-',$request->product_name)),
+                'product_code'=>$request->product_code,
+                'product_qty'=>$request->product_qty,
+                'product_tags'=>$request->product_tags,
+                'product_color'=>$request->product_color,
+                'short_description'=>$request->short_description,
+                'long_description'=>$request->long_description,
+                'vendor_id'=>$request->vendor_id,
+                'hot_deals'=>$request->hot_deals,
+                'featured'=>$request->featured,
+                'special_offer'=>$request->special_offer,
+                'special_deals'=>$request->special_deals,
+                'product_thumbnail'=>$save_url,
+                'status'=>1,
+                'created_at'=>Carbon::now(),
+            ]);
+            foreach($request->product_size as $key=>$size)
             {
-                $product_id=Product::insertGetId([
-                    'brand_id'=>$request->brand_id,
-                    'category_id'=>$request->category_id,
-                    'subcategory_id'=>$request->subcategory_id,
-                    'product_name'=>$request->product_name,
-                    'product_slug'=>strtolower(str_replace('','-',$request->product_name)),
-                    'product_code'=>$request->product_code,
-                    'product_qty'=>$request->product_qty,
-                    'product_tags'=>$request->product_tags,
-                    'product_size'=>$product,
-                    'product_color'=>$request->product_color,
+                $product_id=ProductSize::insertGetId([
+                    'product_id'=> $product,
+                    'product_size'=>$size,
                     'selling_price'=>$request->selling_price[$key],
                     'discount_price'=>$request->discount_price[$key],
-                    'short_description'=>$request->short_description,
-                    'long_description'=>$request->long_description,
-                    'vendor_id'=>$request->vendor_id,
-                    'hot_deals'=>$request->hot_deals,
-                    'featured'=>$request->featured,
-                    'special_offer'=>$request->special_offer,
-                    'special_deals'=>$request->special_deals,
-                    'product_thumbnail'=>$save_url,
-                    'status'=>1,
                     'created_at'=>Carbon::now(),
                 ]);
             }
@@ -79,7 +84,7 @@ class ProductController extends Controller
                 $uploadPath='upload/products/multi-image/'.$make_name;
 
                 MulitImg::insert([
-                    'product_id'=>$product_id,
+                    'product_id'=>$product,
                     'photo_name'=>$uploadPath,
                     'created_at'=>Carbon::now(),
                 ]);

@@ -24,6 +24,7 @@
                                 </div>
                                 @php
                                     $amount= $product->selling_price - $product->discount_price;
+                                    if($amount > 0)
                                     $discount= ($amount/$product->selling_price) * 100;
                                 @endphp
                                 <div class="product-badges product-badges-position product-badges-mrg">
@@ -112,6 +113,7 @@
                                 </div>
                                 @php
                                     $amount= $product->selling_price - $product->discount_price;
+                                    if($amount > 0)
                                     $discount= ($amount/$product->selling_price) * 100;
                                 @endphp
                                 <div class="product-badges product-badges-position product-badges-mrg">

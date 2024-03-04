@@ -18,6 +18,8 @@
                 <div class="menu-title">Dashboard</div>
             </a>
         </li>
+
+        @if (Auth::user()->can('brand.menu'))
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class='bx bx-home-alt'></i>
@@ -31,6 +33,9 @@
                 </li>
             </ul>
         </li>
+        @endif
+
+        @if (Auth::user()->can('category.menu'))
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bx bx-category"></i>
@@ -44,7 +49,7 @@
                 </li>
             </ul>
         </li>
-
+        @endif
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bx bx-category"></i>
@@ -74,6 +79,7 @@
             </ul>
         </li>
 
+        @if (Auth::user()->can('category.menu'))
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class='bx bx-cart'></i>
@@ -91,7 +97,7 @@
                 </li>
             </ul>
         </li>
-
+        @endif
 
         <li>
             <a class="has-arrow" href="javascript:;">
@@ -164,6 +170,7 @@
             </ul>
         </li>
 
+        <li class="menu-label">All Permission</li>
         <li>
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"> <i class="bx bx-donate-blood"></i>
@@ -183,12 +190,39 @@
         </li>
 
         <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"> <i class="bx bx-donate-blood"></i>
+                </div>
+                <div class="menu-title">Admin Manage</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('all.admin') }}"><i class='bx bx-radio-circle'></i>All Admin</a>
+                </li>
+                <li> <a href="{{ route('add.admin') }}"><i class="bx bx-right-arrow-alt"></i>Add Admin</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"> <i class="bx bx-donate-blood"></i>
+                </div>
+                <div class="menu-title">Reports Manage</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('report.view') }}"><i class='bx bx-radio-circle'></i>Report View</a>
+                </li>
+                <li> <a href="{{ route('order.by.user') }}"><i class="bx bx-right-arrow-alt"></i>Order By User</a>
+                </li>
+            </ul>
+        </li>
+
+        {{-- <li>
             <a href="form-froala-editor.html">
                 <div class="parent-icon"><i class='bx bx-code-alt'></i>
                 </div>
                 <div class="menu-title">Froala Editor</div>
             </a>
-        </li>
+        </li> --}}
 
         <li>
             <a href="#" target="_blank">

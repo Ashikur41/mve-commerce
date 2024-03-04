@@ -20,7 +20,12 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $guarded=[];
-    
+
+    public function guardName()
+    {
+    return 'web';
+    }
+
 
     public static function getPermissionGroup()
     {

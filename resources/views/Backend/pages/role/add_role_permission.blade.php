@@ -1,7 +1,11 @@
 @extends('admin.admin_dashboard')
 
 @section('main-content')
-
+<style type="text/css">
+	.form-check-label {
+		text-transform: capitalize;
+	}
+</style>
 		<!--start page wrapper -->
 		<div class="page-wrapper">
 			<div class="page-content">
