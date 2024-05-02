@@ -247,7 +247,8 @@ Route::controller(ReportController::class)->group(function(){
 
     // Blog manage All Route
 Route::controller(BlogController::class)->group(function(){
-    Route::get('/admin/blog/category' , 'ReportView')->name('admin.blog.category');
+    Route::get('/admin/blog/category' , 'AllBlogCategory')->name('admin.blog.category');
+    Route::get('/add/blog/category' , 'AddBlogCategory')->name('add.blog.category');
 
    });
 
