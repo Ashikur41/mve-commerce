@@ -27,7 +27,7 @@
 							<div class="col-lg-10">
 								<div class="card">
 									<div class="card-body">
-                                        <form id="myForm" method="post" action="{{ route('store.category') }}" enctype="multipart/form-data">
+                                        <form id="myForm" method="post" action="{{ route('store.blog.category') }}">
                                             @csrf
 
 										<div class="row mb-3">
@@ -35,7 +35,7 @@
 												<h6 class="mb-0">Blog Category Name</h6>
 											</div>
 											<div class="form-group col-sm-9 text-secondary">
-												<input type="text" class="form-control" name="category_name" />
+												<input type="text" class="form-control" name="blog_category_name" />
 											</div>
 										</div>
 
@@ -56,30 +56,18 @@
 		</div>
 		<!--end page wrapper -->
 
-        {{-- image show --}}
-        <script>
-            $(document).ready(function(){
-                $('#image').change(function(e){
-                    var reader = new FileReader();
-                    reader.onload = function(e){
-                        $('#showImage').attr('src',e.target.result);
-                    }
-                    reader.readAsDataURL(e.target.files['0']);
-                });
-            });
-        </script>
         {{-- form valiedtion  --}}
         <script type="text/javascript">
             $(document).ready(function(){
                 $('#myForm').validate({
                     rules:{
-                        category_name:{
+                        blog_category_name:{
                             required:true,
                         },
                     },
                     messages:{
-                        category_name:{
-                            required:'Please Enter Category Name',
+                        blog_category_name:{
+                            required:'Please Enter Blog Category Name',
                         },
                     },
                     errorElement:'span',
