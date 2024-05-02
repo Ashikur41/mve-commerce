@@ -67,4 +67,87 @@ class BlogController extends Controller
         );
         return redirect()->back()->with($notification);
     }
+
+    //////////////////////// Blog Post /////////////////////
+
+    public function AllBlogPost()
+    {
+        $AllblogPost =BlogPost::latest()->get();
+
+        return view('Backend.blog.post.all_post',compact('AllblogPost'));
+    }
+
+    public function AddBlogPost()
+    {
+        $blogCategories =BlogCategory::latest()->get();
+        return view('Backend.blog.post.add_post',compact('blogCategories'));
+    }
+
+    public function StoreBlogPost(Request $request)
+    {
+        $data=new BlogPost();
+        $data->category_id=$request->category_id;
+        $data->post_title=$request->post_title;
+        $data->post_slug=strtolower(str_replace('','-',$request->post_title));
+        $data->post_short_description=$request->post_short_description;
+        $data->post_long_description=$request->post_long_description;
+        if($request->file('post_image'))
+        {
+            $file= $request->file('post_image');
+            $fileName= date('YmdHi').$file->getClientOriginalName();
+            $file->move(public_path('upload/blog_post'),$fileName);
+            $data['post_image']=$fileName;
+        }
+        $data->save();
+
+        $notification= array(
+            'message'=>'Blog Post Inserted Successfully!',
+            'alert-type' =>'success'
+        );
+        return redirect()->route('admin.blog.post')->with($notification);
+    }
+
+
+    public function EditBlogPost($id)
+    {
+        $editBlogPost = BlogPost::findOrFail($id);
+        $blogCategories =BlogCategory::latest()->get();
+        return view('Backend.blog.post.edit_post',compact('editBlogPost','blogCategories'));
+    }
+
+    public function UpdateBlogPost(Request $request,$id)
+    {
+        $data= BlogPost::findOrFail($id);
+        $data->category_id=$request->category_id;
+        $data->post_title=$request->post_title;
+        $data->post_slug=strtolower(str_replace('','-',$request->post_title));
+        $data->post_short_description=$request->post_short_description;
+        $data->post_long_description=$request->post_long_description;
+        if($request->file('post_image'))
+        {
+            $file= $request->file('post_image');
+            $fileName= date('YmdHi').$file->getClientOriginalName();
+            $file->move(public_path('upload/blog_post'),$fileName);
+            $data['post_image']=$fileName;
+        }
+        $data->update();
+
+        $notification= array(
+            'message'=>'Blog Post Updated Successfully!',
+            'alert-type' =>'success'
+        );
+        return redirect()->route('admin.blog.post')->with($notification);
+    }
+
+
+
+    public function DeleteBlogPost($id)
+    {
+        BlogPost::findOrFail($id)->delete();
+        $notification= array(
+            'message'=>'Blog Post Deleted Successfully!',
+            'alert-type' =>'success'
+        );
+        return redirect()->back()->with($notification);
+    }
 }

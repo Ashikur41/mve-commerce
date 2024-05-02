@@ -245,7 +245,7 @@ Route::controller(ReportController::class)->group(function(){
 
    });
 
-    // Blog manage All Route
+    // Blog category manage All Route
 Route::controller(BlogController::class)->group(function(){
     Route::get('/admin/blog/category' , 'AllBlogCategory')->name('admin.blog.category');
     Route::get('/add/blog/category' , 'AddBlogCategory')->name('add.blog.category');
@@ -253,6 +253,17 @@ Route::controller(BlogController::class)->group(function(){
     Route::get('/edit/blog/category/{id}' , 'EditBlogCategory')->name('edit.blog.category');
     Route::post('/update/blog/category/{id}' , 'UpdateBlogCategory')->name('update.blog.category');
     Route::get('/delete/blog/category/{id}' , 'DeleteBlogCategory')->name('delete.blog.category');
+
+   });
+
+    // Blog post All Route
+Route::controller(BlogController::class)->group(function(){
+    Route::get('/admin/blog/post' , 'AllBlogPost')->name('admin.blog.post');
+    Route::get('/add/blog/post' , 'AddBlogPost')->name('add.blog.post');
+    Route::post('/store/blog/post' , 'StoreBlogPost')->name('store.blog.post');
+    Route::get('/edit/blog/post/{id}' , 'EditBlogPost')->name('edit.blog.post');
+    Route::post('/update/blog/post/{id}' , 'UpdateBlogPost')->name('update.blog.post');
+    Route::get('/delete/blog/post/{id}' , 'DeleteBlogPost')->name('delete.blog.post');
 
    });
 
