@@ -266,7 +266,9 @@ Route::controller(BlogController::class)->group(function(){
     Route::get('/delete/blog/post/{id}' , 'DeleteBlogPost')->name('delete.blog.post');
 
 
-    Route::get('/blog' , 'AllBlog')->name('home.blog'); 
+    Route::get('/blog' , 'AllBlog')->name('home.blog');
+    Route::get('/post/details/{id}/{slug}' , 'BlogDetails');
+    Route::get('/post/category/{id}/{slug}' , 'BlogPostCategory');
 
    });
 
