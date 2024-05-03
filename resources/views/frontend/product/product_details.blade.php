@@ -437,9 +437,20 @@
                                                 <div class="product-rate d-inline-block mb-30"></div>
                                                 <div class="row">
                                                     <div class="col-lg-8 col-md-12">
-                                                        <form class="form-contact comment_form" action="#"
+                                                        <form class="form-contact comment_form"
+                                                            action="{{ route('store.review') }}" method="post"
                                                             id="commentForm">
+                                                            @csrf
                                                             <div class="row">
+                                                                <input type="hidden" name="product_id"
+                                                                    value="{{ $product->id }}">
+
+                                                                @if ($product->vendor_id == null)
+                                                                    <input type="hidden" name="hvendor_id" value="">
+                                                                @else
+                                                                    <input type="hidden" name="hvendor_id"
+                                                                        value="{{ $product->vendor_id }}">
+                                                                @endif
 
                                                                 <table class="table" style=" width: 60%;">
                                                                     <thead>
@@ -472,8 +483,7 @@
 
                                                                 <div class="col-12">
                                                                     <div class="form-group">
-                                                                        <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9"
-                                                                            placeholder="Write Comment"></textarea>
+                                                                        <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9" placeholder="Write Comment"></textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
