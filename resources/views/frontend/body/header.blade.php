@@ -192,7 +192,7 @@
                                     <a class='active' href='{{ url('/') }}'>Home</a>
                                 </li>
                                 @php
-                                $category=App\Models\Category::orderBy('category_name','ASC')->limit(4)->get();
+                                $category=App\Models\Category::orderBy('category_name','ASC')->limit(2)->get();
                             @endphp
                             @foreach ($category as $cate)
                             <li>
@@ -207,9 +207,15 @@
                             @endforeach
                             </li>
                             @endforeach
-                                <li>
-                                    <a href='page-contact.html'>Contact</a>
-                                </li>
+
+                            <li>
+                                <a href="{{ route('home.blog') }}">Blog</a>
+                            </li>
+
+                            <li>
+                                <a href='page-contact.html'>Contact</a>
+                            </li>
+
                             </ul>
                         </nav>
                     </div>
