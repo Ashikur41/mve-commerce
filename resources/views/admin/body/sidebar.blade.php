@@ -8,7 +8,7 @@
         </div>
         <div class="toggle-icon ms-auto"><i class='bx bx-arrow-back'></i>
         </div>
-     </div>
+    </div>
     <!--navigation-->
     <ul class="metismenu" id="menu">
         <li>
@@ -89,11 +89,14 @@
             <ul>
                 <li> <a href="{{ route('pending.order') }}"><i class='bx bx-radio-circle'></i>Pending Order</a>
                 </li>
-                <li> <a href="{{ route('admin.confirmed.order') }}"><i class="bx bx-right-arrow-alt"></i>Confirmed Order</a>
+                <li> <a href="{{ route('admin.confirmed.order') }}"><i class="bx bx-right-arrow-alt"></i>Confirmed
+                        Order</a>
                 </li>
-                <li> <a href="{{ route('admin.processing.order') }}"><i class="bx bx-right-arrow-alt"></i>Processing Order</a>
+                <li> <a href="{{ route('admin.processing.order') }}"><i class="bx bx-right-arrow-alt"></i>Processing
+                        Order</a>
                 </li>
-                <li> <a href="{{ route('admin.delivered.order') }}"><i class="bx bx-right-arrow-alt"></i>Delivered Order</a>
+                <li> <a href="{{ route('admin.delivered.order') }}"><i class="bx bx-right-arrow-alt"></i>Delivered
+                        Order</a>
                 </li>
             </ul>
         </li>
@@ -177,10 +180,28 @@
                 <div class="menu-title">Blog Manage</div>
             </a>
             <ul>
-                <li> <a href="{{ route('admin.blog.category') }}"><i class='bx bx-radio-circle'></i>All Blog Category</a>
+                <li> <a href="{{ route('admin.blog.category') }}"><i class='bx bx-radio-circle'></i>All Blog
+                        Category</a>
                 </li>
                 <li> <a href="{{ route('admin.blog.post') }}"><i class='bx bx-radio-circle'></i>All Blog Post</a>
                 </li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-category"></i>
+                </div>
+                <div class="menu-title">Review Manage</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('pending.review') }}"><i class="bx bx-right-arrow-alt"></i>Pending Review</a>
+                </li>
+
+                <li> <a href="{{ route('publish.review') }}"><i class="bx bx-right-arrow-alt"></i>Publish Review</a>
+                </li>
+
+
             </ul>
         </li>
 
@@ -196,9 +217,11 @@
                 </li>
                 <li> <a href="{{ route('all.role') }}"><i class='bx bx-radio-circle'></i>All Roles</a>
                 </li>
-                <li> <a href="{{ route('add.role.permission') }}"><i class='bx bx-radio-circle'></i>Roles in Permission</a>
+                <li> <a href="{{ route('add.role.permission') }}"><i class='bx bx-radio-circle'></i>Roles in
+                        Permission</a>
                 </li>
-                <li> <a href="{{ route('all.role.permission') }}"><i class='bx bx-radio-circle'></i>All Roles in Permission</a>
+                <li> <a href="{{ route('all.role.permission') }}"><i class='bx bx-radio-circle'></i>All Roles in
+                        Permission</a>
                 </li>
             </ul>
         </li>
