@@ -1,7 +1,6 @@
 @extends('frontend.frontend_master')
 
 @section('content')
-
     <main class="main">
         <div class="page-header breadcrumb-wrap">
             <div class="container">
@@ -51,10 +50,30 @@
                                     <h2 class="title-detail" id="dpname">{{ $product->product_name }}</h2>
                                     <div class="product-detail-rating">
                                         <div class="product-rate-cover text-end">
+                                            @php
+                                                $reviewcount = App\Models\Review::where('product_id', $product->id)
+                                                    ->where('status', 1)
+                                                    ->latest()
+                                                    ->get();
+                                                $avarage = App\Models\Review::where('product_id', $product->id)
+                                                    ->where('status', 1)
+                                                    ->avg('rating');
+                                            @endphp
                                             <div class="product-rate d-inline-block">
-                                                <div class="product-rating" style="width: 90%"></div>
+                                                @if ($avarage == 0)
+                                                @elseif($avarage == 1 || $avarage < 2)
+                                                    <div class="product-rating" style="width: 20%"></div>
+                                                @elseif($avarage == 2 || $avarage < 3)
+                                                    <div class="product-rating" style="width: 40%"></div>
+                                                @elseif($avarage == 3 || $avarage < 4)
+                                                    <div class="product-rating" style="width: 60%"></div>
+                                                @elseif($avarage == 4 || $avarage < 5)
+                                                    <div class="product-rating" style="width: 80%"></div>
+                                                @elseif($avarage == 5 || $avarage < 5)
+                                                    <div class="product-rating" style="width: 100%"></div>
+                                                @endif
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (32 reviews)</span>
+                                            <span class="font-small ml-5 text-muted"> ({{ count($reviewcount)}} reviews)</span>
                                         </div>
                                     </div>
                                     <div class="clearfix product-price-cover">
@@ -193,8 +212,7 @@
                                             href="#Vendor-info">Vendor</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab"
-                                            href="#Reviews">Reviews (3)</a>
+                                        <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">Reviews ({{ count($reviewcount) }})</a>
                                     </li>
                                 </ul>
                                 <div class="tab-content shop_info_tab entry-main-content">
@@ -309,10 +327,34 @@
                                                     </h6>
                                                 @endif
                                                 <div class="product-rate-cover text-end">
+                                                    @php
+                                                        $reviewcount = App\Models\Review::where(
+                                                            'product_id',
+                                                            $product->id,
+                                                        )
+                                                            ->where('status', 1)
+                                                            ->latest()
+                                                            ->get();
+                                                        $avarage = App\Models\Review::where('product_id', $product->id)
+                                                            ->where('status', 1)
+                                                            ->avg('rating');
+                                                    @endphp
                                                     <div class="product-rate d-inline-block">
-                                                        <div class="product-rating" style="width: 90%"></div>
+                                                        @if ($avarage == 0)
+                                                        @elseif($avarage == 1 || $avarage < 2)
+                                                            <div class="product-rating" style="width: 20%"></div>
+                                                        @elseif($avarage == 2 || $avarage < 3)
+                                                            <div class="product-rating" style="width: 40%"></div>
+                                                        @elseif($avarage == 3 || $avarage < 4)
+                                                            <div class="product-rating" style="width: 60%"></div>
+                                                        @elseif($avarage == 4 || $avarage < 5)
+                                                            <div class="product-rating" style="width: 80%"></div>
+                                                        @elseif($avarage == 5 || $avarage < 5)
+                                                            <div class="product-rating" style="width: 100%"></div>
+                                                        @endif
                                                     </div>
-                                                    <span class="font-small ml-5 text-muted"> (32 reviews)</span>
+                                                    <span class="font-small ml-5 text-muted"> ({{ count($reviewcount) }}
+                                                        reviews)</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -350,36 +392,64 @@
                                                     <h4 class="mb-30">Customer questions & answers</h4>
                                                     <div class="comment-list">
 
-                                                        <div class="single-comment justify-content-between d-flex mb-30">
-                                                            <div class="user justify-content-between d-flex">
-                                                                <div class="thumb text-center">
-                                                                    <img src="assets/imgs/blog/author-2.png"
-                                                                        alt="" />
-                                                                    <a href="#"
-                                                                        class="font-heading text-brand">Sienna</a>
-                                                                </div>
-                                                                <div class="desc">
-                                                                    <div class="d-flex justify-content-between mb-10">
-                                                                        <div class="d-flex align-items-center">
-                                                                            <span class="font-xs text-muted">December 4,
-                                                                                2022 at 3:12 pm </span>
+                                                        @php
+                                                            $reviews = App\Models\Review::where(
+                                                                'product_id',
+                                                                $product->id,
+                                                            )
+                                                                ->latest()
+                                                                ->limit(5)
+                                                                ->get();
+                                                        @endphp
+                                                        @foreach ($reviews as $item)
+                                                            @if ($item->status == 0)
+                                                            @else
+                                                                <div
+                                                                    class="single-comment justify-content-between d-flex mb-30">
+                                                                    <div class="user justify-content-between d-flex">
+                                                                        <div class="thumb text-center">
+                                                                            <img src="{{ !empty($item->user->photo) ? url('upload/user_image/' . $item->user->photo) : url('upload/no_image.jpg') }}"
+                                                                                alt="" />
+                                                                            <a href="#"
+                                                                                class="font-heading text-brand">{{ $item->user->name }}</a>
                                                                         </div>
-                                                                        <div class="product-rate d-inline-block">
-                                                                            <div class="product-rating"
-                                                                                style="width: 100%"></div>
+                                                                        <div class="desc">
+                                                                            <div
+                                                                                class="d-flex justify-content-between mb-10">
+                                                                                <div class="d-flex align-items-center">
+                                                                                    <span class="font-xs text-muted">
+                                                                                        {{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}
+                                                                                    </span>
+                                                                                </div>
+                                                                                <div class="product-rate d-inline-block">
+
+                                                                                    @if ($item->rating == null)
+                                                                                    @elseif($item->rating == 1)
+                                                                                        <div class="product-rating"
+                                                                                            style="width: 20%"></div>
+                                                                                    @elseif($item->rating == 2)
+                                                                                        <div class="product-rating"
+                                                                                            style="width: 40%"></div>
+                                                                                    @elseif($item->rating == 3)
+                                                                                        <div class="product-rating"
+                                                                                            style="width: 60%"></div>
+                                                                                    @elseif($item->rating == 4)
+                                                                                        <div class="product-rating"
+                                                                                            style="width: 80%"></div>
+                                                                                    @elseif($item->rating == 5)
+                                                                                        <div class="product-rating"
+                                                                                            style="width: 100%"></div>
+                                                                                    @endif
+                                                                                </div>
+                                                                            </div>
+                                                                            <p class="mb-10">{{ $item->comment }} <a
+                                                                                    href="#"
+                                                                                    class="reply">Reply</a></p>
                                                                         </div>
                                                                     </div>
-                                                                    <p class="mb-10">Lorem ipsum dolor sit amet,
-                                                                        consectetur adipisicing elit. Delectus, suscipit
-                                                                        exercitationem accusantium obcaecati quos voluptate
-                                                                        nesciunt facilis itaque modi commodi dignissimos
-                                                                        sequi repudiandae minus ab deleniti totam officia id
-                                                                        incidunt? <a href="#"
-                                                                            class="reply">Reply</a></p>
                                                                 </div>
-                                                            </div>
-                                                        </div>
-
+                                                            @endif
+                                                        @endforeach
                                                     </div>
                                                 </div>
 
@@ -483,7 +553,8 @@
 
                                                                 <div class="col-12">
                                                                     <div class="form-group">
-                                                                        <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9" placeholder="Write Comment"></textarea>
+                                                                        <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9"
+                                                                            placeholder="Write Comment"></textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -578,6 +649,4 @@
             </div>
         </div>
     </main>
-
-
 @endsection
