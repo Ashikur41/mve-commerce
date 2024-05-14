@@ -170,7 +170,7 @@
                 </div> --}}
             </div>
     </section>
-    {{-- <div class="container pb-30 wow animate__animated animate__fadeInUp" data-wow-delay="0">
+    <div class="container pb-30 wow animate__animated animate__fadeInUp" data-wow-delay="0">
         <div class="row align-items-center">
             <div class="col-12 mb-30">
                 <div class="footer-bottom"></div>
@@ -179,10 +179,10 @@
                 <p class="font-sm mb-0">&copy; 2022, <strong class="text-brand">Nest</strong> - HTML Ecommerce Template <br />All rights reserved</p>
             </div>
             <div class="col-xl-4 col-lg-6 text-center d-none d-xl-block">
-                <div class="hotline d-lg-inline-flex mr-30">
+                {{-- <div class="hotline d-lg-inline-flex mr-30">
                     <img src="{{ url('Frontend') }}/assets/imgs/theme/icons/phone-call.svg" alt="hotline" />
                     <p>1900 - 6666<span>Working 8:00 - 22:00</span></p>
-                </div>
+                </div> --}}
                 <div class="hotline d-lg-inline-flex">
                     <img src="{{ url('Frontend') }}/assets/imgs/theme/icons/phone-call.svg" alt="hotline" />
                     <p>1900 - 8888<span>24/7 Support Center</span></p>
@@ -200,5 +200,5 @@
                 <p class="font-sm">Up to 15% discount on your first subscribe</p>
             </div>
         </div>
-    </div> --}}
+    </div>
 </footer>
