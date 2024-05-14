@@ -2,6 +2,10 @@
 
 @section('content')
 
+@section('title')
+    {{ $breadCat->category_name }} Category
+@endsection
+
 <main class="main">
     <div class="page-header mt-30 mb-50">
         <div class="container">

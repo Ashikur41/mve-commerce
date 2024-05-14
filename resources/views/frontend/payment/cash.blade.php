@@ -2,6 +2,9 @@
 
 @section('content')
 
+@section('title')
+    Cash Payment
+@endsection
 
 <main class="main">
     <div class="page-header breadcrumb-wrap">

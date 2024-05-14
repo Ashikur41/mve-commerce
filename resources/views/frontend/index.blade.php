@@ -1,6 +1,10 @@
 @extends('frontend.frontend_master')
 
 @section('content')
+
+@section('title')
+    atz Bazar
+@endsection
     <main class="main">
         @include('frontend.home.home_slider')
         <!--End hero slider-->

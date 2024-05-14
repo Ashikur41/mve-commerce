@@ -1,6 +1,11 @@
 @extends('frontend.frontend_master')
 
 @section('content')
+
+@section('title')
+    Blog Page
+@endsection
+
     <main class="main">
         <div class="page-header mt-30 mb-75">
             <div class="container">

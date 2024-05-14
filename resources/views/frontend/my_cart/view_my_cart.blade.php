@@ -2,6 +2,10 @@
 
 @section('content')
 
+@section('title')
+    MyCart Page
+@endsection
+
 <main class="main">
     <div class="page-header breadcrumb-wrap">
         <div class="container">

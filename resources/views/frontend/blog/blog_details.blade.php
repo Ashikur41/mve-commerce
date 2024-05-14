@@ -1,6 +1,11 @@
 @extends('frontend.frontend_master')
 
 @section('content')
+
+@section('title')
+    {{ $blogdetails->post_title }}
+@endsection
+
     <main class="main">
         <div class="page-header breadcrumb-wrap">
             <div class="container">
