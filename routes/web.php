@@ -113,6 +113,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
         Route::get('product/inactive/{id}', 'InActiveProduct')->name('product.InActive');
         Route::get('product/active/{id}', 'ActiveProduct')->name('product.Active');
+
+        // For Product Stock
+        Route::get('/product/stock', 'ProductStock')->name('product.stock');
     });
 
 
@@ -283,13 +286,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::controller(SiteSettingController::class)->group(function () {
 
         Route::get('/site/setting', 'SiteSetting')->name('site.setting');
-        Route::post('/site/setting/update' , 'SiteSettingUpdate')->name('site.setting.update');
+        Route::post('/site/setting/update', 'SiteSettingUpdate')->name('site.setting.update');
 
-        Route::get('/seo/setting' , 'SeoSetting')->name('seo.setting');
-        Route::post('/seo/setting/update' , 'SeoSettingUpdate')->name('seo.setting.update');
-
+        Route::get('/seo/setting', 'SeoSetting')->name('seo.setting');
+        Route::post('/seo/setting/update', 'SeoSettingUpdate')->name('seo.setting.update');
     });
-
 });
 
 

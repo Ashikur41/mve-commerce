@@ -120,7 +120,7 @@
 
                          <tr>
                              <th>Order Amonut:</th>
-                              <th>${{ $order->amount }}</th>
+                              <th>&#2547; {{ $order->amount }}</th>
                          </tr>
 
                           <tr>
@@ -202,7 +202,9 @@
                                     @foreach($orderItem as $item)
                                      <tr>
                                         <td class="col-md-1">
-                                            <label><img src="{{ asset($item->product->product_thambnail) }}" style="width:50px; height:50px;" > </label>
+                                            <label><img
+                                                src="{{ !empty($item->product->product_thumbnail) ? url('' . $item->product->product_thumbnail) : url('upload/no_image.jpg') }}"
+                                                alt="product Image" srcset="" style="width: 70px; height:40px;"></label>
                                         </td>
                                         <td class="col-md-2">
                                             <label>{{ $item->product->product_name }}</label>
@@ -244,7 +246,7 @@
                                         </td>
 
                                         <td class="col-md-3">
-                                            <label>${{ $item->price }} <br> Total = ${{ $item->price * $item->qty }}   </label>
+                                            <label>&#2547; {{ $item->price }} <br> Total = &#2547; {{ $item->price * $item->qty }}   </label>
                                         </td>
 
                                     </tr>

@@ -60,7 +60,7 @@ class ProductController extends Controller
                 'status'=>1,
                 'created_at'=>Carbon::now(),
             ]);
-            
+
             foreach($request->product_size as $key=>$size)
             {
                 $product_id=ProductSize::insertGetId([
@@ -251,4 +251,11 @@ class ProductController extends Controller
         );
         return redirect()->back()->with($notification);
     }
+
+    public function ProductStock(){
+
+        $products = Product::latest()->get();
+        return view('Backend.product.product_stock',compact('products'));
+
+    }// End Method
 }
