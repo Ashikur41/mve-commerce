@@ -18,6 +18,7 @@ use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\VendorOrderController;
 use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\ReportController;
+use App\Http\Controllers\Backend\ActiveUserController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 
 use App\Http\Controllers\Backend\VendorProductController;
@@ -291,6 +292,13 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/seo/setting', 'SeoSetting')->name('seo.setting');
         Route::post('/seo/setting/update', 'SeoSettingUpdate')->name('seo.setting.update');
     });
+
+    // Active user and vendor All Route
+    Route::controller(ActiveUserController::class)->group(function () {
+
+        Route::get('/all/user', 'AllUser')->name('all-user');
+        Route::get('/all/vendor', 'AllVendor')->name('all-vendor');
+    });
 });
 
 
@@ -368,7 +376,7 @@ Route::controller(AllUserController::class)->group(function () {
 
     // Order Tracking
     Route::get('/user/track/order', 'UserTrackOrder')->name('user.track.order');
-    Route::post('/order/tracking' , 'OrderTracking')->name('order.tracking');
+    Route::post('/order/tracking', 'OrderTracking')->name('order.tracking');
 });
 
 
