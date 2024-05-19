@@ -365,6 +365,10 @@ Route::controller(AllUserController::class)->group(function () {
     Route::get('/user/orders/page', 'UserOrdersPage')->name('user.orders.page');
     Route::get('/user/order_details/{order_id}', 'UserOrdersDetails');
     Route::get('/user/invoice_download/{order_id}', 'UserOrdersInvoice');
+
+    // Order Tracking
+    Route::get('/user/track/order', 'UserTrackOrder')->name('user.track.order');
+    Route::post('/order/tracking' , 'OrderTracking')->name('order.tracking');
 });
 
 
