@@ -138,4 +138,9 @@ class VendorController extends Controller
             return redirect()->route('Vendor.Login')->with($notification);
 
         }
+
+        public function VendorList()
+        {
+            return view('frontend.vendor.vendor_list');
+        }
 }

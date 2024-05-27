@@ -240,7 +240,7 @@
     </div>
 </section>
 
-@php
+{{-- @php
     $vendors = App\Models\User::where('status', 'active')
         ->where('role', 'vendor')
         ->orderBy('id', 'DESC')
@@ -345,4 +345,4 @@
         </div>
         <!--End tab-content-->
     </div>
-</section>
+</section> --}}

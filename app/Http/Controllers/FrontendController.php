@@ -27,4 +27,9 @@ class FrontendController extends Controller
         return view('frontend.index',compact('skip_category_0','skip_product_0',
         'skip_category_2','skip_product_2','hot_deals','special_offer','special_deals','new'));
     }
+
+    public function vendorList()
+    {
+        return view();
+    }
 }

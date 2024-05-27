@@ -188,7 +188,7 @@
                         @endphp
 
                         <li>
-                            <a href='#'> <img src="{{ asset('upload/category/'.$category->category_image) }}" alt="" />{{ $category->category_name }}</a><span class="count">{{ count($products) }}</span>
+                            <a href='{{ url('product/category'.'/'.$category->id.'/'.$category->category_slug) }}'> <img src="{{ asset('upload/category/'.$category->category_image) }}" alt="" />{{ $category->category_name }}</a><span class="count">{{ count($products) }}</span>
                         </li>
                         @endforeach
                     </ul>

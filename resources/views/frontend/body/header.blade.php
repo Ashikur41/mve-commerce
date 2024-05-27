@@ -1,9 +1,6 @@
 {{-- <script src="{{ url('Frontend/assets/js/script.js') }}"></script> --}}
 
 <header class="header-area header-style-1 header-height-2">
-    <div class="mobile-promotion">
-        <span>Grand opening, <strong>up to 15%</strong> off all items. Only <strong>3 days</strong> left</span>
-    </div>
 
     <div class="header-middle header-middle-ptb-1 d-none d-lg-block">
         <div class="container">
@@ -213,7 +210,14 @@
                             </li>
 
                             <li>
-                                <a href='page-contact.html'>Contact</a>
+                                <a href='#'>Vendor</a>
+                                <ul class="sub-menu">
+                                    <li><a href='{{route('vendor.list')}}'>Vendor List</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href='#'>Contact</a>
                             </li>
 
                             </ul>
