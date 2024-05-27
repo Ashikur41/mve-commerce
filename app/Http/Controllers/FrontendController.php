@@ -28,8 +28,8 @@ class FrontendController extends Controller
         'skip_category_2','skip_product_2','hot_deals','special_offer','special_deals','new'));
     }
 
-    public function vendorList()
+    public function Contact()
     {
-        return view();
+        return view('frontend.contact.contact');
     }
 }
