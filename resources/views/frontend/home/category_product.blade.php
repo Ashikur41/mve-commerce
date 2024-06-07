@@ -98,9 +98,10 @@
                                             </div>
                                         @endif
                                         <div class="add-cart">
-                                            <a class='add'
-                                                href='{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}'
-                                                title="Add to Cart"><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
+                                            <input type="hidden" class="addproduct_id" value="{{ $product->id }}">
+                                            <a type="submit" class='c_btn btn w-100 hover-up'
+                                                onclick="addCart({{ $product->id }})"><i
+                                                    class="fi-rs-shopping-cart mr-5"></i>Add</a>
                                         </div>
                                     </div>
                                 </div>
@@ -222,9 +223,10 @@
                                             </div>
                                         @endif
                                         <div class="add-cart">
-                                            <a class='add'
-                                                href='{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}'
-                                                title="Add to Cart"><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
+                                            <input type="hidden" class="addproduct_id" value="{{ $product->id }}">
+                                            <a type="submit" class='c_btn btn w-100 hover-up'
+                                                onclick="addCart({{ $product->id }})"><i
+                                                    class="fi-rs-shopping-cart mr-5"></i>Add</a>
                                         </div>
                                     </div>
                                 </div>

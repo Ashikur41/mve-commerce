@@ -123,9 +123,13 @@
                                             </div>
                                         @endif
                                         <div class="add-cart">
-                                            <a class='add'
+                                            <input type="hidden" class="addproduct_id" value="{{ $product->id }}">
+                                            <a type="submit" class='c_btn btn w-100 hover-up'
+                                                onclick="addCart({{ $product->id }})"><i
+                                                    class="fi-rs-shopping-cart mr-5"></i>Add</a>
+                                            {{-- <a class='add'
                                                 href='{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}'
-                                                title="Add to Cart"><i class="fi-rs-shopping-cart mr-5"></i>Add</a>
+                                                title="Add to Cart"><i class="fi-rs-shopping-cart mr-5"></i>Add</a> --}}
                                             {{-- <a class='add'
                                                 href='{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}'><i
                                                     class="fi-rs-shopping-cart mr-5"></i>Oder Now</a> --}}
@@ -142,7 +146,8 @@
             </div>
             <!--En tab one-->
             @foreach ($categories as $category)
-                <div class="tab-pane fade" id="category{{ $category->id }}" role="tabpanel" aria-labelledby="tab-two">
+                <div class="tab-pane fade" id="category{{ $category->id }}" role="tabpanel"
+                    aria-labelledby="tab-two">
                     <div class="row product-grid-4">
                         @php
                             $catWiseProducts = App\Models\Product::where('category_id', $category->id)
@@ -225,10 +230,11 @@
                                                 </div>
                                             @endif
                                             <div class="add-cart">
-                                                <a class='add'
-                                                    href='{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}'
-                                                    title="Add to Cart"><i class="fi-rs-shopping-cart mr-5"></i>Add
-                                                </a>
+                                                <input type="hidden" class="addproduct_id"
+                                                    value="{{ $product->id }}">
+                                                <a type="submit" class='c_btn btn w-100 hover-up'
+                                                    onclick="addCart({{ $product->id }})"><i
+                                                        class="fi-rs-shopping-cart mr-5"></i>Add</a>
                                             </div>
                                         </div>
                                     </div>

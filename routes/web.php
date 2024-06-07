@@ -330,7 +330,9 @@ Route::controller(IndexController::class)->group(function () {
 Route::controller(CartController::class)->group(function () {
     Route::post('cart/data/store/{id}', 'AddToCart');
     Route::post('dCart/data/store/{id}', 'AddToCartDetails');
+    Route::post('cart/mobile/data/store', 'AddToMobileCartDetails');
     Route::get('/product/mini/cart', 'AddMiniCart');
+    Route::get('/product/mobile/mini/cart', 'MobileAddMiniCart');
     Route::get('/miniCart/product/remove/{rowId}', 'RemoveMiniCart');
 });
 
