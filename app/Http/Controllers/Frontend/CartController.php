@@ -244,7 +244,7 @@ class CartController extends Controller
     // check out page
 
     public function CheckoutCreate(){
-        
+
              if(Cart::total() > 0){
 
                 $carts = Cart::content();

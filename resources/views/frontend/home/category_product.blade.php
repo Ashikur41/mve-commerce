@@ -75,7 +75,7 @@
                                                 <div class="product-rating" style="width: 100%"></div>
                                             @endif
                                         </div>
-                                        <span class="font-small ml-5 text-muted"> ({{count($reviewcount)}})</span>
+                                        <span class="font-small ml-5 text-muted"> ({{ count($reviewcount) }})</span>
                                     </div>
                                     <div>
                                         @if ($product->vendor_id == null)
@@ -99,8 +99,8 @@
                                         @endif
                                         <div class="add-cart">
                                             <a class='add'
-                                                href='{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}'><i
-                                                    class="fi-rs-shopping-cart mr-5"></i>Add </a>
+                                                href='{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}'
+                                                title="Add to Cart"><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
                                         </div>
                                     </div>
                                 </div>
@@ -223,8 +223,8 @@
                                         @endif
                                         <div class="add-cart">
                                             <a class='add'
-                                                href='{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}'><i
-                                                    class="fi-rs-shopping-cart mr-5"></i>Add </a>
+                                                href='{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}'
+                                                title="Add to Cart"><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
                                         </div>
                                     </div>
                                 </div>

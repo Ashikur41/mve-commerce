@@ -32,11 +32,20 @@ class ProductController extends Controller
 
     public function StoreProduct(Request $request)
     {
-        $image=$request->file('product_thumbnail');
-        $name_gen=hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-        $image->move(public_path('upload/products/thumbnail/'),$name_gen);
-        // Image::make($image)->resize(800,800)->save('upload/products/thumbnail/'.$name_gen);
-        $save_url='upload/products/thumbnail/'.$name_gen;
+        if($request->product_thumbnail)
+        {
+            $image=$request->file('product_thumbnail');
+            $name_gen=hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+            $image->move(public_path('upload/products/thumbnail/'),$name_gen);
+            $save_url='upload/products/thumbnail/'.$name_gen;
+        }
+        elseif($request->product_video){
+            $image=$request->file('product_video');
+            $name_gen=hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+            $image->move(public_path('upload/products/video/'),$name_gen);
+            $save_url2='upload/products/video/'.$name_gen;
+        }
+
         if (is_array($request) || is_object($request))
         {
             $product=Product::insertGetId([
@@ -56,7 +65,8 @@ class ProductController extends Controller
                 'featured'=>$request->featured,
                 'special_offer'=>$request->special_offer,
                 'special_deals'=>$request->special_deals,
-                'product_thumbnail'=>$save_url,
+                'product_thumbnail'=>$save_url ?? null,
+                'product_video'=>$save_url2 ?? null,
                 'status'=>1,
                 'created_at'=>Carbon::now(),
             ]);

@@ -40,18 +40,18 @@
 								<input type="text" class="form-control visually-hidden" name="product_tags" data-role="tagsinput" value="new product,top product">
 							</div>
                             <br>
-                            <!-- <div class='item'>
+                            <div class='item'>
                                 <input type="text" name="product_size[]" placeholder="Enter Size">
                                 <input type="text" name="selling_price[]" placeholder="Selling Price">
                                 <input type="text" name="discount_price[]" placeholder="Discount Price">
                                 <button id="add">Add +</button>
                              </div>
                              <div id="items"></div>
-                             <br> -->
-							<div class="mb-3">
+                             <br>
+							{{-- <div class="mb-3">
 								<label for="product_size" class="form-label">Product Size</label>
 								<input type="text" class="form-control visually-hidden" name="product_size" data-role="tagsinput" value="Smaill,Midium,Large">
-							</div>
+							</div> --}}
 							<div class="mb-3">
 								<label for="product_color" class="form-label">Product Color</label>
 								<input type="text" class="form-control visually-hidden" name="product_color" data-role="tagsinput" value="red,Blue,Black">
@@ -63,6 +63,10 @@
 							  <div class="mb-3">
 								<label for="long_description" class="form-label">Long Description</label>
 								<textarea class="form-control" name="long_description" id="long_description" rows="3"></textarea>
+							  </div>
+                              <div class="form-group mb-3">
+								<label for="product_video" class="form-label">Product Video</label>
+								<input class="form-control" name="product_video" type="file" id="formFile">
 							  </div>
                               <div class="form-group mb-3">
 								<label for="product_thumbnail" class="form-label">Main Thumbnail</label>
@@ -208,9 +212,9 @@
                                 short_description:{
                                     required:true,
                                 },
-                                product_thumbnail:{
-                                    required:true,
-                                },
+                                // product_thumbnail:{
+                                //     required:true,
+                                // },
                                 selling_price:{
                                     required:true,
                                 },
@@ -234,9 +238,9 @@
                                 short_description:{
                                     required:'Please Enter Short Description',
                                 },
-                                product_thumbnail:{
-                                    required:'Please Enter Product Thumbnail',
-                                },
+                                // product_thumbnail:{
+                                //     required:'Please Enter Product Thumbnail',
+                                // },
                                 multi_img:{
                                     required:'Please Enter Multi Img',
                                 },

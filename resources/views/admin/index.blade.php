@@ -1,6 +1,14 @@
 @extends('admin.admin_dashboard')
 
+@section('style-lib')
+@endsection
 
+@push('custom-css')
+    <style type="text/css">
+
+
+    </style>
+@endpush
 
 @section('main-content')
     @php
@@ -178,7 +186,7 @@
                             <tbody>
                                 @foreach ($orders as $key => $order)
                                     <tr>
-                                        <td>{{ $key+1 }}</td>
+                                        <td>{{ $key + 1 }}</td>
 
                                         <td>{{ $order->order_date }}</td>
                                         <td>{{ $order->invoice_no }}</td>
@@ -186,7 +194,7 @@
                                         <td>{{ $order->payment_method }}</td>
                                         <td>
                                             <div class="badge rounded-pill bg-light-info text-info w-100">
-                                                {{ $order->status  }}</div>
+                                                {{ $order->status }}</div>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -199,3 +207,10 @@
         </div>
     </div>
 @endsection
+
+@section('script-lib')
+@endsection
+
+
+@push('custom-js')
+@endpush

@@ -29,6 +29,10 @@
     <link rel="stylesheet" href="{{ url('Frontend') }}/assets/css/plugins/animate.min.css" />
     <link rel="stylesheet" href="{{ url('Frontend') }}/assets/css/main2cc5.css?v=5.6" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+
+
+    @yield('style-lib')
+    @stack('custom-css')
 </head>
 
 <body>
@@ -769,6 +773,9 @@
         }
     </script>
     {{-- apply coupon end --}}
+
+    @yield('script-lib')
+    @stack('custom-js')
 
 </body>
 

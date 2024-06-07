@@ -6,7 +6,7 @@
 <section class="product-tabs section-padding position-relative">
     <div class="container">
         <div class="section-title style-2 wow animate__animated animate__fadeIn">
-            <h3>New Products</h3>
+            <h3>Products</h3>
             <ul class="nav nav-tabs links" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="nav-tab-one" data-bs-toggle="tab" data-bs-target="#tab-one"
@@ -31,11 +31,19 @@
                                 data-wow-delay=".1s">
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
-                                        <a
-                                            href='{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}'>
-                                            <img class="default-img" src="{{ asset($product->product_thumbnail) }}"
-                                                alt="" />
-                                        </a>
+                                        @if ($product->product_thumbnail == null)
+                                            <video width="300" height="200" controls>
+                                                <source src="{{ asset($product->product_video) }}" type="video/mp4">
+                                            </video>
+                                        @else
+                                            <a
+                                                href='{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}'>
+                                                <img class="default-img" src="{{ asset($product->product_thumbnail) }}"
+                                                    alt="" />
+                                            </a>
+                                        @endif
+
+
                                     </div>
                                     <div class="product-action-1">
                                         <a aria-label='Add To Wishlist' class='action-btn' id='{{ $product->id }}'
@@ -92,7 +100,7 @@
                                                 <div class="product-rating" style="width: 100%"></div>
                                             @endif
                                         </div>
-                                        <span class="font-small ml-5 text-muted"> ({{count($reviewcount)}})</span>
+                                        <span class="font-small ml-5 text-muted"> ({{ count($reviewcount) }})</span>
                                     </div>
                                     <div>
                                         @if ($product->vendor_id == null)
@@ -116,8 +124,8 @@
                                         @endif
                                         <div class="add-cart">
                                             <a class='add'
-                                                href='{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}'><i
-                                                    class="fi-rs-shopping-cart mr-5"></i>Add</a>
+                                                href='{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}'
+                                                title="Add to Cart"><i class="fi-rs-shopping-cart mr-5"></i>Add</a>
                                             {{-- <a class='add'
                                                 href='{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}'><i
                                                     class="fi-rs-shopping-cart mr-5"></i>Oder Now</a> --}}
@@ -218,8 +226,9 @@
                                             @endif
                                             <div class="add-cart">
                                                 <a class='add'
-                                                    href='{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}'><i
-                                                        class="fi-rs-shopping-cart mr-5"></i>Add </a>
+                                                    href='{{ url('product/details/' . $product->id . '/' . $product->product_slug) }}'
+                                                    title="Add to Cart"><i class="fi-rs-shopping-cart mr-5"></i>Add
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
