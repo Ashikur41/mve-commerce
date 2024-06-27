@@ -23,56 +23,105 @@
             <div class="col-lg-8 mb-40">
                 <h1 class="heading-2 mb-10">Checkout</h1>
                 <div class="d-flex justify-content-between">
-                    <h6 class="text-body">There are <span class="text-brand">3</span> products in your cart</h6>
+                    {{-- <h6 class="text-body">There are <span class="text-brand">3</span> products in your cart</h6> --}}
                 </div>
             </div>
         </div>
+
+        @php
+            $id = Auth::user()?->id;
+            $userData = App\Models\User::find($id);
+        @endphp
+
         <div class="row">
             <div class="col-lg-7">
                 <div class="row mb-50">
                 </div>
-                <div class="row">
-                    <h4 class="mb-30">Billing Details</h4>
-                    <form id="myForm" method="post" action="{{ route('checkout.store') }}">
-                        @csrf
-                        <div class="row">
-                            <div class="form-group col-lg-12">
-                                <input type="text" required="" name="shipping_name" placeholder="Your Name">
-                            </div>
-
-                            <div class="form-group col-lg-12">
-                                <input  type="text" name="shipping_phone"
-                                    placeholder="Your Phone Number">
-                            </div>
-                            {{-- <div class="form-group col-lg-6">
-                                <input type="email" required="" name="shipping_email">
-                            </div> --}}
-                        </div>
-                        <div class="row shipping_calculator">
-                            <div class="form-group col-lg-12">
-                                <input required="" type="text" name="shipping_address" placeholder="Address *">
-                            </div>
-
-                            <div class="payment_option">
-                                <div class="custome-radio">
-                                    <input class="form-check-input" required="" type="radio" name="payment_option"
-                                        value="stripe" id="exampleRadios3" checked="">
-                                    <label class="form-check-label" for="exampleRadios3" data-bs-toggle="collapse"
-                                        data-target="#bankTranfer" aria-controls="bankTranfer">Insite Dhaka</label>
+                @auth
+                    <div class="row">
+                        <h4 class="mb-30">Billing Details</h4>
+                        <form id="myForm" method="post" action="{{ route('checkout.store') }}">
+                            @csrf
+                            <div class="row">
+                                <div class="form-group col-lg-12">
+                                    <input type="text" required="" name="shipping_name"
+                                        value="{{ $userData->username }}">
                                 </div>
-                                <div class="custome-radio">
-                                    <input class="form-check-input" required="" type="radio" name="payment_option"
-                                        value="card" id="exampleRadios5" checked="">
-                                    <label class="form-check-label" for="exampleRadios5" data-bs-toggle="collapse"
-                                        data-target="#paypal" aria-controls="paypal">Out Site Dhaka</label>
+
+                                <div class="form-group col-lg-12">
+                                    <input type="text" name="shipping_phone" value="{{ $userData->phone }}">
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <input type="email" required="" name="shipping_email"
+                                        value="{{ $userData->email }}">
                                 </div>
                             </div>
-                        </div>
-                        <br>
-                        <div class="form-group mb-30">
-                            <textarea rows="5" placeholder="Additional information" name="notes"></textarea>
-                        </div>
-                </div>
+                            <div class="row shipping_calculator">
+                                <div class="form-group col-lg-12">
+                                    <input required="" type="text" name="shipping_address"
+                                        value="{{ $userData->address }}">
+                                </div>
+
+                                <div class="payment_option">
+                                    <div class="custome-radio">
+                                        <input class="form-check-input" required="" type="radio" name="payment_option"
+                                            value="stripe" id="exampleRadios3">
+                                        <label class="form-check-label" for="exampleRadios3" data-bs-toggle="collapse"
+                                            data-target="#bankTranfer" aria-controls="bankTranfer">Insite Dhaka</label>
+                                    </div>
+                                    <div class="custome-radio">
+                                        <input class="form-check-input" required="" type="radio" name="payment_option"
+                                            value="card" id="exampleRadios5">
+                                        <label class="form-check-label" for="exampleRadios5" data-bs-toggle="collapse"
+                                            data-target="#paypal" aria-controls="paypal">Out Site Dhaka</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group mb-30">
+                                <textarea rows="5" placeholder="Additional information" name="notes"></textarea>
+                            </div>
+                    </div>
+                @else
+                    <div class="row">
+                        <h4 class="mb-30">Billing Details</h4>
+                        <form id="myForm" method="post" action="{{ route('checkout.store') }}">
+                            @csrf
+                            <div class="row">
+                                <div class="form-group col-lg-12">
+                                    <input type="text" required="" name="shipping_name" placeholder="Your Name">
+                                </div>
+
+                                <div class="form-group col-lg-12">
+                                    <input type="text" name="shipping_phone" placeholder="Your Phone Number">
+                                </div>
+                            </div>
+                            <div class="row shipping_calculator">
+                                <div class="form-group col-lg-12">
+                                    <input required="" type="text" name="shipping_address" placeholder="Address *">
+                                </div>
+
+                                <div class="payment_option">
+                                    <div class="custome-radio">
+                                        <input class="form-check-input" required="" type="radio" name="payment_option"
+                                            value="stripe" id="exampleRadios3">
+                                        <label class="form-check-label" for="exampleRadios3" data-bs-toggle="collapse"
+                                            data-target="#bankTranfer" aria-controls="bankTranfer">Insite Dhaka</label>
+                                    </div>
+                                    <div class="custome-radio">
+                                        <input class="form-check-input" required="" type="radio"
+                                            name="payment_option" value="card" id="exampleRadios5">
+                                        <label class="form-check-label" for="exampleRadios5" data-bs-toggle="collapse"
+                                            data-target="#paypal" aria-controls="paypal">Out Site Dhaka</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group mb-30">
+                                <textarea rows="5" placeholder="Additional information" name="notes"></textarea>
+                            </div>
+                    </div>
+                @endauth
             </div>
             <div class="col-lg-5">
                 <div class="border p-40 cart-totals ml-30 mb-50">
@@ -286,7 +335,7 @@
                         $.each(data, function(key, value) {
                             $('select[name="state_id"]').append('<option value="' +
                                 value.id + '">' + value.state_name + '</option>'
-                                );
+                            );
                         });
                     },
                 });

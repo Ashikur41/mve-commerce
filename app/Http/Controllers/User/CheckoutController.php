@@ -10,20 +10,23 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CheckoutController extends Controller
 {
-    public function DistrictGetAjax($division_id){
-        $ship = ShipDistricts::where('division_id',$division_id)->orderBy('district_name','ASC')->get();
+    public function DistrictGetAjax($division_id)
+    {
+        $ship = ShipDistricts::where('division_id', $division_id)->orderBy('district_name', 'ASC')->get();
         return json_encode($ship);
     }
-    public function StateGetAjax($district_id){
-        $ship = ShipState::where('district_id',$district_id)->orderBy('state_name','ASC')->get();
+    public function StateGetAjax($district_id)
+    {
+        $ship = ShipState::where('district_id', $district_id)->orderBy('state_name', 'ASC')->get();
         return json_encode($ship);
     }
 
-    public function CheckoutStore(Request $request){
+    public function CheckoutStore(Request $request)
+    {
         $data = array();
 
         $data['shipping_name'] = $request->shipping_name;
-        // $data['shipping_email'] = $request->shipping_email;
+        $data['shipping_email'] = $request->shipping_email;
         $data['shipping_phone'] = $request->shipping_phone;
         // $data['post_code'] = $request->post_code;
 
@@ -34,12 +37,14 @@ class CheckoutController extends Controller
         $data['notes'] = $request->notes;
         $cartTotal = Cart::total();
 
-        if($request->payment_option == 'stripe'){
-            return view('frontend.payment.stripe',compact('data','cartTotal'));
-        }elseif($request->payment_option == 'card'){
-            return "Card Page";
-        }else {
-            return view('frontend.payment.cash',compact('data','cartTotal'));
-        }
+        return view('frontend.payment.cash', compact('data', 'cartTotal'));
+
+        // if ($request->payment_option == 'cash') {
+        //     return view('frontend.payment.cash', compact('data', 'cartTotal'));
+        // } elseif ($request->payment_option == 'card') {
+        //     return "Card Page";
+        // } else {
+        //     return view('frontend.payment.stripe', compact('data', 'cartTotal'));
+        // }
     }
 }

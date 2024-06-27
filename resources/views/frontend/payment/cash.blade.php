@@ -49,7 +49,8 @@
                                                                 <h6 class="text-muted">Subtotal</h6>
                                                             </td>
                                                             <td class="cart_total_amount">
-                                                                <h4 class="text-brand text-end">&#2547;{{ $cartTotal }}</h4>
+                                                                <h4 class="text-brand text-end">
+                                                                    &#2547;{{ $cartTotal }}</h4>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -59,7 +60,8 @@
                                                             <td class="cart_total_amount">
                                                                 <h6 class="text-brand text-end">
                                                                     {{ session()->get('coupon')['coupon_name'] }}
-                                                                    ({{ session()->get('coupon')['coupon_discount'] }}%)</h6>
+                                                                    ({{ session()->get('coupon')['coupon_discount'] }}%)
+                                                                </h6>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -68,7 +70,8 @@
                                                             </td>
                                                             <td class="cart_total_amount">
                                                                 <h4 class="text-brand text-end">
-                                                                    &#2547;{{ session()->get('coupon')['discount_amount'] }}</h4>
+                                                                    &#2547;{{ session()->get('coupon')['discount_amount'] }}
+                                                                </h4>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -77,7 +80,8 @@
                                                             </td>
                                                             <td class="cart_total_amount">
                                                                 <h4 class="text-brand text-end">
-                                                                    &#2547;{{ session()->get('coupon')['total_amount'] }}</h4>
+                                                                    &#2547;{{ session()->get('coupon')['total_amount'] }}
+                                                                </h4>
                                                             </td>
                                                         </tr>
                                                     @else
@@ -86,7 +90,8 @@
                                                                 <h6 class="text-muted">Grand Total</h6>
                                                             </td>
                                                             <td class="cart_total_amount">
-                                                                <h4 class="text-brand text-center">&#2547;{{ $cartTotal }}</h4>
+                                                                <h4 class="text-brand text-center">
+                                                                    &#2547;{{ $cartTotal }}</h4>
                                                             </td>
                                                         </tr>
                                                     @endif
@@ -99,19 +104,45 @@
                                             <form action="{{ route('cash.order') }}" method="post">
                                                 @csrf
 
-                                                <div class="form-row">
-                                                    <label for="card-element">
-                                                        <input type="hidden" name="name" value="{{ $data['shipping_name'] }}">
-                                                        {{-- <input type="hidden" name="email" value="{{ $data['shipping_email'] }}"> --}}
-                                                        <input type="hidden" name="phone" value="{{ $data['shipping_phone'] }}">
-                                                        {{-- <input type="hidden" name="post_code" value="{{ $data['post_code'] }}"> --}}
-                                                        {{-- <input type="hidden" name="division_id" value="{{ $data['division_id'] }}"> --}}
-                                                        {{-- <input type="hidden" name="district_id" value="{{ $data['district_id'] }}"> --}}
-                                                        {{-- <input type="hidden" name="state_id" value="{{ $data['state_id'] }}"> --}}
-                                                        <input type="hidden" name="address" value="{{ $data['shipping_address'] }}">
-                                                        <input type="hidden" name="notes" value="{{ $data['notes'] }}">
-                                                    </label>
-                                                </div>
+                                                @auth
+                                                    <div class="form-row">
+                                                        <label for="card-element">
+                                                            <input type="hidden" name="name"
+                                                                value="{{ $data['shipping_name'] }}">
+                                                            <input type="hidden" name="email"
+                                                                value="{{ $data['shipping_email'] }}">
+                                                            <input type="hidden" name="phone"
+                                                                value="{{ $data['shipping_phone'] }}">
+                                                            {{-- <input type="hidden" name="post_code" value="{{ $data['post_code'] }}"> --}}
+                                                            {{-- <input type="hidden" name="division_id" value="{{ $data['division_id'] }}"> --}}
+                                                            {{-- <input type="hidden" name="district_id" value="{{ $data['district_id'] }}"> --}}
+                                                            {{-- <input type="hidden" name="state_id" value="{{ $data['state_id'] }}"> --}}
+                                                            <input type="hidden" name="address"
+                                                                value="{{ $data['shipping_address'] }}">
+                                                            <input type="hidden" name="notes"
+                                                                value="{{ $data['notes'] }}">
+                                                        </label>
+                                                    </div>
+                                                @else
+                                                    <div class="form-row">
+                                                        <label for="card-element">
+                                                            <input type="hidden" name="name"
+                                                                value="{{ $data['shipping_name'] }}">
+                                                            {{-- <input type="hidden" name="email" value="{{ $data['shipping_email'] }}"> --}}
+                                                            <input type="hidden" name="phone"
+                                                                value="{{ $data['shipping_phone'] }}">
+                                                            {{-- <input type="hidden" name="post_code" value="{{ $data['post_code'] }}"> --}}
+                                                            {{-- <input type="hidden" name="division_id" value="{{ $data['division_id'] }}"> --}}
+                                                            {{-- <input type="hidden" name="district_id" value="{{ $data['district_id'] }}"> --}}
+                                                            {{-- <input type="hidden" name="state_id" value="{{ $data['state_id'] }}"> --}}
+                                                            <input type="hidden" name="address"
+                                                                value="{{ $data['shipping_address'] }}">
+                                                            <input type="hidden" name="notes"
+                                                                value="{{ $data['notes'] }}">
+                                                        </label>
+                                                    </div>
+                                                @endauth
+
                                                 <br>
                                                 <button class="btn btn-primary">Submit Order</button>
                                             </form>
