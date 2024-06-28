@@ -6,10 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Invoice</title>
 
+    <link href="https://fonts.maateen.me/kalpurush/font.css" rel="stylesheet">
+
+    {{-- <style>
+        @import url('https://fonts.maateen.me/kalpurush/font.css');
+    </style> --}}
+
     <style type="text/css">
         * {
-            font-family: Verdana, Arial, sans-serif;
+            font-family: 'Kalpurush', Arial, sans-serif;
         }
+
+        /* body {
+            font-family: 'Kalpurush', Arial, sans-serif !important;
+        } */
 
         table {
             font-size: x-small;
@@ -58,14 +68,14 @@
         <tr>
             <td valign="top">
                 <!-- {{-- <img src="" alt="" width="150"/> --}} -->
-                <h2 style="color: green; font-size: 26px;"><strong>EasyShop</strong></h2>
+                <h2 style="color: green; font-size: 26px;"><strong>azBazar</strong></h2>
             </td>
             <td align="right">
                 <pre class="font">
-               EasyShop Head Office
-               Email:support@easylearningbd.com <br>
-               Mob: 1245454545 <br>
-               Dhaka 1207,Dhanmondi:#4 <br>
+                azBazar Head Office
+                Email:support@azBazar.com <br>
+                Mob: 01608-159295 <br>
+                Shawrapara,Eqbol Road,Mirpur Dhaka <br>
 
             </pre>
             </td>
@@ -83,12 +93,8 @@
                     <strong>Name:</strong> {{ $order->name }} <br>
                     <strong>Email:</strong> {{ $order->email }} <br>
                     <strong>Phone:</strong> {{ $order->phone }} <br>
-                    {{-- @php
-            $div =  $order->division->division_name;
-            $dis =  $order->district->district_name;
-            $state = $order->state->state_name;
-            @endphp --}}
-                    <strong>Address:</strong> {{ $order->adress }}<br>
+
+                    <strong>Address:</strong> {{ $order->address }}<br>
                     <strong>Post Code:</strong> {{ $order->post_code }}
                 </p>
             </td>
@@ -149,7 +155,7 @@
                         <td align="center">{{ $item->product->vendor->name }}</td>
                     @endif
 
-                    <td align="center">${{ $item->price }}</td>
+                    <td align="center">&#2547; {{ $item->price }}</td>
                 </tr>
             @endforeach
         </tbody>
@@ -158,8 +164,8 @@
     <table width="100%" style=" padding:0 10px 0 10px;">
         <tr>
             <td align="right">
-                <h2><span style="color: green;">Subtotal:</span>${{ $order->amount }}</h2>
-                <h2><span style="color: green;">Total:</span> ${{ $order->amount }}</h2>
+                <h2><span style="color: green;">Subtotal:</span>&#2547; {{ $order->amount }}</h2>
+                <h2><span style="color: green;">Total:</span>&#2547; {{ $order->amount }}</h2>
                 {{-- <h2><span style="color: green;">Full Payment PAID</h2> --}}
             </td>
         </tr>
