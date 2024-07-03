@@ -8,57 +8,25 @@
 
     <link href="https://fonts.maateen.me/kalpurush/font.css" rel="stylesheet">
 
+
+    <style>
+        @font-face {
+        font-family: "kalpurush";
+        font-style: normal;
+        font-weight: normal;
+        src: url(kalpurush.ttf) format('truetype');
+    }
+    * {
+        font-family: "kalpurush";
+    }
+
+    </style>
+
     {{-- <style>
         @import url('https://fonts.maateen.me/kalpurush/font.css');
     </style> --}}
 
-    <style type="text/css">
-        * {
-            font-family: 'Kalpurush', Arial, sans-serif;
-        }
 
-        /* body {
-            font-family: 'Kalpurush', Arial, sans-serif !important;
-        } */
-
-        table {
-            font-size: x-small;
-        }
-
-        tfoot tr td {
-            font-weight: bold;
-            font-size: x-small;
-        }
-
-        .gray {
-            background-color: lightgray
-        }
-
-        .font {
-            font-size: 15px;
-        }
-
-        .authority {
-            /*text-align: center;*/
-            float: right
-        }
-
-        .authority h5 {
-            margin-top: -10px;
-            color: green;
-            /*text-align: center;*/
-            margin-left: 35px;
-        }
-
-        .thanks p {
-            color: green;
-            ;
-            font-size: 16px;
-            font-weight: normal;
-            font-family: serif;
-            margin-top: 20px;
-        }
-    </style>
 
 </head>
 

@@ -101,7 +101,7 @@ class OrderController extends Controller
         $pdf = Pdf::loadView('backend.orders.admin_order_invoice', compact('order', 'orderItem'))->setPaper('a4')->setOption([
             'tempDir' => public_path(),
             'chroot' => public_path(),
-        ])->setOptions(['defaultFont' => 'Kalpurush']);
+        ])->setOptions(['defaultFont' => 'kalpurush', 'sans-serif']);
         return $pdf->download('invoice.pdf');
     } // End Method
 }
