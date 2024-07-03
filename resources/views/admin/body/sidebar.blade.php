@@ -232,6 +232,14 @@
             </ul>
         </li>
 
+        <li>
+            <a href="{{ route('all.contact') }}">
+                <div class="parent-icon"><i class='bx bx-category'></i>
+                </div>
+                <div class="menu-title">Contact US</div>
+            </a>
+        </li>
+
         <li class="menu-label">All Permission</li>
         <li>
             <a class="has-arrow" href="javascript:;">

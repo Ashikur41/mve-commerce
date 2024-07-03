@@ -105,12 +105,12 @@
                                             </div>
                                             <div class="col-lg-6 col-md-6">
                                                 <div class="input-style mb-20">
-                                                    <input name="telephone" placeholder="Your Phone" type="tel" />
+                                                    <input name="phone" placeholder="Your Phone" type="tel" />
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6">
                                                 <div class="input-style mb-20">
-                                                    <input name="subject" placeholder="Subject" type="text" />
+                                                    <input name="address" placeholder="Address" type="text" />
                                                 </div>
                                             </div>
                                             <div class="col-lg-12 col-md-12">

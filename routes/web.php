@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Vendor\VendorController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\SiteSettingController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
@@ -299,6 +300,13 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/all/user', 'AllUser')->name('all-user');
         Route::get('/all/vendor', 'AllVendor')->name('all-vendor');
     });
+
+    // Active user and vendor All Route
+    Route::controller(ContactController::class)->group(function () {
+
+        Route::get('/all/contact/us', 'AllContact')->name('all.contact');
+    });
+
 });
 
 
