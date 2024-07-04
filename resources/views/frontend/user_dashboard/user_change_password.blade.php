@@ -59,7 +59,7 @@
 
                                                 <div class="form-group col-md-12">
                                                     <label>Confirm Password <span class="required">*</span></label>
-                                                    <input class="form-control @error('confirm_password') is-invalid @enderror" type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password"/>
+                                                    <input class="form-control @error('password_confirmation') is-invalid @enderror" type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirm Password"/>
                                                     {{-- @error('confirm_password')
                                                     <span class="text-danger">{{ $message }}</span>
                                                     @enderror --}}

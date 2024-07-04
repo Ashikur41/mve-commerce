@@ -33,9 +33,9 @@ class AdminController extends Controller
 
         $request->session()->regenerateToken();
 
-        $notification= array(
-            'message'=>'Admin Logout Successfully !',
-            'alert-type' =>'success'
+        $notification = array(
+            'message' => 'Admin Logout Successfully !',
+            'alert-type' => 'success'
         );
 
         return redirect()->route('Admin.Login')->with($notification);
@@ -44,35 +44,34 @@ class AdminController extends Controller
     //Admin Profile
     public function AdminProfile(Request $request)
     {
-        $id=Auth::user()->id;
-        $adminData=User::find($id);
+        $id = Auth::user()->id;
+        $adminData = User::find($id);
 
-        return view('admin.admin_profile_view',compact('adminData'));
+        return view('admin.admin_profile_view', compact('adminData'));
     }
 
     //Admin Profile update
     public function AdminProfileStore(Request $request)
     {
-        $id =Auth::user()->id;
-        $data=User::find($id);
+        $id = Auth::user()->id;
+        $data = User::find($id);
         $data->name = $request->name;
         $data->email = $request->email;
         $data->phone = $request->phone;
         $data->address = $request->address;
 
-        if($request->file('photo'))
-        {
-            $file= $request->file('photo');
-            @unlink(public_path('upload/admin_image/'.$data->photo));
-            $fileName= date('YmdHi').$file->getClientOriginalName();
-            $file->move(public_path('upload/admin_image'),$fileName);
-            $data['photo']=$fileName;
+        if ($request->file('photo')) {
+            $file = $request->file('photo');
+            @unlink(public_path('upload/admin_image/' . $data->photo));
+            $fileName = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('upload/admin_image'), $fileName);
+            $data['photo'] = $fileName;
         }
         $data->save();
 
-        $notification= array(
-            'message'=>'Admin Profile Updated Successfully !',
-            'alert-type' =>'success'
+        $notification = array(
+            'message' => 'Admin Profile Updated Successfully !',
+            'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);
     }
@@ -90,124 +89,126 @@ class AdminController extends Controller
     {
         $request->validate([
             'old_password' => 'required',
-            'new_password' => 'required|confirmed',
+            'new_password' => 'required',
         ]);
 
         //Match The Old Password
-        if(!Hash::check($request->old_password,auth::user()->password))
-        {
-            return back()->with("error","Old Password Dose't Match!");
+        if (!Hash::check($request->old_password, auth::user()->password)) {
+            return back()->with("error", "Old Password Dose't Match!");
         }
 
         //update the new password
         User::whereId(auth()->user()->id)->update([
-            'password'=>Hash::make($request->new_password)
+            'password' => Hash::make($request->new_password)
         ]);
-        return back()->with("status","Password Changed Successfully!!");
+        return back()->with("status", "Password Changed Successfully!!");
     }
 
     public function inActiveVendor()
     {
-        $inActiveVendor=User::where('status','inactive')->where('role','vendor')->latest()->get();
+        $inActiveVendor = User::where('status', 'inactive')->where('role', 'vendor')->latest()->get();
 
-        return view('Backend.vendor.inactive_vendor',compact('inActiveVendor'));
+        return view('Backend.vendor.inactive_vendor', compact('inActiveVendor'));
     }
 
     public function ActiveVendor()
     {
-        $ActiveVendor=User::where('status','active')->where('role','vendor')->latest()->get();
+        $ActiveVendor = User::where('status', 'active')->where('role', 'vendor')->latest()->get();
 
-        return view('Backend.vendor.active_vendor',compact('ActiveVendor'));
+        return view('Backend.vendor.active_vendor', compact('ActiveVendor'));
     }
 
     public function inActiveVendorDetails($id)
     {
-        $inactiveVendorDetails=User::findOrFail($id);
-        return view('Backend.vendor.inactive_vendor_details',compact('inactiveVendorDetails'));
+        $inactiveVendorDetails = User::findOrFail($id);
+        return view('Backend.vendor.inactive_vendor_details', compact('inactiveVendorDetails'));
     }
 
     public function ActiveVendorDetails($id)
     {
-        $activeVendorDetails=User::findOrFail($id);
-        return view('Backend.vendor.active_vendor_details',compact('activeVendorDetails'));
+        $activeVendorDetails = User::findOrFail($id);
+        return view('Backend.vendor.active_vendor_details', compact('activeVendorDetails'));
     }
 
     public function ActiveVendorApprove(Request $request)
     {
-        $vendor_id=$request->id;
-        $user=User::findOrFail($vendor_id)->update([
-            'status'=>'active',
+        $vendor_id = $request->id;
+        $user = User::findOrFail($vendor_id)->update([
+            'status' => 'active',
         ]);
 
-        $notification= array(
-            'message'=>'Vendor Active Successfully !',
-            'alert-type' =>'success'
+        $notification = array(
+            'message' => 'Vendor Active Successfully !',
+            'alert-type' => 'success'
         );
         return redirect()->route('active.vendor')->with($notification);
     }
 
     public function inActiveVendorApprove(Request $request)
     {
-        $vendor_id=$request->id;
-        $user=User::findOrFail($vendor_id)->update([
-            'status'=>'inactive',
+        $vendor_id = $request->id;
+        $user = User::findOrFail($vendor_id)->update([
+            'status' => 'inactive',
         ]);
 
-        $notification= array(
-            'message'=>'Vendor InActive Successfully !',
-            'alert-type' =>'success'
+        $notification = array(
+            'message' => 'Vendor InActive Successfully !',
+            'alert-type' => 'success'
         );
         return redirect()->route('inActive.vendor')->with($notification);
     }
 
     //..................Admin Role Setup.........................//
 
-    public function AllAdmin(){
-        $alladminuser = User::where('role','admin')->latest()->get();
-        return view('Backend.admin.all_admin',compact('alladminuser'));
-    }// End Mehtod
+    public function AllAdmin()
+    {
+        $alladminuser = User::where('role', 'admin')->latest()->get();
+        return view('Backend.admin.all_admin', compact('alladminuser'));
+    } // End Mehtod
 
-    public function AddAdmin(){
+    public function AddAdmin()
+    {
         $roles = Role::all();
         // dd($roles);
-        return view('Backend.admin.add_admin',compact('roles'));
-    }// End Mehtod
+        return view('Backend.admin.add_admin', compact('roles'));
+    } // End Mehtod
 
     public function AdminUserStore(Request $request)
     {
         // dd($request->all());
-        $user= new User();
-        $user->username =$request->username;
-        $user->name =$request->name;
-        $user->email =$request->email;
-        $user->phone =$request->phone;
-        $user->address =$request->address;
-        $user->password =Hash::make($request->password);
-        $user->role ='admin';
-        $user->status ='active';
+        $user = new User();
+        $user->username = $request->username;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->password = Hash::make($request->password);
+        $user->role = 'admin';
+        $user->status = 'active';
         $user->save();
 
-        if($request->role){
+        if ($request->role) {
             $user->assignRole($request->role);
         }
-         $notification = array(
+        $notification = array(
             'message' => 'New Admin User Inserted Successfully',
             'alert-type' => 'success'
         );
 
         return redirect()->route('all.admin')->with($notification);
+    } // End Mehtod
 
-    }// End Mehtod
-
-    public function EditAdminRole($id){
+    public function EditAdminRole($id)
+    {
 
         $user = User::findOrFail($id);
         $roles = Role::all();
-        return view('Backend.admin.edit_admin',compact('user','roles'));
-    }// End Mehtod
+        return view('Backend.admin.edit_admin', compact('user', 'roles'));
+    } // End Mehtod
 
 
-    public function AdminUserUpdate(Request $request,$id){
+    public function AdminUserUpdate(Request $request, $id)
+    {
 
 
         $user = User::findOrFail($id);
@@ -225,28 +226,27 @@ class AdminController extends Controller
             $user->assignRole($request->role);
         }
 
-         $notification = array(
+        $notification = array(
             'message' => 'New Admin User Updated Successfully',
             'alert-type' => 'success'
         );
 
         return redirect()->route('all.admin')->with($notification);
+    } // End Mehtod
 
-    }// End Mehtod
-
-    public function DeleteAdminRole($id){
+    public function DeleteAdminRole($id)
+    {
 
         $user = User::findOrFail($id);
         if (!is_null($user)) {
             $user->delete();
         }
 
-         $notification = array(
+        $notification = array(
             'message' => 'Admin User Deleted Successfully',
             'alert-type' => 'success'
         );
 
         return redirect()->back()->with($notification);
-
-    }// End Mehtod
+    } // End Mehtod
 }

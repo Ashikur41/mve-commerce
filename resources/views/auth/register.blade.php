@@ -48,6 +48,17 @@
                                             <p class="mb-30">Already have an account? <a
                                                     href='{{ route('login') }}'>Login</a></p>
                                         </div>
+
+                                        @if ($errors->any())
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                        @endif
+
                                         <form method="POST" action="{{ route('register') }}">
                                             @csrf
                                             <div class="form-group">
@@ -55,7 +66,6 @@
                                                     placeholder="name" />
                                             </div>
                                             <div class="form-group">
-                                                <p class="text-danger">Enter unique email address ?</p>
                                                 <input type="email" required="" id="email" name="email"
                                                     placeholder="Email" />
                                             </div>
@@ -134,7 +144,7 @@
     <!-- Template  JS -->
     <script src="{{ url('Frontend') }}/assets/js/main2cc5.js?v=5.6"></script>
     <script src="{{ url('Frontend') }}/assets/js/shop2cc5.js?v=5.6"></script>
-{{--
+    {{--
     <script>
         const validateEmail = (email) => {
             return email.match(

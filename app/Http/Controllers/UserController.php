@@ -64,16 +64,20 @@ class UserController extends Controller
 
     public function UserUpdatePassword(Request $request)
     {
+
         $request->validate([
             'old_password' => 'required',
-            'new_password' => 'required|confirmed',
+            'new_password' => 'required',
         ]);
 
         //Match The Old Password
+
         if(!Hash::check($request->old_password,auth::user()->password))
         {
             return back()->with("error","Old Password Dose't Match!");
+
         }
+
 
         //update the new password
         User::whereId(auth()->user()->id)->update([
