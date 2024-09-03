@@ -24,7 +24,7 @@
     <meta property="og:url" content="" />
     <meta property="og:image" content="" />
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ url('Frontend') }}/assets/imgs/theme/favicon.svg" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url('Frontend') }}/assets/imgs/theme/logo.png" />
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ url('Frontend') }}/assets/css/plugins/animate.min.css" />
     <link rel="stylesheet" href="{{ url('Frontend') }}/assets/css/main2cc5.css?v=5.6" />
@@ -513,7 +513,7 @@
                                     <h6 class="mb-5"><a class='product-name mb-10 text-heading' href='#'>${value.name}</a></h6>
                                 </td>
                                 <td class="price" data-title="Price">
-                                    <h4 class="text-body">$${value.price}</h4>
+                                    <h4 class="text-body">${value.price}</h4>
                                 </td>
 
                                 <td class="price" data-title="Price">

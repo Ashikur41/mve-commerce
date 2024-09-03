@@ -1,4 +1,6 @@
-{{-- <script src="{{ url('Frontend/assets/js/script.js') }}"></script> --}}
+@php
+$siteSetting = App\Models\SiteSetting::find(1);
+@endphp
 
 <header class="header-area header-style-1 header-height-2">
 
@@ -6,7 +8,8 @@
         <div class="container">
             <div class="header-wrap">
                 <div class="logo logo-width-1">
-                    <a href='{{ route('frontend.index') }}'><img src="{{ url('Frontend/assets/imgs/theme/logo.svg') }}" alt="logo" /></a>
+                    <a href='{{ route('frontend.index') }}'><img src="{{ $siteSetting->logo }}"
+                            alt="logo" /></a>
                 </div>
                 <div class="header-right">
                     <div class="search-style-2">
@@ -25,7 +28,8 @@
                                 <option>Noodles & Rice</option>
                                 <option>Ice cream</option>
                             </select> --}}
-                            <input name="search" onfocus="search_result_show()" onblur="search_result_hide()" id="search" placeholder="Search for items..." />
+                            <input name="search" onfocus="search_result_show()" onblur="search_result_hide()"
+                                id="search" placeholder="Search for items..." />
                             <div id="searchProduct"></div>
                         </form>
                     </div>
@@ -51,26 +55,28 @@
                                     </select>
                                 </form>
                             </div>
-                            <div class="header-action-icon-2">
+                            {{-- <div class="header-action-icon-2">
                                 <a href='shop-compare.html'>
                                     <img class="svgInject" alt="Nest" src="{{ url('Frontend') }}/assets/imgs/theme/icons/icon-compare.svg" />
                                     <span class="pro-count blue">3</span>
                                 </a>
                                 <a href='shop-compare.html'><span class="lable ml-0">Compare</span></a>
-                            </div>
+                            </div> --}}
 
                             <div class="header-action-icon-2">
                                 <a href='{{ route('wishlist') }}'>
-                                    <img class="svgInject" alt="Nest" src="{{ url('Frontend') }}/assets/imgs/theme/icons/icon-heart.svg" />
-                                    <span class="pro-count blue" id="wishQty">0</span>
+                                    <img class="svgInject" alt="Nest"
+                                        src="{{ url('Frontend') }}/assets/imgs/theme/icons/icon-heart.svg" />
+                                    <span class="pro-count blue" id="wishQty"> </span>
                                 </a>
                                 <a href='{{ route('wishlist') }}'><span class="lable">Wishlist</span></a>
                             </div>
 
                             <div class="header-action-icon-2">
                                 <a class='mini-cart-icon' href='shop-cart.html'>
-                                    <img alt="Nest" src="{{ url('Frontend/assets/imgs/theme/icons/icon-cart.svg') }}" />
-                                    <span class="pro-count blue" id="cartQty"> </span>
+                                    <img alt="Nest"
+                                        src="{{ url('Frontend/assets/imgs/theme/icons/icon-cart.svg') }}" />
+                                    <span class="pro-count blue" id="cartQty">0</span>
                                 </a>
                                 <a href='{{ route('my.cart') }}'><span class="lable">Cart</span></a>
                                 <div class="cart-dropdown-wrap cart-dropdown-hm2">
@@ -82,7 +88,7 @@
 
                                     <div class="shopping-cart-footer">
                                         <div class="shopping-cart-total">
-                                            <h4>Total <span id="cartSubTotal"></span></h4>
+                                            <h4>Total:&#2547;<span id="cartSubTotal"></span></h4>
                                         </div>
                                         <div class="shopping-cart-button">
                                             <a class='outline' href='{{ route('my.cart') }}'>View cart</a>
@@ -93,17 +99,19 @@
                             </div>
                             <div class="header-action-icon-2">
                                 <a href='#'>
-                                    <img class="svgInject" alt="Nest" src="{{ url('Frontend') }}/assets/imgs/theme/icons/icon-user.svg" />
+                                    <img class="svgInject" alt="Nest"
+                                        src="{{ url('Frontend') }}/assets/imgs/theme/icons/icon-user.svg" />
                                 </a>
 
                                 @auth
-                                <a href='page-account.html'><span class="lable ml-0">Account</span></a>
-                                <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
-                                    <ul>
-                                        <li>
-                                            <a href='{{ route('dashboard') }}'><i class="fi fi-rs-user mr-10"></i>My Account</a>
-                                        </li>
-                                        <li>
+                                    <a href='page-account.html'><span class="lable ml-0">Account</span></a>
+                                    <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
+                                        <ul>
+                                            <li>
+                                                <a href='{{ route('dashboard') }}'><i class="fi fi-rs-user mr-10"></i>My
+                                                    Account</a>
+                                            </li>
+                                            {{-- <li>
                                             <a href='{{ route('dashboard') }}'><i class="fi fi-rs-location-alt mr-10"></i>Order Tracking</a>
                                         </li>
                                         <li>
@@ -114,16 +122,17 @@
                                         </li>
                                         <li>
                                             <a href='{{ route('dashboard') }}'><i class="fi fi-rs-settings-sliders mr-10"></i>Setting</a>
-                                        </li>
-                                        <li>
-                                            <a href='{{ route('user.logout') }}'><i class="fi fi-rs-sign-out mr-10"></i>Sign out</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                        </li> --}}
+                                            <li>
+                                                <a href='{{ route('user.logout') }}'><i
+                                                        class="fi fi-rs-sign-out mr-10"></i>Sign out</a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 @else
-                                <a href='{{ route('login') }}'><span class="lable ml-0">Login</span></a>
-                                <span class="lable" style="margin-left: 2px; margin-right:2px;">|</span>
-                                <a href='{{ route('register') }}'><span class="lable ml-0">Register</span></a>
+                                    <a href='{{ route('login') }}'><span class="lable ml-0">Login</span></a>
+                                    <span class="lable" style="margin-left: 2px; margin-right:2px;">|</span>
+                                    <a href='{{ route('register') }}'><span class="lable ml-0">Register</span></a>
                                 @endauth
                             </div>
                         </div>
@@ -136,11 +145,12 @@
         <div class="container">
             <div class="header-wrap header-space-between position-relative">
                 <div class="logo logo-width-1 d-block d-lg-none">
-                    <a href='index.html'><img src="{{ url('Frontend/assets/imgs/theme/logo.svg') }}" alt="logo" /></a>
+                    <a href='index.html'><img src="{{ url('Frontend/assets/imgs/theme/logo.png') }}"
+                            alt="logo" /></a>
                 </div>
 
                 @php
-                    $categories=App\Models\Category::orderBy('category_name','ASC')->get();
+                    $categories = App\Models\Category::orderBy('category_name', 'ASC')->get();
                 @endphp
 
                 <div class="header-nav d-none d-lg-flex">
@@ -153,9 +163,12 @@
                             <div class="d-flex">
                                 <ul>
                                     @foreach ($categories as $item)
-                                    <li>
-                                        <a href='{{ url('product/category'.'/'.$item->id.'/'.$item->category_slug) }}'> <img src="{{ asset('upload/category/'.$item->category_image) }}" alt="" />{{ $item->category_name }}</a>
-                                    </li>
+                                        <li>
+                                            <a
+                                                href='{{ url('product/category' . '/' . $item->id . '/' . $item->category_slug) }}'>
+                                                <img src="{{ asset('upload/category/' . $item->category_image) }}"
+                                                    alt="" />{{ $item->category_name }}</a>
+                                        </li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -163,23 +176,32 @@
                                 <div class="d-flex categori-dropdown-inner">
                                     <ul>
                                         <li>
-                                            <a href='shop-grid-right.html'> <img src="{{ url('Frontend') }}/assets/imgs/theme/icons/icon-1.svg" alt="" />Milks and Dairies</a>
+                                            <a href='shop-grid-right.html'> <img
+                                                    src="{{ url('Frontend') }}/assets/imgs/theme/icons/icon-1.svg"
+                                                    alt="" />Milks and Dairies</a>
                                         </li>
                                         <li>
-                                            <a href='shop-grid-right.html'> <img src="{{ url('Frontend') }}/assets/imgs/theme/icons/icon-2.svg" alt="" />Clothing & beauty</a>
+                                            <a href='shop-grid-right.html'> <img
+                                                    src="{{ url('Frontend') }}/assets/imgs/theme/icons/icon-2.svg"
+                                                    alt="" />Clothing & beauty</a>
                                         </li>
                                     </ul>
                                     <ul class="end">
                                         <li>
-                                            <a href='shop-grid-right.html'> <img src="{{ url('Frontend') }}/assets/imgs/theme/icons/icon-3.svg" alt="" />Wines & Drinks</a>
+                                            <a href='shop-grid-right.html'> <img
+                                                    src="{{ url('Frontend') }}/assets/imgs/theme/icons/icon-3.svg"
+                                                    alt="" />Wines & Drinks</a>
                                         </li>
                                         <li>
-                                            <a href='shop-grid-right.html'> <img src="{{ url('Frontend') }}/assets/imgs/theme/icons/icon-4.svg" alt="" />Fresh Seafood</a>
+                                            <a href='shop-grid-right.html'> <img
+                                                    src="{{ url('Frontend') }}/assets/imgs/theme/icons/icon-4.svg"
+                                                    alt="" />Fresh Seafood</a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
-                            <div class="more_categories"><span class="icon"></span> <span class="heading-sm-1">Show more...</span></div>
+                            <div class="more_categories"><span class="icon"></span> <span class="heading-sm-1">Show
+                                    more...</span></div>
                         </div>
                     </div>
                     <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block font-heading">
@@ -189,36 +211,42 @@
                                     <a class='active' href='{{ url('/') }}'>Home</a>
                                 </li>
                                 @php
-                                $category=App\Models\Category::orderBy('category_name','ASC')->limit(2)->get();
-                            @endphp
-                            @foreach ($category as $cate)
-                            <li>
-                                <a href="{{ url('product/category'.'/'.$cate->id.'/'.$cate->category_slug) }}">{{ $cate->category_name }} <i class="fi-rs-angle-down"></i></a>
-                                @php
-                                $subcategory=App\Models\SubCategory::where('category_id',$cate->id)->orderBy('sub_category_name','ASC')->get();
-                            @endphp
-                            @foreach ($subcategory as $subCate)
-                            <ul class="sub-menu">
-                                <li><a href='{{ url('product/subcategory'.'/'.$subCate->id.'/'.$subCate->sub_category_slug) }}'>{{ $subCate->sub_category_name }}</a></li>
-                            </ul>
-                            @endforeach
-                            </li>
-                            @endforeach
+                                    $category = App\Models\Category::orderBy('category_name', 'ASC')->limit(2)->get();
+                                @endphp
+                                @foreach ($category as $cate)
+                                    <li>
+                                        <a
+                                            href="{{ url('product/category' . '/' . $cate->id . '/' . $cate->category_slug) }}">{{ $cate->category_name }}
+                                            </a>
+                                        @php
+                                            $subcategory = App\Models\SubCategory::where('category_id', $cate->id)
+                                                ->orderBy('sub_category_name', 'ASC')
+                                                ->get();
+                                        @endphp
+                                        @foreach ($subcategory as $subCate)
+                                            <ul class="sub-menu">
+                                                <li><a
+                                                        href='{{ url('product/subcategory' . '/' . $subCate->id . '/' . $subCate->sub_category_slug) }}'>{{ $subCate->sub_category_name }}</a>
+                                                </li>
+                                            </ul>
+                                        @endforeach
+                                    </li>
+                                @endforeach
 
-                            <li>
-                                <a href="{{ route('home.blog') }}">Blog</a>
-                            </li>
+                                <li>
+                                    <a href="{{ route('home.blog') }}">Blog</a>
+                                </li>
 
-                            <li>
+                                {{-- <li>
                                 <a href='#'>Vendor</a>
                                 <ul class="sub-menu">
                                     <li><a href='{{route('vendor.list')}}'>Vendor List</a></li>
                                 </ul>
-                            </li>
+                            </li> --}}
 
-                            <li>
-                                <a href='{{route('contact')}}'>Contact</a>
-                            </li>
+                                <li>
+                                    <a href='{{ route('contact') }}'>Contact</a>
+                                </li>
 
                             </ul>
                         </nav>
@@ -226,7 +254,7 @@
                 </div>
                 <div class="hotline d-none d-lg-flex">
                     <img src="{{ url('Frontend') }}/assets/imgs/theme/icons/icon-headphone.svg" alt="hotline" />
-                    <p>1900 - 888<span>24/7 Support Center</span></p>
+                    <p>{{$siteSetting->suport_phone}}<span>24/7 Support Center</span></p>
                 </div>
                 <div class="header-action-icon-2 d-block d-lg-none">
                     <div class="burger-icon burger-icon-white">
@@ -239,20 +267,23 @@
                     <div class="header-action-2">
                         <div class="header-action-icon-2">
                             <a href='shop-wishlist.html'>
-                                <img alt="Nest" src="{{ url('Frontend') }}/assets/imgs/theme/icons/icon-heart.svg" />
+                                <img alt="Nest"
+                                    src="{{ url('Frontend') }}/assets/imgs/theme/icons/icon-heart.svg" />
                                 <span class="pro-count white">4</span>
                             </a>
                         </div>
                         <div class="header-action-icon-2">
                             <a class="mini-cart-icon" href="#">
-                                <img alt="Nest" src="{{ url('Frontend') }}/assets/imgs/theme/icons/icon-cart.svg" />
+                                <img alt="Nest"
+                                    src="{{ url('Frontend') }}/assets/imgs/theme/icons/icon-cart.svg" />
                                 <span class="pro-count white">2</span>
                             </a>
                             <div class="cart-dropdown-wrap cart-dropdown-hm2">
                                 <ul>
                                     <li>
                                         <div class="shopping-cart-img">
-                                            <a href='shop-product-right.html'><img alt="Nest" src="{{ url('Frontend') }}/assets/imgs/shop/thumbnail-3.jpg" /></a>
+                                            <a href='shop-product-right.html'><img alt="Nest"
+                                                    src="{{ url('Frontend') }}/assets/imgs/shop/thumbnail-3.jpg" /></a>
                                         </div>
                                         <div class="shopping-cart-title">
                                             <h4><a href='shop-product-right.html'>Plain Striola Shirts</a></h4>
@@ -264,7 +295,8 @@
                                     </li>
                                     <li>
                                         <div class="shopping-cart-img">
-                                            <a href='shop-product-right.html'><img alt="Nest" src="{{ url('Frontend') }}/assets/imgs/shop/thumbnail-4.jpg" /></a>
+                                            <a href='shop-product-right.html'><img alt="Nest"
+                                                    src="{{ url('Frontend') }}/assets/imgs/shop/thumbnail-4.jpg" /></a>
                                         </div>
                                         <div class="shopping-cart-title">
                                             <h4><a href='shop-product-right.html'>Macbook Pro 2022</a></h4>
@@ -295,7 +327,7 @@
 
 
 <style>
-    #searchProduct{
+    #searchProduct {
         position: absolute;
         top: 100%;
         left: 0;
@@ -308,10 +340,11 @@
 </style>
 
 <script>
-    function search_result_show(){
+    function search_result_show() {
         $("#searchProduct").slideDown();
     }
-    function search_result_hide(){
+
+    function search_result_hide() {
         $("#searchProduct").slideUp();
     }
 </script>
@@ -322,7 +355,8 @@
     <div class="mobile-header-wrapper-inner">
         <div class="mobile-header-top">
             <div class="mobile-header-logo">
-                <a href='index.html'><img src="{{ url('Frontend') }}/assets/imgs/theme/logo.svg" alt="logo" /></a>
+                <a href='{{route('frontend.index')}}'><img src="{{ $siteSetting->logo }}"
+                        alt="logo" /></a>
             </div>
             <div class="mobile-menu-close close-style-wrap close-style-position-inherit">
                 <button class="close-style search-close">
@@ -332,30 +366,24 @@
             </div>
         </div>
         <div class="mobile-header-content-area">
-            <div class="mobile-search search-style-3 mobile-header-border">
-                <form action="#">
-                    <input type="text" placeholder="Search for items…" />
-                    <button type="submit"><i class="fi-rs-search"></i></button>
+            {{-- <div class="mobile-search search-style-3 mobile-header-border">
+                <form action="{{ route('product.search') }}" method="post">
+
+                    <input name="search" onfocus="search_result_show()" onblur="search_result_hide()"
+                    id="search" placeholder="Search for items..." />
+                <div id="searchProduct"></div>
                 </form>
-            </div>
+            </div> --}}
             <div class="mobile-menu-wrap mobile-header-border">
                 <!-- mobile menu start -->
                 <nav>
                     <ul class="mobile-menu font-heading">
                         <li class="menu-item-has-children">
-                            <a href='index.html'>Home</a>
-                            <ul class="dropdown">
-                                <li><a href='index.html'>Home</a></li>
-                                {{-- <li><a href='index-2.html'>Home 2</a></li>
-                                <li><a href='index-3.html'>Home 3</a></li>
-                                <li><a href='index-4.html'>Home 4</a></li>
-                                <li><a href='index-5.html'>Home 5</a></li>
-                                <li><a href='index-6.html'>Home 6</a></li> --}}
-                            </ul>
+                            <a href='{{ route('frontend.index') }}'>Home</a>
                         </li>
                         <li class="menu-item-has-children">
                             <a href='shop-grid-right.html'>shop</a>
-                            <ul class="dropdown">
+                            {{-- <ul class="dropdown">
                                 <li><a href='shop-grid-right.html'>Shop Grid – Right Sidebar</a></li>
                                 <li><a href='shop-grid-left.html'>Shop Grid – Left Sidebar</a></li>
                                 <li><a href='shop-list-right.html'>Shop List – Right Sidebar</a></li>
@@ -386,9 +414,9 @@
                                         <li><a href='shop-invoice-6.html'>Shop Invoice 6</a></li>
                                     </ul>
                                 </li>
-                            </ul>
+                            </ul> --}}
                         </li>
-                        <li class="menu-item-has-children">
+                        {{-- <li class="menu-item-has-children">
                             <a href="#">Vendors</a>
                             <ul class="dropdown">
                                 <li><a href='vendors-grid.html'>Vendors Grid</a></li>
@@ -398,8 +426,8 @@
                                 <li><a href='vendor-dashboard.html'>Vendor Dashboard</a></li>
                                 <li><a href='vendor-guide.html'>Vendor Guide</a></li>
                             </ul>
-                        </li>
-                        <li class="menu-item-has-children">
+                        </li> --}}
+                        {{-- <li class="menu-item-has-children">
                             <a href="#">Mega menu</a>
                             <ul class="dropdown">
                                 <li class="menu-item-has-children">
@@ -430,10 +458,10 @@
                                     </ul>
                                 </li>
                             </ul>
-                        </li>
+                        </li> --}}
                         <li class="menu-item-has-children">
-                            <a href='blog-category-fullwidth.html'>Blog</a>
-                            <ul class="dropdown">
+                            <a href='{{route('home.blog')}}'>Blog</a>
+                            {{-- <ul class="dropdown">
                                 <li><a href='blog-category-grid.html'>Blog Category Grid</a></li>
                                 <li><a href='blog-category-list.html'>Blog Category List</a></li>
                                 <li><a href='blog-category-big.html'>Blog Category Big</a></li>
@@ -446,7 +474,7 @@
                                         <li><a href='blog-post-fullwidth.html'>No Sidebar</a></li>
                                     </ul>
                                 </li>
-                            </ul>
+                            </ul> --}}
                         </li>
                         <li class="menu-item-has-children">
                             <a href="#">Pages</a>
@@ -456,15 +484,13 @@
                                 <li><a href='page-account.html'>My Account</a></li>
                                 <li><a href='page-login.html'>Login</a></li>
                                 <li><a href='page-register.html'>Register</a></li>
-                                <li><a href='page-forgot-password.html'>Forgot password</a></li>
-                                <li><a href='page-reset-password.html'>Reset password</a></li>
-                                <li><a href='page-purchase-guide.html'>Purchase Guide</a></li>
+                                <li><a href='page-forgot-password.html'>Change Password</a></li>
                                 <li><a href='page-privacy-policy.html'>Privacy Policy</a></li>
                                 <li><a href='page-terms.html'>Terms of Service</a></li>
                                 <li><a href='page-404.html'>404 Page</a></li>
                             </ul>
                         </li>
-                        <li class="menu-item-has-children">
+                        {{-- <li class="menu-item-has-children">
                             <a href="#">Language</a>
                             <ul class="dropdown">
                                 <li><a href="#">English</a></li>
@@ -472,7 +498,7 @@
                                 <li><a href="#">German</a></li>
                                 <li><a href="#">Spanish</a></li>
                             </ul>
-                        </li>
+                        </li> --}}
                     </ul>
                 </nav>
                 <!-- mobile menu end -->
@@ -485,18 +511,45 @@
                     <a href='page-login.html'><i class="fi-rs-user"></i>Log In / Sign Up </a>
                 </div>
                 <div class="single-mobile-header-info">
-                    <a href="#"><i class="fi-rs-headphones"></i>(+01) - 2345 - 6789 </a>
+                    <a href="#"><i class="fi-rs-headphones"></i>{{$siteSetting->suport_phone}}</a>
                 </div>
             </div>
             <div class="mobile-social-icon mb-50">
                 <h6 class="mb-15">Follow Us</h6>
-                <a href="#"><img src="{{ url('Frontend') }}/assets/imgs/theme/icons/icon-facebook-white.svg" alt="" /></a>
-                <a href="#"><img src="{{ url('Frontend') }}/assets/imgs/theme/icons/icon-twitter-white.svg" alt="" /></a>
-                <a href="#"><img src="{{ url('Frontend') }}/assets/imgs/theme/icons/icon-instagram-white.svg" alt="" /></a>
-                <a href="#"><img src="{{ url('Frontend') }}/assets/imgs/theme/icons/icon-pinterest-white.svg" alt="" /></a>
-                <a href="#"><img src="{{ url('Frontend') }}/assets/imgs/theme/icons/icon-youtube-white.svg" alt="" /></a>
+                <a href="{{$siteSetting->facebook}}" target="_blank"><img src="{{ url('Frontend/assets/imgs/theme/icons/icon-facebook-white.svg') }}"
+                        alt="" /></a>
+                <a href="{{$siteSetting->twiter}}" target="_blank"><img src="{{ url('Frontend/assets/imgs/theme/icons/icon-twitter-white.svg') }}"
+                        alt="" /></a>
+                {{-- <a href="#"><img src="{{ url('Frontend') }}/assets/imgs/theme/icons/icon-instagram-white.svg"
+                        alt="" /></a>
+                <a href="#"><img src="{{ url('Frontend') }}/assets/imgs/theme/icons/icon-pinterest-white.svg"
+                        alt="" /></a> --}}
+                <a href="{{$siteSetting->youtube}}" target="_blank"><img src="{{ url('Frontend/assets/imgs/theme/icons/icon-youtube-white.svg') }}"
+                        alt="" /></a>
             </div>
-            <div class="site-copyright">Copyright 2022 © Nest. All rights reserved. Powered by AliThemes.</div>
+            <div class="site-copyright">Copyright 2024 ©. All rights reserved. Powered by <a href="https://triadsolution.com/" target="_blank">Triad Solution</a></div>
         </div>
     </div>
 </div>
+<style>
+    #searchProduct {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        z-index: 999;
+        border-radius: 8px;
+        margin-top: 5px;
+    }
+</style>
+
+<script>
+    function search_result_show() {
+        $("#searchProduct").slideDown();
+    }
+
+    function search_result_hide() {
+        $("#searchProduct").slideUp();
+    }
+</script>
